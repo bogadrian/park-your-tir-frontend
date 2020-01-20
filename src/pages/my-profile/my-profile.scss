@@ -1,0 +1,16 @@
+.myprofile__container {
+  display: grid;
+  grid-template-rows: 1fr;
+  justify-content: center;
+  align-items: absolute;
+}
+
+.photoProfile {
+  height: 150px;
+  border-radius: 50%;
+}
+
+.my-profile__data {
+  font-size: 20px;
+  margin-top: 10px;
+}

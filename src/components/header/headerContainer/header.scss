@@ -1,0 +1,71 @@
+.header {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  text-decoration: none;
+
+  // @media screen and (max-width: 800px) {
+  //   padding: 10px;
+  //   height: 60px;
+  //   margin-bottom: 20px;
+  // }
+
+  // @media screen and (max-width: 800px) {
+  //   width: 30px;
+  //   padding: 0;
+  //}
+
+  .logo-container {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    margin-bottom: 25px;
+
+    .option {
+      padding: 10px 25px;
+      cursor: pointer;
+      text-decoration: none;
+      &:link,
+      h2 {
+        text-decoration: none;
+        margin-left: 2px;
+      }
+    }
+  }
+
+  .options {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+
+    // @media screen and (max-width: 900px) {
+    //   width: 80%;
+    //   padding: 10px;
+    //   margin-bottom: 30px;
+    //}
+    .option {
+      padding: 10px 15px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+
+  .site-title {
+    margin-top: 30px;
+    margin-left: -20px;
+    font-size: 30px;
+    color: #1c9aae;
+    font-weight: 700;
+  }
+
+  @media screen and (max-width: 600) {
+    font-size: 10px;
+  }
+}
