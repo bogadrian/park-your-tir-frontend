@@ -7,6 +7,7 @@ import CustomButton from '../custom-button/custom-button';
 import { VALIDATOR_MINLENGTH, VALIDATOR_EMAIL } from '../../utils/validators';
 import { clearErorr, uploadStart } from '../../redux/userReducer/user-actions';
 import Modal from '../modal/modal';
+import ImageUpload from '../ImageUpload/image-upload';
 
 import './modify-me.scss';
 
@@ -38,7 +39,7 @@ const formReducer = (state, action) => {
 // the component
 const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
   const [photo, setPhoto] = useState(null);
-  console.log(currentUser.data.user.photo);
+
   const handleError = () => {
     clearErorr();
   };
@@ -89,8 +90,8 @@ const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
     );
   };
 
-  const fileHandler = e => {
-    setPhoto(e.target.files[0]);
+  const fileHandler = photo => {
+    setPhoto(photo);
   };
 
   return (
@@ -111,14 +112,7 @@ const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
           alt="user"
         />
         <form onSubmit={handleSubmit}>
-          <input
-            className="input-file"
-            type="file"
-            accept="image/*"
-            id="photo"
-            name="photo"
-            onChange={fileHandler}
-          />
+          <ImageUpload onInput={fileHandler} />
 
           <h2 style={{ color: '#1B9AAD' }}>{currentUser.data.user.name}</h2>
           <p style={{ fontWeight: 'bold' }}>Change name:</p>

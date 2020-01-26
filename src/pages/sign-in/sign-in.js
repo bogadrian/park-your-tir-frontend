@@ -36,6 +36,7 @@ const formReducer = (state, action) => {
 };
 
 const SignIn = ({ history, signInStart, error, clearErorr }) => {
+  console.log(error);
   const handleError = () => {
     clearErorr();
     console.log('I am called!');

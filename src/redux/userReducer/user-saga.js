@@ -20,7 +20,6 @@ import {
 } from '../api';
 
 export function* signIn(userData) {
-  console.log(userData);
   try {
     const result = yield call(makeCallToServerLogin, userData);
 
@@ -28,7 +27,7 @@ export function* signIn(userData) {
       yield put(signInSuccess(result.data));
     }
   } catch (err) {
-    yield put(signInFailure(err));
+    yield put(signInFailure(err.message));
   }
 }
 
