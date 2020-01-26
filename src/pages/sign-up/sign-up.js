@@ -2,11 +2,11 @@ import React, { useReducer, useCallback } from 'react';
 
 import { connect } from 'react-redux';
 
-import FormInput from '../../components/input-form/input-form';
-import CustomButton from '../../components/custom-button/custom-button';
+import FormInput from '../../components/reuseble/input-form/input-form';
+import CustomButton from '../../components/reuseble/custom-button/custom-button';
 import { VALIDATOR_MINLENGTH, VALIDATOR_EMAIL } from '../../utils/validators';
 import { signUpStart, clearErorr } from '../../redux/userReducer/user-actions';
-import Modal from '../../components/modal/modal';
+import Modal from '../../components/reuseble/modal/modal';
 
 import './sign-up.scss';
 

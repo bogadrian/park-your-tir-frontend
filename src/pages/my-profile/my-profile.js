@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './my-profile.scss';
-import ModifyMe from '../../components/modify-me/modify-me';
+import ModifyMe from '../../components/users/modify-me/modify-me';
 
 const MyProfile = () => {
   return (

@@ -2,12 +2,18 @@ import React, { useReducer, useCallback, useState } from 'react';
 
 import { connect } from 'react-redux';
 
-import FormInput from '../input-form/input-form';
-import CustomButton from '../custom-button/custom-button';
-import { VALIDATOR_MINLENGTH, VALIDATOR_EMAIL } from '../../utils/validators';
-import { clearErorr, uploadStart } from '../../redux/userReducer/user-actions';
-import Modal from '../modal/modal';
-import ImageUpload from '../ImageUpload/image-upload';
+import FormInput from '../../reuseble/input-form/input-form';
+import CustomButton from '../../reuseble/custom-button/custom-button';
+import {
+  VALIDATOR_MINLENGTH,
+  VALIDATOR_EMAIL
+} from '../../../utils/validators';
+import {
+  clearErorr,
+  uploadStart
+} from '../../../redux/userReducer/user-actions';
+import Modal from '../../reuseble/modal/modal';
+import ImageUpload from '../../reuseble/ImageUpload/image-upload';
 
 import './modify-me.scss';
 
