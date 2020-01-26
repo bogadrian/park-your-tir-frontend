@@ -9,7 +9,6 @@ import LoggedOut from '../loggedOut/loggedOut';
 import './header.scss';
 
 const Header = ({ currentUser }) => {
-  console.log(currentUser);
   return (
     <div className="header">
       <div className="logo-container">

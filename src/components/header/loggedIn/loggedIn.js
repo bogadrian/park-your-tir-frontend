@@ -6,25 +6,24 @@ import './loggedIn.scss';
 import { signOutStart } from '../../../redux/userReducer/user-actions';
 
 const LoggedIn = ({ currentUser, signOutStart }) => {
+  console.log(currentUser.data.user.photo);
   return (
     <div>
-      {currentUser ? (
-        <div className="loggedIn-container">
-          <Link className="link-logout" to="/" onClick={signOutStart}>
-            SIGN OUT
-          </Link>
-          <Link to="/my-profile">
-            <img
-              className="photoUser"
-              src={`https://bogdan-park-your-tir.herokuapp.com/api/v1/static/img/users/${currentUser.data.user.photo}`}
-              alt="user"
-            />
-          </Link>
-          <Link to="/my-profile">
-            <p className="name">{currentUser.data.user.name.split(' ')[0]}</p>
-          </Link>
-        </div>
-      ) : null}
+      <div className="loggedIn-container">
+        <Link className="link-logout" to="/" onClick={signOutStart}>
+          SIGN OUT
+        </Link>
+        <Link to="/my-profile">
+          <img
+            className="photoUser"
+            src={`http://127.1.1.0:3000/api/v1/img/users/${currentUser.data.user.photo}`}
+            alt="user"
+          />
+        </Link>
+        <Link to="/my-profile">
+          <p className="name">{currentUser.data.user.name}</p>
+        </Link>
+      </div>
     </div>
   );
 };

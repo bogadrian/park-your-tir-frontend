@@ -1,13 +1,13 @@
 import React, { useCallback, useReducer } from 'react';
-
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { VALIDATOR_MINLENGTH, VALIDATOR_EMAIL } from '../../utils/validators';
 
 import FormInput from '../../components/input-form/input-form';
 import CustomButton from '../../components/custom-button/custom-button';
-import { signInStart } from '../../redux/userReducer/user-actions';
-
+import { signInStart, clearErorr } from '../../redux/userReducer/user-actions';
+import Modal from '../../components/modal/modal';
 import './sign-in.scss';
 
 const formReducer = (state, action) => {
@@ -35,7 +35,21 @@ const formReducer = (state, action) => {
   }
 };
 
-const SignIn = ({ history, signInStart }) => {
+const SignIn = ({ history, signInStart, error, clearErorr }) => {
+  const handleError = () => {
+    clearErorr();
+    console.log('I am called!');
+  };
+
+  let show;
+  let message;
+  if (error === 'Request failed with status code 401') {
+    show = true;
+    message = 'Please check your password and email and try again!';
+  } else {
+    show = false;
+  }
+
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
       email: {
@@ -61,54 +75,74 @@ const SignIn = ({ history, signInStart }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const newUser = {
+    let newUser = {
       email: formState.inputs.email.value,
       password: formState.inputs.password.value
     };
 
-    signInStart(newUser);
+    if (newUser) {
+      signInStart(newUser);
+    }
   };
 
   return (
-    <div className="sign-in">
-      <form onSubmit={handleSubmit}>
-        <FormInput
-          id="email"
-          element="input"
-          label="email"
-          texterror="Please enter a valid email"
-          validators={[VALIDATOR_EMAIL()]}
-          onInput={handleInput}
-          required={true}
-        />
+    <React.Fragment>
+      <Modal
+        show={show}
+        header="There as an error login-in!"
+        contentClass="place-item__modal-content"
+        footerClass="place-item__modal-actions"
+        footer={<CustomButton handleClick={handleError}>CLOSE</CustomButton>}
+      >
+        {message}
+      </Modal>
 
-        <FormInput
-          id="password"
-          element="input"
-          label="password"
-          validators={[VALIDATOR_MINLENGTH(6)]}
-          texterror="Password must be minum 6 characters"
-          onInput={handleInput}
-          required={true}
-        />
+      <div className="sign-in">
+        <form onSubmit={handleSubmit}>
+          <FormInput
+            id="email"
+            element="input"
+            label="email"
+            texterror="Please enter a valid email"
+            validators={[VALIDATOR_EMAIL()]}
+            onInput={handleInput}
+            required={true}
+          />
 
-        <CustomButton type="submit" disabled={!formState.genValid}>
-          Sign In
-        </CustomButton>
-      </form>
-      <div>
-        <h2>
-          You don't have an account? Please signup! It takes only 1 minute!
-        </h2>
-        <CustomButton type="click" handleClick={() => history.push(`/signup`)}>
-          Go to Sign Up
-        </CustomButton>
+          <FormInput
+            id="password"
+            element="input"
+            label="password"
+            validators={[VALIDATOR_MINLENGTH(6)]}
+            texterror="Password must be minum 6 characters"
+            onInput={handleInput}
+            required={true}
+          />
+
+          <CustomButton type="submit" disabled={!formState.genValid}>
+            Sign In
+          </CustomButton>
+        </form>
+        <div>
+          <h2>
+            You don't have an account? Please signup! It takes only 1 minute!
+          </h2>
+          <CustomButton
+            type="click"
+            handleClick={() => history.push(`/signup`)}
+          >
+            Go to Sign Up
+          </CustomButton>
+        </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
-
-const mapDispatchToProps = dispatch => ({
-  signInStart: user => dispatch(signInStart(user))
+const mapStateToProps = ({ user }) => ({
+  error: user.error
 });
-export default connect(null, mapDispatchToProps)(SignIn);
+const mapDispatchToProps = dispatch => ({
+  signInStart: user => dispatch(signInStart(user)),
+  clearErorr: () => dispatch(clearErorr())
+});
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignIn));

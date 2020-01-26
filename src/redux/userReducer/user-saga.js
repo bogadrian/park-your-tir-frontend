@@ -2,21 +2,31 @@ import { takeLatest, put, call, all } from 'redux-saga/effects';
 
 import userActionTypes from './user-types';
 import {
-  signInSuccess,
   signInFailure,
+  signInSuccess,
   signOutSuccess,
   signOutFailure,
+  signUpFailure,
   signUpSuccess,
-  signUpFailure
+  setUserSuccessUpload,
+  setUserFailureUpload,
+  clearingErrors
 } from './user-actions';
 
-import { makeCallToServerLogin, makeCallToServerSignUp } from '../api';
+import {
+  makeCallToServerLogin,
+  makeCallToServerSignUp,
+  makeCallToServerUplod
+} from '../api';
 
 export function* signIn(userData) {
-  const result = yield call(makeCallToServerLogin, userData);
-
+  console.log(userData);
   try {
-    yield put(signInSuccess(result));
+    const result = yield call(makeCallToServerLogin, userData);
+
+    if (result.data.status === 'success') {
+      yield put(signInSuccess(result.data));
+    }
   } catch (err) {
     yield put(signInFailure(err));
   }
@@ -26,8 +36,8 @@ export function* signInStart() {
   yield takeLatest(userActionTypes.SET_USER_START, signIn);
 }
 
-////////////////////////////////////////////////////////////////
-//Sign Out Saga
+// ////////////////////////////////////////////////////////////////
+// //Sign Out Saga
 
 export function* signOut() {
   try {
@@ -42,32 +52,16 @@ export function* onSignOutStart() {
   yield takeLatest(userActionTypes.SIGNOUT_START, signOut);
 }
 
-///////////////////////////////////
-//Sign Up Saga
+////////////////////
+// signup saga
 
-export function* onSignUpSuccess(data) {
+export function* onSignUp(userr) {
   try {
-    const result = yield call(makeCallToServerLogin, data);
-    console.log(result);
-    yield put(signInSuccess(result));
-  } catch (err) {
-    yield put(signInFailure(err));
-  }
-}
+    const result = yield call(makeCallToServerSignUp, userr);
 
-export function* signUpSuc() {
-  yield takeLatest(userActionTypes.SIGNUP_SUCCESS, onSignUpSuccess);
-}
-export function* onSignUp(user) {
-  const { password } = user.payload;
-
-  try {
-    const result = yield call(makeCallToServerSignUp, user);
-
-    const email = result.data.user.email;
-
-    //into the reducer
-    yield put(signUpSuccess({ email, password }));
+    if (result.data.status === 'success') {
+      yield put(signUpSuccess(result.data));
+    }
   } catch (err) {
     yield put(signUpFailure(err));
   }
@@ -77,14 +71,65 @@ export function* onSignUpStart() {
   yield takeLatest(userActionTypes.SIGNUP_START, onSignUp);
 }
 
-//////////////////////////////////
-//all Saga
+// ////////////////////////////////
+// //Clear Errors on user credentials wrong
+
+export function* onClear() {
+  yield put(clearingErrors());
+}
+
+export function* onClearErrors() {
+  yield takeLatest(userActionTypes.CLEAR_ERRORS, onClear);
+}
+
+// ////////////////////////////////
+// //Saga Photo Uploader
+
+export function* onUpload(data) {
+  console.log(data);
+  try {
+    const result = yield call(makeCallToServerUplod, data.payload);
+
+    console.log(result);
+
+    if (result) {
+      yield put(setUserSuccessUpload(result));
+    }
+  } catch (err) {
+    yield put(setUserFailureUpload(err));
+  }
+}
+
+export function* onUploadStart() {
+  yield takeLatest(userActionTypes.SET_CURRENT_USER_UPLOAD, onUpload);
+}
+
+///////////////////////////////////////
+// Set Current User from App.js
+
+// export function* onSetCurrent(user) {
+//   console.log(user);
+//   try {
+//     yield put(setCurrentUserSuccess(user));
+//   } catch (err) {
+//     yield put(setCurrentUserFailure(err));
+//   }
+// }
+
+// export function* onSetCurrentUser() {
+//   yield takeLatest(userActionTypes.SET_CURRENT_USER, onSetCurrent);
+// }
+
+// //////////////////////////////////
+// //all Saga
 
 export function* userSaga() {
   yield all([
     call(signInStart),
     call(onSignOutStart),
     call(onSignUpStart),
-    call(signUpSuc)
+    call(onClearErrors),
+    call(onUploadStart)
+    //call(onSetCurrentUser),
   ]);
 }

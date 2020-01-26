@@ -1,14 +1,14 @@
-import React, { useReducer, useCallback } from 'react';
+import React, { useReducer, useCallback, useState } from 'react';
 
 import { connect } from 'react-redux';
 
-import FormInput from '../../components/input-form/input-form';
-import CustomButton from '../../components/custom-button/custom-button';
+import FormInput from '../input-form/input-form';
+import CustomButton from '../custom-button/custom-button';
 import { VALIDATOR_MINLENGTH, VALIDATOR_EMAIL } from '../../utils/validators';
-import { signUpStart, clearErorr } from '../../redux/userReducer/user-actions';
-import Modal from '../../components/modal/modal';
+import { clearErorr, uploadStart } from '../../redux/userReducer/user-actions';
+import Modal from '../modal/modal';
 
-import './sign-up.scss';
+import './modify-me.scss';
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -34,10 +34,13 @@ const formReducer = (state, action) => {
       return state;
   }
 };
-const SignUp = ({ signUpStart, clearErorr, error }) => {
+
+// the component
+const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
+  const [photo, setPhoto] = useState(null);
+  console.log(currentUser.data.user.photo);
   const handleError = () => {
     clearErorr();
-    console.log('I am called!');
   };
 
   let show;
@@ -59,16 +62,8 @@ const SignUp = ({ signUpStart, clearErorr, error }) => {
         value: '',
         isValid: false
       },
-      password: {
-        value: '',
-        isValid: false
-      },
-      confirmPassword: {
-        value: '',
-        isValid: false
-      }
-    },
-    genValid: false
+      genValid: false
+    }
   });
 
   const handleInput = useCallback((id, value, isValid) => {
@@ -80,31 +75,22 @@ const SignUp = ({ signUpStart, clearErorr, error }) => {
     });
   }, []);
 
-  const checkPasswords = (password, confirmPassword) => {
-    if (password !== confirmPassword) {
-      return false;
-    } else {
-      return true;
-    }
-  };
-
   const handleSubmit = async e => {
     e.preventDefault();
-    if (checkPasswords() === true) {
-      const newUser = {
-        name: formState.inputs.name.value,
-        email: formState.inputs.email.value,
-        password: formState.inputs.password.value,
-        passwordConfirm: formState.inputs.confirmPassword.value
-      };
-      try {
-        signUpStart(newUser);
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      console.log('Psswords are not the same');
-    }
+    let name = formState.inputs.name.value;
+    let email = formState.inputs.email.value;
+
+    console.log(photo);
+
+    uploadStart(
+      photo ? photo : currentUser.data.user.photo,
+      email ? email : currentUser.data.user.email,
+      name ? name : currentUser.data.user.name
+    );
+  };
+
+  const fileHandler = e => {
+    setPhoto(e.target.files[0]);
   };
 
   return (
@@ -119,7 +105,23 @@ const SignUp = ({ signUpStart, clearErorr, error }) => {
         {mes}
       </Modal>
       <div className="sign-up">
+        <img
+          className="photoProfile"
+          src={`http://127.1.1.0:3000/api/v1/img/users/${currentUser.data.user.photo}`}
+          alt="user"
+        />
         <form onSubmit={handleSubmit}>
+          <input
+            className="input-file"
+            type="file"
+            accept="image/*"
+            id="photo"
+            name="photo"
+            onChange={fileHandler}
+          />
+
+          <h2 style={{ color: '#1B9AAD' }}>{currentUser.data.user.name}</h2>
+          <p style={{ fontWeight: 'bold' }}>Change name:</p>
           <FormInput
             id="name"
             element="input"
@@ -129,7 +131,8 @@ const SignUp = ({ signUpStart, clearErorr, error }) => {
             label="Display Name"
             required
           />
-
+          <h2 style={{ color: '#1B9AAD' }}>{currentUser.data.user.email}</h2>
+          <p style={{ fontWeight: 'bold' }}>Change email:</p>
           <FormInput
             id="email"
             element="input"
@@ -140,39 +143,24 @@ const SignUp = ({ signUpStart, clearErorr, error }) => {
             required
           />
 
-          <FormInput
-            id="password"
-            element="input"
-            label="password"
-            texterror="Please enter a password at least from 6 characters"
-            validators={[VALIDATOR_MINLENGTH(6)]}
-            onInput={handleInput}
-            required
-          />
-
-          <FormInput
-            id="confirmPassword"
-            element="input"
-            texterror="Please enter the same password"
-            validators={[VALIDATOR_MINLENGTH(6)]}
-            onInput={handleInput}
-            label="Confirm Password"
-            required
-          />
-
-          <CustomButton type="submit" disabled={!formState.genValid}>
-            Sign Up
+          <CustomButton type="submit" disabled={formState.genValid}>
+            Update Profile
           </CustomButton>
         </form>
       </div>
     </React.Fragment>
   );
 };
+
 const mapStateToProps = ({ user }) => ({
-  error: user.error
+  error: user.error,
+  currentUser: user.currentUser
 });
+
 const mapDispatchToProps = dispatch => ({
-  signUpStart: user => dispatch(signUpStart(user)),
-  clearErorr: () => dispatch(clearErorr())
+  clearErorr: () => dispatch(clearErorr()),
+  uploadStart: (photo, email, name, token) =>
+    dispatch(uploadStart({ photo, email, name }))
 });
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModifyMe);

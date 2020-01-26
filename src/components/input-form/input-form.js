@@ -63,6 +63,7 @@ const FormInput = ({ label, ...otherProps }) => {
         onChange={handleChange}
         onBlur={touchHandler}
         value={inputState.value}
+        type={otherProps.id}
       />
     ) : (
       <textarea
@@ -71,6 +72,7 @@ const FormInput = ({ label, ...otherProps }) => {
         onChange={handleChange}
         onBlur={touchHandler}
         value={inputState.value}
+        type={otherProps.id}
         rows={otherProps.rows || 3}
       />
     );
