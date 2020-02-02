@@ -9,6 +9,7 @@ import SignIn from './pages/sign-in/sign-in';
 import SignUp from './pages/sign-up/sign-up';
 import MyProfile from './pages/my-profile/my-profile';
 import CreatePlace from './pages/create-place/create-place';
+import Place from './pages/place/place';
 
 const App = ({ currentUser }) => {
   return (
@@ -16,6 +17,7 @@ const App = ({ currentUser }) => {
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/place" component={Place} />
         <Route exact path="/create-place" component={CreatePlace} />
         <Route
           exact

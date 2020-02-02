@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+//import { Link } from 'react-router-dom';
 import { usePosition } from 'use-position';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { startFetchPlacesWithin } from '../../../redux/placesReducer/places-actions';
@@ -67,6 +68,7 @@ const MapComponent = ({ places, startFetchPlacesWithin, ...props }) => {
         <InfoWindow marker={marker} visible={visible}>
           <div>
             <h1>{selectedPlace.name}</h1>
+
             <img
               src={`http://127.0.0.1:3000/images/${selectedPlace.image}`}
               alt={selectedPlace.name}

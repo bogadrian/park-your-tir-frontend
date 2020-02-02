@@ -2,7 +2,10 @@ import coordsActionTypes from './coords-types';
 
 const INITIAL_STATE = {
   coords: null,
-  error: null
+  name: null,
+  desc: null,
+  error: null,
+  photo: []
 };
 
 const coordsReducer = (state = INITIAL_STATE, action) => {
@@ -17,6 +20,41 @@ const coordsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         coords: null,
+        error: action.payload
+      };
+    case coordsActionTypes.SET_NAME_SUCCESS:
+      return {
+        ...state,
+        name: action.payload,
+        error: null
+      };
+    case coordsActionTypes.SET_NAME_FAILURE:
+      return {
+        ...state,
+        name: null,
+        error: action.payload
+      };
+    case coordsActionTypes.SET_DESC_SUCCESS:
+      return {
+        ...state,
+        desc: action.payload,
+        error: null
+      };
+    case coordsActionTypes.SET_DESC_FAILURE:
+      return {
+        ...state,
+        desc: null,
+        error: action.payload
+      };
+    case coordsActionTypes.PHOTO_SUCCESS:
+      return {
+        ...state,
+        photo: [...state.photo, action.payload],
+        error: null
+      };
+    case coordsActionTypes.PHOTO_FAILURE:
+      return {
+        ...state,
         error: action.payload
       };
     default:

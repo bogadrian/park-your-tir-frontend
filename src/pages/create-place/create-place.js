@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+
 import Address from '../../components/reuseble/address/address';
+import PlaceDataName from '../../components/main/place-data/place-data';
+import Upload3Photo from '../../components/main/home-places/upload3photo/upload3photo';
+import StarRating from '../../components/main/home-places/star-rating/star-rating';
+
 import ItemsCarousel from 'react-items-carousel';
 import CustomButton from '../../components/reuseble/custom-button/custom-button';
+
 import './create-place.scss';
 
 const CreatePlace = props => {
@@ -28,9 +34,18 @@ const CreatePlace = props => {
             <div style={{ height: 500 }}>
               <Address />
             </div>
-            <div style={{ height: 500 }}>Second card</div>
-            <div style={{ height: 500 }}>Third card</div>
-            <div style={{ height: 500 }}>Fourth card</div>
+            <div style={{ height: 500 }}>
+              <PlaceDataName />
+            </div>
+            <div style={{ height: 500 }}>
+              <Upload3Photo />
+            </div>
+            <div style={{ height: 500 }}>
+              <h1 style={{ textAlign: 'center' }}>
+                Please give a rating to this place!
+              </h1>
+              <StarRating />
+            </div>
           </ItemsCarousel>
         </div>
       </div>

@@ -1,11 +1,24 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 import './image-upload.scss';
 import CustomButton from '../custom-button/custom-button';
 
 const ImageUpload = props => {
+  const [file, setFile] = useState(null);
   const [isValid, setIsValid] = useState(false);
+  const [preview, setPreview] = useState(null);
   const filePickerRef = useRef();
+
+  useEffect(() => {
+    if (!file) {
+      return;
+    }
+    const fileReader = new FileReader();
+    fileReader.onload = () => {
+      setPreview(fileReader.result);
+    };
+    fileReader.readAsDataURL(file);
+  }, [file]);
 
   const pickImage = () => {
     filePickerRef.current.click();
@@ -18,6 +31,7 @@ const ImageUpload = props => {
     } else {
       setIsValid(false);
     }
+    setFile(photo);
     props.onInput(photo);
   };
 
@@ -32,8 +46,12 @@ const ImageUpload = props => {
         style={{ display: 'none' }}
         onChange={fileHandler}
       />
+      <div className="image-container">
+        {preview && <img src={preview} className="image" alt="Preview" />}
+        {!preview && <p>Please choose a photo</p>}
+      </div>
       <CustomButton type="button" disabled={isValid} handleClick={pickImage}>
-        Upload a profile image
+        Upload a image
       </CustomButton>
     </div>
   );
