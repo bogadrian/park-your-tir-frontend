@@ -17,7 +17,7 @@ import {
   makeCallToServerLogin,
   makeCallToServerSignUp,
   makeCallToServerUplod
-} from '../api';
+} from '../apiUser';
 
 export function* signIn(userData) {
   try {
@@ -85,11 +85,8 @@ export function* onClearErrors() {
 // //Saga Photo Uploader
 
 export function* onUpload(data) {
-  console.log(data);
   try {
     const result = yield call(makeCallToServerUplod, data.payload);
-
-    console.log(result);
 
     if (result) {
       yield put(setUserSuccessUpload(result));

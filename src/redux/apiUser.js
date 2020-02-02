@@ -18,13 +18,6 @@ export const makeCallToServerLogin = async userData => {
 
   localStorage.setItem('jwt', user.data.token);
 
-  // localStorage.setItem('user', JSON.stringify(user.data.data.user));
-
-  // localStorage.removeItem('user');
-  // localStorage.removeItem('jwt');
-
-  // setCurrentUserInLocalStorage(user);
-
   return user;
 
   // return user.data.data.user;

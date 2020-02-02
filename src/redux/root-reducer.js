@@ -3,6 +3,8 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import userReducer from './userReducer/user-reducer';
+import placesReducer from './placesReducer/places-reducer';
+import coordsReducer from './coordsReducer/coords-reducer';
 
 const persistConfig = {
   key: 'root',
@@ -11,7 +13,9 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  user: userReducer
+  user: userReducer,
+  places: placesReducer,
+  coords: coordsReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

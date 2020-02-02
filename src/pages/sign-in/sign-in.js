@@ -44,7 +44,7 @@ const SignIn = ({ history, signInStart, error, clearErorr }) => {
 
   let show;
   let message;
-  if (error === 'Request failed with status code 401') {
+  if (error) {
     show = true;
     message = 'Please check your password and email and try again!';
   } else {

@@ -37,7 +37,7 @@ const formReducer = (state, action) => {
 const SignUp = ({ signUpStart, clearErorr, error }) => {
   const handleError = () => {
     clearErorr();
-    console.log('I am called!');
+   
   };
 
   let show;

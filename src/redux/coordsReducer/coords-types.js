@@ -1,0 +1,7 @@
+const coordsActionTypes = {
+  START_FETCH_COORDS: 'START_FETCH_COORDS',
+  FETCH_COORDS_SUCCESS: 'FETCH_COORDS_SUCCESS',
+  FETCH_COORDS_ERROR: 'FETCH_COORDS_ERROR'
+};
+
+export default coordsActionTypes;
