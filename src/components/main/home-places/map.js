@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
+
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-//import { Link } from 'react-router-dom';
+import CustomButton from '../../reuseble/custom-button/custom-button';
+
 import { usePosition } from 'use-position';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { startFetchPlacesWithin } from '../../../redux/placesReducer/places-actions';
 import './map.scss';
 import Icon from '../../../images/icon.png';
 
-const MapComponent = ({ places, startFetchPlacesWithin, ...props }) => {
+const MapComponent = ({
+  places,
+  startFetchPlacesWithin,
+  history,
+  ...props
+}) => {
   const [marker, setMarker] = useState({});
   const [visible, setVisible] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState({});
@@ -35,6 +44,22 @@ const MapComponent = ({ places, startFetchPlacesWithin, ...props }) => {
     setMarker(marker);
     setVisible(!visible);
     setSelectedPlace(props);
+  };
+
+  const onInfoWindowOpen = () => {
+    const button = (
+      <CustomButton
+        handleClick={e => {
+          history.push(`/place/:${selectedPlace.id}`);
+        }}
+      >
+        Take me there
+      </CustomButton>
+    );
+    ReactDOM.render(
+      React.Children.only(button),
+      document.getElementById('iwc')
+    );
   };
 
   return (
@@ -65,14 +90,18 @@ const MapComponent = ({ places, startFetchPlacesWithin, ...props }) => {
           );
         })}
 
-        <InfoWindow marker={marker} visible={visible}>
+        <InfoWindow
+          marker={marker}
+          visible={visible}
+          onOpen={e => onInfoWindowOpen()}
+        >
           <div>
             <h1>{selectedPlace.name}</h1>
-
             <img
               src={`http://127.0.0.1:3000/images/${selectedPlace.image}`}
               alt={selectedPlace.name}
             />
+            <div style={{ marginTop: '-30%' }} id="iwc" />
           </div>
         </InfoWindow>
       </Map>
@@ -88,11 +117,12 @@ const mapDispatchToProps = dispatch => ({
   startFetchPlacesWithin: payload => dispatch(startFetchPlacesWithin(payload))
 });
 
+const MapComponenttWithRouter = withRouter(MapComponent);
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(
   GoogleApiWrapper({
-    apiKey: process.env.REACT_APP_GEOLOCATION_KEY //'AIzaSyA4z1_DDv0nnXyhnEE8n5nM4WGGN8Xj8NM'
-  })(MapComponent)
+    apiKey: process.env.REACT_APP_GEOLOCATION_KEY
+  })(MapComponenttWithRouter)
 );

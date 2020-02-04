@@ -17,7 +17,7 @@ import {
   makeCallToServerLogin,
   makeCallToServerSignUp,
   makeCallToServerUplod
-} from '../apiUser';
+} from '../appis/apiUser';
 
 export function* signIn(userData) {
   try {

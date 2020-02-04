@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { usePosition } from 'use-position';
 import CustomButton from '../custom-button/custom-button';
-import { fetchAddressFromCoords, fetchCoordsFromAdress } from './apiUtils';
+import {
+  fetchAddressFromCoords,
+  fetchCoordsFromAdress
+} from '../../../redux/appis/apiUtils';
 import { startFetchCoords } from '../../../redux/coordsReducer/coords-action';
 
 import './address.scss';

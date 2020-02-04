@@ -4,7 +4,7 @@ import placesActionTypes from './places-types';
 
 import { fetchPlacesSuccess, fetchPlacesFailure } from './places-actions';
 
-import { makeCallToServerFetchPlaces } from '../apiPlaces';
+import { makeCallToServerFetchPlaces } from '../appis/apiPlaces';
 
 export function* onStartFetching(payload) {
   try {
