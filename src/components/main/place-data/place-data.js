@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 import FormInput from '../../reuseble/input-form/input-form';
 import { VALIDATOR_MINLENGTH } from '../../../utils/validators';
@@ -18,10 +18,13 @@ const PlaceDataName = ({ setNameStart, setDescStart, ...props }) => {
     setDescStart(desc);
   }, [setNameStart, setDescStart, desc, name]);
 
-  const handleInput = (id, value, isValid) => {
+  const handleName = useCallback((id, value, isValid) => {
     setName(value);
+  }, []);
+
+  const handleDesc = useCallback((id, value, isValid) => {
     setDesc(value);
-  };
+  }, []);
   return (
     <div className="container">
       <h1>place data here title description images ratingsAverage coords</h1>
@@ -31,16 +34,16 @@ const PlaceDataName = ({ setNameStart, setDescStart, ...props }) => {
           element="input"
           texterror="Please enter a tilte for this place"
           validators={[VALIDATOR_MINLENGTH(3)]}
-          onInput={handleInput}
+          onInput={handleName}
           label="Title"
           required
         />
         <FormInput
-          id="name"
+          id="text"
           element="input"
           texterror="Please enter a description for this place"
           validators={[VALIDATOR_MINLENGTH(3)]}
-          onInput={handleInput}
+          onInput={handleDesc}
           label="Place Description"
           rows={3}
           required

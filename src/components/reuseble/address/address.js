@@ -17,6 +17,7 @@ const Address = ({ startFetchCoords, ...props }) => {
   const fetchCoords = async () => {
     if (latlng !== undefined) {
       const add = await fetchAddressFromCoords(latlng);
+
       setCoords({ lat: latitude, lng: longitude });
       setAddressToDisplay(add.data.data);
     }
@@ -27,7 +28,6 @@ const Address = ({ startFetchCoords, ...props }) => {
   );
   const [address, setAddress] = useState(null);
   const [coordinates, setCoords] = useState(null);
-  console.log(coordinates);
 
   const handleInput = e => {
     const addr = e.target.value;

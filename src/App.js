@@ -17,7 +17,7 @@ const App = ({ currentUser }) => {
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/place" component={Place} />
+        <Route exact path="/place/:placeId" component={Place} />
         <Route exact path="/create-place" component={CreatePlace} />
         <Route
           exact

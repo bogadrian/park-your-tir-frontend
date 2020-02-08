@@ -9,7 +9,7 @@ import { makeCallToServerFetchPlaces } from '../appis/apiPlaces';
 export function* onStartFetching(payload) {
   try {
     const places = yield call(makeCallToServerFetchPlaces, payload.payload);
-    console.log(places.data.data.data[0].position.coordinates);
+
     yield put(fetchPlacesSuccess(places.data.data.data));
   } catch (err) {
     yield put(fetchPlacesFailure(err));

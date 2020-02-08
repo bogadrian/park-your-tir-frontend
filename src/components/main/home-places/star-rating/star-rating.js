@@ -1,12 +1,15 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
+import { connect } from 'react-redux';
 import StarRatings from 'react-star-ratings';
 import CustomButton from '../../../reuseble/custom-button/custom-button';
+import { ratingStart } from '../../../../redux/coordsReducer/coords-action';
+import { startCreate } from '../../../../redux/setPlace/setPlace-action';
 
 import './star-rating.scss';
 
-const StarRating = props => {
+const StarRating = ({ place, startCreate, ratingStart, ...props }) => {
   const [rating, setRating] = useState(0);
-  console.log(rating);
+  console.log(place);
 
   const changeRating = newRating => {
     setRating(newRating);
@@ -14,7 +17,13 @@ const StarRating = props => {
 
   const handleClick = () => {
     console.log('clicked');
+    startCreate(place);
   };
+
+  useEffect(() => {
+    ratingStart(rating);
+  }, [rating, ratingStart]);
+
   return (
     <Fragment>
       <div className="star-rating">
@@ -34,5 +43,12 @@ const StarRating = props => {
     </Fragment>
   );
 };
+const mapStateToProps = ({ coords }) => ({
+  place: coords
+});
 
-export default StarRating;
+const mapDispatchToProps = dispatch => ({
+  ratingStart: rating => dispatch(ratingStart(rating)),
+  startCreate: place => dispatch(startCreate(place))
+});
+export default connect(mapStateToProps, mapDispatchToProps)(StarRating);

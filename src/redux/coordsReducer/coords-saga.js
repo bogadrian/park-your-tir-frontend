@@ -62,7 +62,7 @@ export function* onStartPhoto(photo) {
 }
 
 export function* startPhoto() {
-  yield takeLatest(coordsActionTypes.PHOTO_SUCCESS, onStartPhoto);
+  yield takeLatest(coordsActionTypes.START_PHOTO, onStartPhoto);
 }
 
 //rating saga

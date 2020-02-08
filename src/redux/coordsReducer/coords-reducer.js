@@ -5,7 +5,8 @@ const INITIAL_STATE = {
   name: null,
   desc: null,
   error: null,
-  photo: []
+  photo: [],
+  rating: null
 };
 
 const coordsReducer = (state = INITIAL_STATE, action) => {
@@ -55,6 +56,18 @@ const coordsReducer = (state = INITIAL_STATE, action) => {
     case coordsActionTypes.PHOTO_FAILURE:
       return {
         ...state,
+        error: action.payload
+      };
+    case coordsActionTypes.RATING_SUCCESS:
+      return {
+        ...state,
+        rating: action.payload,
+        error: null
+      };
+    case coordsActionTypes.RATING_FAILURE:
+      return {
+        ...state,
+        rating: null,
         error: action.payload
       };
     default:

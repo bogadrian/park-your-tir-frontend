@@ -112,11 +112,6 @@ const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
         {mes}
       </Modal>
       <div className="sign-up">
-        <img
-          className="photoProfile"
-          src={`http://127.1.1.0:3000/api/v1/img/users/${currentUser.data.user.photo}`}
-          alt="user"
-        />
         <form onSubmit={handleSubmit}>
           <ImageUpload onInput={fileHandler} />
 

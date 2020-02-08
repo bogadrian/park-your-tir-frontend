@@ -12,9 +12,8 @@ const Upload3Photo = ({ startPhoto, ...props }) => {
     startPhoto(fileImg);
   }, [fileImg, startPhoto]);
 
-  console.log(fileImg);
   const fileHandler = file => {
-    setFile(file);
+    setFile([...fileImg, file]);
   };
 
   return (
