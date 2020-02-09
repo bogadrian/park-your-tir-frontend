@@ -48,8 +48,8 @@ const ImageUpload = props => {
       />
       <div className="image-container">
         {preview && <img src={preview} className="image" alt="Preview" />}
-        {!preview && <p>Please choose a photo</p>}
       </div>
+      {!preview && <p>Please choose a photo</p>}
       <CustomButton type="button" disabled={isValid} handleClick={pickImage}>
         Upload a image
       </CustomButton>

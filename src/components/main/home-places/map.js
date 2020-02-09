@@ -50,7 +50,7 @@ const MapComponent = ({
     const button = (
       <CustomButton
         handleClick={e => {
-          history.push(`/place/:${selectedPlace.id}`);
+          history.push(`/place/${selectedPlace.id}`);
         }}
       >
         Take me there

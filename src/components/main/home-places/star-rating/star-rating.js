@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import StarRatings from 'react-star-ratings';
 import CustomButton from '../../../reuseble/custom-button/custom-button';
 import { ratingStart } from '../../../../redux/coordsReducer/coords-action';
@@ -9,15 +10,15 @@ import './star-rating.scss';
 
 const StarRating = ({ place, startCreate, ratingStart, ...props }) => {
   const [rating, setRating] = useState(0);
-  console.log(place);
+  const [redirect, setRedirect] = useState(false);
 
   const changeRating = newRating => {
     setRating(newRating);
   };
 
   const handleClick = () => {
-    console.log('clicked');
     startCreate(place);
+    setRedirect(true);
   };
 
   useEffect(() => {
@@ -39,6 +40,7 @@ const StarRating = ({ place, startCreate, ratingStart, ...props }) => {
       </div>
       <div className="button">
         <CustomButton handleClick={handleClick}>Create Place</CustomButton>
+        {redirect ? <Redirect to="/my-profile" /> : null}
       </div>
     </Fragment>
   );

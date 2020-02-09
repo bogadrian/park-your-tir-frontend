@@ -13,21 +13,28 @@ export const makeCallToServerWithPlace = async place => {
 
   const { lat, lng } = coords;
 
-  const photos = photo.map(single => {
-    return single;
-  });
-
   const token = localStorage.getItem('jwt');
 
-  let form = new FormData();
+  const imag = photo.map(img => {
+    return img.payload;
+  });
 
-  if (!photos) {
-    form.append('images', truck);
-  } else {
-    photos.forEach(photo => {
-      form.append('images', photo);
-    });
-  }
+  let form = new FormData();
+  imag.forEach(im => {
+    if (im[0]) {
+      form.append('images', im[0]);
+    } else if (im[0] && im[1]) {
+      form.append('images', im[0]);
+      form.append('images', im[1]);
+    } else if (im[0] && im[1] && im[2]) {
+      form.append('images', im[0]);
+      form.append('images', im[1]);
+      form.append('images', im[2]);
+    } else {
+      form.append('images', truck);
+    }
+  });
+
   form.append('name', name);
   form.append('description', desc);
   form.append('ratingsAverage', rating);
@@ -51,8 +58,7 @@ export const makeCallToServerWithPlace = async place => {
     method: 'POST',
     data: form
   });
-
-  console.log(placeUpdate.data.data);
+  console.log(placeUpdate);
   return placeUpdate.data.data;
 };
 

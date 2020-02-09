@@ -22,7 +22,7 @@ export function* onFetchCoords(coords) {
   }
 }
 
-export function* startFetch() {
+export function* startFetchCoords() {
   yield takeLatest(coordsActionTypes.START_FETCH_COORDS, onFetchCoords);
 }
 
@@ -80,7 +80,7 @@ export function* ratingStart() {
 
 export function* coordsSaga() {
   yield all([
-    call(startFetch),
+    call(startFetchCoords),
     call(startName),
     call(startDesc),
     call(startPhoto),
