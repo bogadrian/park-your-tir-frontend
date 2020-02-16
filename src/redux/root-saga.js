@@ -4,6 +4,7 @@ import { placesSaga } from './placesReducer/places-saga';
 import { coordsSaga } from './coordsReducer/coords-saga';
 import { setPlace } from './setPlace/setPlace-saga';
 import { fetchPlace } from './fetchPlace/fetchPlace-saga';
+import { getMeStart } from './getMe/getMe-saga';
 
 function* rootSaga() {
   yield all([
@@ -11,7 +12,8 @@ function* rootSaga() {
     call(placesSaga),
     call(coordsSaga),
     call(setPlace),
-    call(fetchPlace)
+    call(fetchPlace),
+    call(getMeStart)
   ]);
 }
 

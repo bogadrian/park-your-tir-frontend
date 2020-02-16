@@ -10,7 +10,9 @@ import {
   photoSuccess,
   photoFailure,
   ratingSuccess,
-  ratingFailure
+  ratingFailure,
+  setAddressFailure,
+  setAddressSuccess
 } from './coords-action';
 
 // coords saga
@@ -78,12 +80,28 @@ export function* ratingStart() {
   yield takeLatest(coordsActionTypes.RATING_START, onRatingStart);
 }
 
+export function* onStartAddressToDisplay(address) {
+  try {
+    yield put(setAddressSuccess(address.payload));
+  } catch (err) {
+    yield put(setAddressFailure(err));
+  }
+}
+
+export function* startAddressToDisplay() {
+  yield takeLatest(
+    coordsActionTypes.START_SET_ADDRESS,
+    onStartAddressToDisplay
+  );
+}
+
 export function* coordsSaga() {
   yield all([
     call(startFetchCoords),
     call(startName),
     call(startDesc),
     call(startPhoto),
-    call(ratingStart)
+    call(ratingStart),
+    call(startAddressToDisplay)
   ]);
 }

@@ -1,16 +1,28 @@
-.myprofile__container {
+.myprofile-container {
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-columns: 200px 400px;
+  gap: 20px;
   justify-content: center;
-  align-items: absolute;
+  align-items: center;
+  margin: 0 auto;
 }
 
-.photoProfile {
-  height: 150px;
-  border-radius: 50%;
-}
+// .photoProfile {
+//   height: 150px;
+//   border-radius: 50%;
+// }
 
-.my-profile__data {
+.myprofile-update {
   font-size: 20px;
   margin-top: 10px;
+}
+.myplaces-container {
+  margin-top: -10px;
+  background-color: #eee;
+  text-align: center;
+  justify-content: center;
+}
+
+.img-place {
+  width: 100px;
 }

@@ -1,0 +1,7 @@
+.update-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  justify-content: space-between;
+  align-items: center;
+}

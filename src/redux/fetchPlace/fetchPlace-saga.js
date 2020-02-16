@@ -7,7 +7,7 @@ import makeCallToServerWithPlaceId from '../appis/apiFetchPlace';
 export function* onFetchStart(placeId) {
   try {
     const place = yield call(makeCallToServerWithPlaceId, placeId);
-    console.log(place);
+
     yield put(fetchSuccess(place));
   } catch (err) {
     yield put(fetchFailure(err));

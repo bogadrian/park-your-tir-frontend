@@ -7,7 +7,7 @@ import makeCallToServerWithPlace from '../appis/apiPlace';
 export function* onCreate(place) {
   try {
     const placeCreated = yield call(makeCallToServerWithPlace, place);
-    console.log(placeCreated);
+
     yield put(createSuccess(placeCreated));
   } catch (err) {
     yield put(createFailure(err));

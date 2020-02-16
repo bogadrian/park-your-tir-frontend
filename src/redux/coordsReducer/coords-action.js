@@ -73,3 +73,18 @@ export const ratingFailure = error => ({
   type: coordsActionTypes.RATING_FAILURE,
   payload: error
 });
+
+export const startSetAddressToDisplay = address => ({
+  type: coordsActionTypes.START_SET_ADDRESS,
+  payload: address
+});
+
+export const setAddressSuccess = address => ({
+  type: coordsActionTypes.SET_ADDRESS_SUCCESS,
+  payload: address
+});
+
+export const setAddressFailure = error => ({
+  type: coordsActionTypes.SET_ADDRESS_FAILURE,
+  payload: error
+});

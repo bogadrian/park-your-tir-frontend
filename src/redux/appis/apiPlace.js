@@ -38,7 +38,6 @@ export const makeCallToServerWithPlace = async place => {
   form.append('name', name);
   form.append('description', desc);
   form.append('ratingsAverage', rating);
-  form.append('placeAuthor', ['5e1603a598dfb0579454701d']);
   form.append('position', [lng, lat]);
 
   const axiosInstance = await axios.create({
@@ -50,15 +49,15 @@ export const makeCallToServerWithPlace = async place => {
     }
   });
 
-  for (let [key, value] of form.entries()) {
-    console.log(key, value);
-  }
+  // for (let [key, value] of form.entries()) {
+  //   console.log(key, value);
+  // }
 
   const placeUpdate = await axiosInstance({
     method: 'POST',
     data: form
   });
-  console.log(placeUpdate);
+
   return placeUpdate.data.data;
 };
 

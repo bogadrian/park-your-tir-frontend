@@ -6,7 +6,6 @@ import './loggedIn.scss';
 import { signOutStart } from '../../../redux/userReducer/user-actions';
 
 const LoggedIn = ({ currentUser, signOutStart }) => {
-  console.log(currentUser.data.user.photo);
   return (
     <div>
       <div className="loggedIn-container">

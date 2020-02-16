@@ -1,9 +1,13 @@
 import React, { useReducer, useCallback, useState } from 'react';
 
 import { connect } from 'react-redux';
-
+import { createStructuredSelector } from 'reselect';
 import FormInput from '../../reuseble/input-form/input-form';
 import CustomButton from '../../reuseble/custom-button/custom-button';
+import {
+  selectUser,
+  selectError
+} from '../../../redux/userReducer/user-selector';
 import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_EMAIL
@@ -99,7 +103,7 @@ const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
   const fileHandler = photo => {
     setPhoto(photo);
   };
-
+  console.log(currentUser.data.user.photo);
   return (
     <React.Fragment>
       <Modal
@@ -113,6 +117,11 @@ const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
       </Modal>
       <div className="sign-up">
         <form onSubmit={handleSubmit}>
+          <img
+            className="photo-profile-main"
+            src={`http://127.0.0.1:3000/api/v1/img/users/${currentUser.data.user.photo}`}
+            alt={currentUser.data.user.name}
+          />
           <ImageUpload onInput={fileHandler} />
 
           <h2 style={{ color: '#1B9AAD' }}>{currentUser.data.user.name}</h2>
@@ -147,9 +156,9 @@ const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
   );
 };
 
-const mapStateToProps = ({ user }) => ({
-  error: user.error,
-  currentUser: user.currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectUser,
+  error: selectError
 });
 
 const mapDispatchToProps = dispatch => ({

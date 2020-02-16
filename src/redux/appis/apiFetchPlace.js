@@ -5,7 +5,7 @@ const makeCallToServerWithPlaceId = async placeId => {
     method: 'GET',
     url: `http://127.0.0.1:3000/api/v1/places/${placeId.payload}`
   });
-  console.log(place.data.data.data);
+
   return place.data.data.data;
 };
 

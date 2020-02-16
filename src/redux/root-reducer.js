@@ -7,6 +7,7 @@ import placesReducer from './placesReducer/places-reducer';
 import coordsReducer from './coordsReducer/coords-reducer';
 import placeReducer from './setPlace/setPlace-reducer';
 import fetchPlaceReducer from './fetchPlace/fetchPlace-reducer';
+import getMeReducer from './getMe/getMe-reducer';
 
 const persistConfig = {
   key: 'root',
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   places: placesReducer,
   coords: coordsReducer,
   place: placeReducer,
-  fetchPlace: fetchPlaceReducer
+  fetchPlace: fetchPlaceReducer,
+  me: getMeReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

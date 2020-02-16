@@ -19,7 +19,19 @@ const Header = ({ currentUser }) => {
           <div>Park Your Tir</div>
         </Link>
       </div>
+
       <div className="options">
+        <Link exact to="/create-place">
+          <h2
+            style={{
+              backgroundColor: '#1c9aae',
+              color: 'white',
+              padding: '10px'
+            }}
+          >
+            Create a New Place
+          </h2>
+        </Link>
         {!currentUser ? <LoggedOut /> : <LoggedIn />}
       </div>
     </div>

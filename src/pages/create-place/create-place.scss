@@ -1,6 +1,6 @@
 .create-place-container {
-  width: 60%;
-  position: absolute !important;
+  display: grid;
+  grid-template-columns: 70vw;
   margin-top: 50px;
 }
 

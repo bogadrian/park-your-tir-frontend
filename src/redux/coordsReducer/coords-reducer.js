@@ -6,11 +6,24 @@ const INITIAL_STATE = {
   desc: null,
   error: null,
   photo: [],
-  rating: null
+  rating: null,
+  address: null
 };
 
 const coordsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case coordsActionTypes.SET_ADDRESS_SUCCESS:
+      return {
+        ...state,
+        address: action.payload,
+        error: null
+      };
+    case coordsActionTypes.SET_ADDRESS_FAILURE:
+      return {
+        ...state,
+        address: null,
+        error: action.payload
+      };
     case coordsActionTypes.FETCH_COORDS_SUCCESS:
       return {
         ...state,

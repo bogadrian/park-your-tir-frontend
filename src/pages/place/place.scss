@@ -3,6 +3,18 @@
   grid-template-columns: auto;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
-.google.map.container {
+.google-map-container {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.author-container {
+}
+
+.place-name {
 }
