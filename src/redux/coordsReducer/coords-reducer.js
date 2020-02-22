@@ -1,7 +1,7 @@
 import coordsActionTypes from './coords-types';
 
 const INITIAL_STATE = {
-  coords: null,
+  coords: [],
   name: null,
   desc: null,
   error: null,

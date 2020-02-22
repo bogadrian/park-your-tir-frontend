@@ -80,7 +80,7 @@ const MapComponent = ({
           history.push(`/place/${selectedPlace.id}`);
         }}
       >
-        Take me there
+        See Place
       </CustomButton>
     );
     ReactDOM.render(
@@ -101,7 +101,6 @@ const MapComponent = ({
       >
         {places.length > 0
           ? places.map((place, index) => {
-              console.log(place);
               return (
                 <Marker
                   key={index}

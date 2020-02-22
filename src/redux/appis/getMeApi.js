@@ -13,9 +13,9 @@ export const makeCallToServerGetMe = async () => {
     }
   });
 
-  const me = await axiosInstance({
+  const result = await axiosInstance({
     method: 'GET'
   });
 
-  return me.data.data.data;
+  return result;
 };

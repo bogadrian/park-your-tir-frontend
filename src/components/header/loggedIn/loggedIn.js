@@ -13,6 +13,7 @@ const LoggedIn = ({ currentUser, signOutStart }) => {
           SIGN OUT
         </Link>
         <Link to="/my-profile">
+          <p className="my-profile-tag">My Profile</p>
           <img
             className="photoUser"
             src={`http://127.1.1.0:3000/api/v1/img/users/${currentUser.data.user.photo}`}

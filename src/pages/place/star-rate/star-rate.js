@@ -8,14 +8,17 @@ import Rater from 'react-rater';
 import './star-rate.scss';
 
 const StarRate = ({ place }) => {
-  console.log(place.ratingsAverage);
   return (
     <div>
       <Rater
         className="react-rater-star react-rater"
+        interactive={false}
         total={6}
         rating={place.ratingsAverage}
       />
+      <div>
+        <h3>Number of votes: {place.ratingsQuantity}</h3>
+      </div>
     </div>
   );
 };

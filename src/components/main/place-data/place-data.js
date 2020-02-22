@@ -18,17 +18,18 @@ const PlaceDataName = ({ setNameStart, setDescStart, ...props }) => {
     setDescStart(desc);
   }, [setNameStart, setDescStart, desc, name]);
 
-  const handleName = useCallback((id, value, isValid) => {
+  const handleName = useCallback((id, value) => {
     setName(value);
   }, []);
 
-  const handleDesc = useCallback((id, value, isValid) => {
+  const handleDesc = useCallback((id, value) => {
     setDesc(value);
   }, []);
+
   return (
     <div className="container">
-      <h1>place data here title description images ratingsAverage coords</h1>
       <div className="inputs">
+        <h2>{props.name}</h2>
         <FormInput
           id="name"
           element="input"
@@ -38,6 +39,7 @@ const PlaceDataName = ({ setNameStart, setDescStart, ...props }) => {
           label="Title"
           required
         />
+        <h2>{props.desc}</h2>
         <FormInput
           id="text"
           element="input"

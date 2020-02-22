@@ -1,0 +1,7 @@
+const getCommentsTypes = {
+  GET_COMMENTS_START: 'GET_COMMENTS_START',
+  GET_COMMENTS_SUCCESS: 'GET_COMMITS_SUCCESS',
+  GET_COMMENTS_FAILURE: 'GET_COMMITS_FAILURE'
+};
+
+export default getCommentsTypes;

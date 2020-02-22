@@ -19,6 +19,7 @@ const fetchPlaceReducer = (state = INITIAL_STATE, action) => {
         placeResult: null,
         error: action.payload
       };
+
     default:
       return state;
   }

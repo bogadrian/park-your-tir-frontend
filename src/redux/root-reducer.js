@@ -8,6 +8,9 @@ import coordsReducer from './coordsReducer/coords-reducer';
 import placeReducer from './setPlace/setPlace-reducer';
 import fetchPlaceReducer from './fetchPlace/fetchPlace-reducer';
 import getMeReducer from './getMe/getMe-reducer';
+import updateDeletePlaceReducer from './updateDelete/updateDelete-reducer';
+import commentReducer from './setComment/setComment-reducer';
+import getCommentsReducer from './getComments/getComments-reducer';
 
 const persistConfig = {
   key: 'root',
@@ -21,7 +24,10 @@ const rootReducer = combineReducers({
   coords: coordsReducer,
   place: placeReducer,
   fetchPlace: fetchPlaceReducer,
-  me: getMeReducer
+  me: getMeReducer,
+  updateDelete: updateDeletePlaceReducer,
+  comment: commentReducer,
+  comments: getCommentsReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

@@ -1,32 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
+
+import { withRouter } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 
-import { selectUser } from '../../../redux/userReducer/user-selector';
 import { selectPlaceItem } from '../../../redux/fetchPlace/fetchPlace-selector';
-
+import { startUpdatePlace } from '../../../redux/updateDelete/updateDelete-actions';
+import Modal from '../../../components/reuseble/modal/modal';
 import CustomButton from '../../../components/reuseble/custom-button/custom-button';
-
+import { deletePlace } from '../../../redux/setPlace/setPlace-action';
 import './update-place.scss';
 
-const UpdateDeletePlace = ({ user, place }) => {
-  const updatePlace = placeId => {
-    console.log('I will update this place by id');
+const UpdateDeletePlace = ({ place, deletePlace, history }) => {
+  const [show, setShow] = useState(false);
+  const deletePlaceHandler = () => {
+    deletePlace(place.id);
+    setShow(true);
   };
 
-  const deletePlace = placeId => {
-    console.log('I will delete this place by id');
+  const handleModalClose = () => {
+    setShow(false);
   };
   return (
     <div className="update-container">
-      <CustomButton handleClick={updatePlace}>Update Place</CustomButton>
-      <CustomButton handleClick={deletePlace}>Delete Place</CustomButton>
+      <Modal
+        show={show}
+        header="Place Deleted"
+        contentClass="place-item__modal-content"
+        footerClass="place-item__modal-actions"
+        footer={
+          <CustomButton handleClick={handleModalClose}>CLOSE</CustomButton>
+        }
+      >
+        "The Place was deleted!"
+      </Modal>
+      <CustomButton
+        handleClick={() => history.push(`/update-place/${place.id}`)}
+      >
+        Update Place
+      </CustomButton>
+      <CustomButton handleClick={deletePlaceHandler}>Delete Place</CustomButton>
     </div>
   );
 };
 const mapStateToProps = createStructuredSelector({
-  user: selectUser,
   place: selectPlaceItem
 });
 
-export default connect(mapStateToProps)(UpdateDeletePlace);
+const mapDispatchToProps = dispatch => ({
+  startUpdatePlace: placeData => dispatch(startUpdatePlace(placeData)),
+  deletePlace: placeId => dispatch(deletePlace(placeId))
+});
+
+const UpdateDeletePlaceWithRouter = withRouter(UpdateDeletePlace);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UpdateDeletePlaceWithRouter);

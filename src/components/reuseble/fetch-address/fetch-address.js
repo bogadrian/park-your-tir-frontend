@@ -49,7 +49,7 @@ const FetchAddress = ({ startFetchCoords, startSetAddressToDisplay }) => {
         <form>
           <input className="input" onChange={handleInput} />
           <label className="form-input-label">
-            Search Address and Create place
+            Search Parking Arround An Address
           </label>
           <CustomButton type="submit" handleClick={fetchAddress}>
             Find Address

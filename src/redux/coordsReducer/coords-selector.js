@@ -11,3 +11,8 @@ export const selectCoordsFunc = createSelector(
   [selectCoords],
   coords => coords.coords
 );
+
+export const selectCoordsFull = createSelector(
+  [selectCoords],
+  coords => coords
+);

@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 //import { withRouter, Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { createStructuredSelector } from 'reselect';
+
 import { startGetMe } from '../../../redux/getMe/getMe-actions';
-import { selectGetMe } from '../../../redux/getMe/getMe-selector';
+import { selectMe } from '../../../redux/getMe/getMe-selector';
 import './my-places.scss';
 
 const MyPlaces = ({ startGetMe, me }) => {
@@ -21,29 +21,28 @@ const MyPlaces = ({ startGetMe, me }) => {
 
   return (
     <div className="myplaces-container">
-      <h2>
-        {me && me.length > 0
-          ? me.map(place => (
-              <ul onClick={() => handleClick({ place })} key={place.id}>
-                <li>{place.name}</li>
-                <li>
+      {me
+        ? me.places.map(place => (
+            <div key={place.id}>
+              <ul>
+                <li onClick={() => handleClick({ place })}>
+                  <h3>{place.name}</h3>
                   <img
-                    className="img-place"
+                    className="img-place-tag"
                     src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[0]}`}
                     alt="place"
                   />
                 </li>
               </ul>
-            ))
-          : null}
-      </h2>
-      <p>{}</p>
+            </div>
+          ))
+        : null}
     </div>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
-  me: selectGetMe
+  me: selectMe
 });
 
 const mapDispatchToProps = dispatch => ({

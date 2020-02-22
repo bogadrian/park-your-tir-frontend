@@ -6,9 +6,9 @@ import { getMeSuccess, getMeFailure } from './getMe-actions';
 
 export function* onGetMeStart() {
   try {
-    const meResult = yield call(makeCallToServerGetMe);
+    const result = yield call(makeCallToServerGetMe);
 
-    yield put(getMeSuccess(meResult));
+    yield put(getMeSuccess(result.data.data.data.places));
   } catch (err) {
     yield put(getMeFailure(err));
   }

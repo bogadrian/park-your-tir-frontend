@@ -13,9 +13,9 @@ const Address = ({ address }) => {
   return (
     <div className="address-container">
       <div className="gro">
+        <h2 style={{ marginTop: '0px' }}>{address}</h2>
         <FetchAddress />
         <FetchCoords />
-        <h2 style={{ marginTop: '-70px' }}>{address}</h2>
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ const Header = ({ currentUser }) => {
       </div>
 
       <div className="options">
-        <Link exact to="/create-place">
+        <Link to="/create-place">
           <h2
             style={{
               backgroundColor: '#1c9aae',

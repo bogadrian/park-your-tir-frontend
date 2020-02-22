@@ -19,46 +19,67 @@ export const makeCallToServerWithPlace = async place => {
     return img.payload;
   });
 
-  let form = new FormData();
-  imag.forEach(im => {
-    if (im[0]) {
-      form.append('images', im[0]);
-    } else if (im[0] && im[1]) {
-      form.append('images', im[0]);
-      form.append('images', im[1]);
-    } else if (im[0] && im[1] && im[2]) {
-      form.append('images', im[0]);
-      form.append('images', im[1]);
-      form.append('images', im[2]);
+  try {
+    let form = new FormData();
+    if (imag) {
+      if (imag[0] && imag[1] === undefined) {
+        form.append('images', truck);
+      }
+
+      if (imag[1] && imag[2] === undefined) {
+        form.append('images', imag[1][0]);
+      }
+
+      if (imag[2] && imag[3] === undefined) {
+        form.append('images', imag[2][0]);
+        form.append('images', imag[2][1]);
+      }
+
+      if (imag[3]) {
+        form.append('images', imag[3][0]);
+        form.append('images', imag[3][1]);
+        form.append('images', imag[3][2]);
+      }
     } else {
       form.append('images', truck);
     }
-  });
 
-  form.append('name', name);
-  form.append('description', desc);
-  form.append('ratingsAverage', rating);
-  form.append('position', [lng, lat]);
-
-  const axiosInstance = await axios.create({
-    baseURL: 'http://127.0.0.1:3000/api/v1/places',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': `multipart/form-data; boundary=${form._boundary}`,
-      'Access-Control-Allow-Origin': '*'
+    if (name) {
+      form.append('name', name);
     }
-  });
 
-  // for (let [key, value] of form.entries()) {
-  //   console.log(key, value);
-  // }
+    if (desc) {
+      form.append('description', desc);
+    }
 
-  const placeUpdate = await axiosInstance({
-    method: 'POST',
-    data: form
-  });
+    if (rating) {
+      form.append('ratingsAverage', rating);
+    }
 
-  return placeUpdate.data.data;
+    form.append('position', [lng, lat]);
+
+    const axiosInstance = await axios.create({
+      baseURL: 'http://127.0.0.1:3000/api/v1/places',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': `multipart/form-data; boundary=${form._boundary}`,
+        'Access-Control-Allow-Origin': '*'
+      }
+    });
+
+    for (let [key, value] of form.entries()) {
+      console.log(key, value);
+    }
+
+    const placeUpdate = await axiosInstance({
+      method: 'POST',
+      data: form
+    });
+
+    return placeUpdate.data.data;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export default makeCallToServerWithPlace;

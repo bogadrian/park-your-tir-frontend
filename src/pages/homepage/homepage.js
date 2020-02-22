@@ -15,7 +15,6 @@ const HomePage = ({ address }) => {
   return (
     <div>
       <div className="homepage-container">
-        <h1>The Homepage</h1>
         <FetchAddress />
         <h2>{address}</h2>
       </div>

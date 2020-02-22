@@ -1,7 +1,7 @@
 import getMeTypes from './getMe-types';
 
 const INITIAL_STATE = {
-  me: {},
+  places: [],
   error: null
 };
 
@@ -10,15 +10,16 @@ const getMeReducer = (state = INITIAL_STATE, action) => {
     case getMeTypes.GETME_SUCCESS:
       return {
         ...state,
-        me: action.payload,
+        places: action.payload,
         error: null
       };
     case getMeTypes.GETME_FAILURE:
       return {
         ...state,
-        me: null,
+        places: [],
         error: action.payload
       };
+
     default:
       return state;
   }
