@@ -1,5 +1,5 @@
 import React, { useCallback, useReducer } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { VALIDATOR_MINLENGTH, VALIDATOR_EMAIL } from '../../utils/validators';
@@ -36,10 +36,8 @@ const formReducer = (state, action) => {
 };
 
 const SignIn = ({ history, signInStart, error, clearErorr }) => {
-  console.log(error);
   const handleError = () => {
     clearErorr();
-    console.log('I am called!');
   };
 
   let show;
@@ -134,6 +132,11 @@ const SignIn = ({ history, signInStart, error, clearErorr }) => {
           >
             Go to Sign Up
           </CustomButton>
+        </div>
+        <div>
+          <Link to="/password-resset">
+            <h3>Password forgotten?</h3>
+          </Link>
         </div>
       </div>
     </React.Fragment>

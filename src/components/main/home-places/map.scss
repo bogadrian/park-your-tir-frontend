@@ -1,6 +1,12 @@
 .map-container {
-  display: grid;
-  grid-template-columns: 600px;
+  display: block;
+  grid-template-columns: 1000px;
   justify-content: center;
   align-items: center;
+}
+
+.map {
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }

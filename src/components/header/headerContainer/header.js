@@ -16,22 +16,28 @@ const Header = ({ currentUser }) => {
           <ImageLogo className="logo" />
         </Link>
         <Link className="site-title" to="/">
-          <div>Park Your Tir</div>
+          <div style={{ fontFamily: 'Lobster' }}>Park Your Tir</div>
         </Link>
       </div>
 
       <div className="options">
-        <Link to="/create-place">
-          <h2
-            style={{
-              backgroundColor: '#1c9aae',
-              color: 'white',
-              padding: '10px'
-            }}
-          >
-            Create a New Place
-          </h2>
-        </Link>
+        {currentUser ? (
+          <Link to="/create-place">
+            <h2
+              style={{
+                backgroundColor: '#1c9aae',
+                color: 'white',
+                padding: '10px',
+                marginLeft: '20px',
+                marginRigth: '20px'
+              }}
+            >
+              Create Place
+            </h2>
+          </Link>
+        ) : (
+          <h3>Please login to create a place!</h3>
+        )}
         {!currentUser ? <LoggedOut /> : <LoggedIn />}
       </div>
     </div>

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 import { createStructuredSelector } from 'reselect';
+import StarRate from './star-rate/star-rate';
 
 import { selectPlaceItem } from '../../redux/fetchPlace/fetchPlace-selector';
 import Comment from '../../components/comment/comment';
@@ -12,11 +13,11 @@ import AuthorName from './author-name/author-name';
 import CommentsComp from '../../components/getCommentsComp/getCommentsComp';
 import UpdateDeletePlace from './update-place/update-place';
 import CustomButton from '../../components/reuseble/custom-button/custom-button';
-import StarRate from './star-rate/star-rate';
+import { selectUser } from '../../redux/userReducer/user-selector';
 
 import './place.scss';
 
-const Place = ({ place }) => {
+const Place = ({ place, currentUser }) => {
   let lat, lng;
   if (place.position) {
     [lat, lng] = place.position.coordinates;
@@ -28,77 +29,85 @@ const Place = ({ place }) => {
 
   return (
     <div className="place-container">
-      <div className="google-map-container">
+      <div className="google-map-container place-option">
         <div className="place-name">
           <h2 style={{ textAlign: 'center' }}>{place.name}</h2>
           <CustomButton handleClick={handleClick}>Take me There</CustomButton>
         </div>
       </div>
-      <div>
+      <div className="place-option">
         <PlaceIframe />
       </div>
-      {place.images ? (
-        <div>
-          {place.images[0] ? (
-            <Zoom>
-              <img
-                className="img-place"
-                src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[0]}`}
-                alt="image1"
-              />
-            </Zoom>
-          ) : null}
+      <div className="place-option">
+        {place.images ? (
+          <div className="place-option place-image-option">
+            {place.images[0] ? (
+              <Zoom>
+                <img
+                  className="img-place"
+                  src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[0]}`}
+                  alt="image1"
+                />
+              </Zoom>
+            ) : null}
 
-          {place.images[1] ? (
-            <Zoom>
-              <img
-                className="img-place"
-                src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[1]}`}
-                alt="image2"
-              />
-            </Zoom>
-          ) : null}
+            {place.images[1] ? (
+              <Zoom>
+                <img
+                  className="img-place"
+                  src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[1]}`}
+                  alt="image2"
+                />
+              </Zoom>
+            ) : null}
 
-          {place.images[2] ? (
-            <Zoom>
-              <img
-                className="img-place"
-                src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[2]}`}
-                alt="image3"
-              />
-            </Zoom>
-          ) : null}
-        </div>
-      ) : null}
-      <div>
+            {place.images[2] ? (
+              <Zoom>
+                <img
+                  className="img-place"
+                  src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[2]}`}
+                  alt="image3"
+                />
+              </Zoom>
+            ) : null}
+          </div>
+        ) : null}
+      </div>
+      <div className="place-option">
+        <h3>{place.description}</h3>
+      </div>
+
+      <div className="place-option">
         <h2>Place Rataing Average</h2>
         <StarRate />
       </div>
-      <div className="author-container">
-        <p>Author name</p>
+      <div className="place-option">
         <AuthorName />
       </div>
+
       <div>
         <UpdateDeletePlace />
       </div>
-
-      <div>
-        <p>{place.description}</p>
-      </div>
-
-      <div>
+      <div className="place-option">
         <CommentsComp placeId={place._id} />
       </div>
       <div>
         <h3>comments</h3>
-        <Comment id={place.id} onChange={handleChange} />
+        {!currentUser ? (
+          <h2>Please login to comment!</h2>
+        ) : (
+          <div>
+            <Comment id={place.id} onChange={handleChange} />
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
-  place: selectPlaceItem
+  place: selectPlaceItem,
+  currentUser: selectUser
 });
 
 export default connect(mapStateToProps)(Place);

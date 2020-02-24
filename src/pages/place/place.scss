@@ -1,9 +1,8 @@
 .place-container {
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: 60%vw;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
 .google-map-container {
   display: grid;
@@ -13,13 +12,23 @@
   padding: 20px;
 }
 
-.author-container {
+.place-option {
+  margin: 0 auto;
+  display: grid;
+  justify-content: space-between;
 }
 
-.place-name {
+.place-image-option {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .img-place {
   width: 150px;
   height: 150px;
+  border-radius: 30%;
 }

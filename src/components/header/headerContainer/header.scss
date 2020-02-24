@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  margin-top: 25px;
   text-decoration: none;
   padding: 5px;
 
@@ -27,7 +28,7 @@
     margin-bottom: 25px;
 
     .option {
-      padding: 10px 25px;
+      padding: 10px 10px;
       cursor: pointer;
       text-decoration: none;
       &:link,
@@ -52,7 +53,7 @@
     //   margin-bottom: 30px;
     //}
     .option {
-      padding: 10px 15px;
+      padding: 15px;
       cursor: pointer;
       text-decoration: none;
     }

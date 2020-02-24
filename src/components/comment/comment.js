@@ -13,9 +13,10 @@ import './comment.scss';
 const Comment = ({ startComment, ...props }) => {
   const [rating, setRating] = useState(0);
   const [commentValue, setCommentValue] = useState(null);
+  const [valid, setValid] = useState(false);
 
   const handleInput = useCallback((id, value, isValid) => {
-    console.log(value);
+    setValid(!isValid);
     setCommentValue(value);
   }, []);
 
@@ -32,7 +33,7 @@ const Comment = ({ startComment, ...props }) => {
   };
 
   return (
-    <div>
+    <div className="comment-container">
       <div>
         <FormInput
           id="input"
@@ -47,7 +48,6 @@ const Comment = ({ startComment, ...props }) => {
       <div>
         <h3>Please Rate This Place!</h3>
       </div>
-
       <div className="star-rating">
         <StarRatings
           rating={rating}
@@ -59,7 +59,11 @@ const Comment = ({ startComment, ...props }) => {
           starSpacing="10px"
         />
       </div>
-      <CustomButton handleClick={handleComment}>Comment</CustomButton>
+      <div className="button-comment-container">
+        <CustomButton handleClick={handleComment} disabled={valid}>
+          Comment
+        </CustomButton>
+      </div>
     </div>
   );
 };

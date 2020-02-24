@@ -5,6 +5,5 @@ export const makeCallToServerGetComments = async placeId => {
     `http://127.0.0.1:3000/api/v1/places/${placeId}/comments`
   );
 
-  console.log(comments.data);
   return comments.data;
 };

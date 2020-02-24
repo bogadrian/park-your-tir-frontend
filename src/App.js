@@ -11,6 +11,7 @@ import MyProfile from './pages/my-profile/my-profile';
 import CreatePlace from './pages/create-place/create-place';
 import Place from './pages/place/place';
 import UpdDelPlace from './pages/updDelPlace/updDelPlace';
+import PasswordResset from './components/passwordResset/passwordResset';
 
 const App = ({ currentUser }) => {
   return (
@@ -21,6 +22,7 @@ const App = ({ currentUser }) => {
         <Route exact path="/place/:placeId" component={Place} />
         <Route exact path="/create-place" component={CreatePlace} />
         <Route exact path="/update-place/:placeId" component={UpdDelPlace} />
+        <Route exact path="/password-resset" component={PasswordResset} />
         <Route
           exact
           path="/signin"

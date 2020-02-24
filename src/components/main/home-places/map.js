@@ -35,10 +35,7 @@ const MapComponent = ({
   } catch (err) {
     console.log(err);
   }
-  const style = {
-    width: '100%',
-    height: '100%'
-  };
+
   const [marker, setMarker] = useState({});
   const [visible, setVisible] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState({});
@@ -94,7 +91,6 @@ const MapComponent = ({
       <Map
         google={props.google}
         zoom={10}
-        style={style}
         className="map"
         initialCenter={cent ? cent : roma}
         center={cent ? cent : roma}

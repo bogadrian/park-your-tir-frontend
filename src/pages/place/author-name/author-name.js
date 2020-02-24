@@ -12,9 +12,8 @@ const AuthorName = ({ place }) => {
       {place.placeAuthor ? (
         <div className="place-author-container">
           <div>
-            <h2>{place.placeAuthor.name}</h2>
-          </div>
-          <div>
+            <h2 style={{ color: '#1c9aae' }}>{place.placeAuthor.name}</h2>
+
             <img
               className="place-author-image"
               src={`http://127.0.0.1:3000/api/v1/img/users/${place.placeAuthor.photo}`}

@@ -8,6 +8,7 @@ import { getMeStart } from './getMe/getMe-saga';
 import { updateDelete } from './updateDelete/updateDelete-saga';
 import { setComment } from './setComment/setComment-saga';
 import { startGetComments } from './getComments/getComments-saga';
+import { ressetPassword } from './ressetPassword/ressetPassword-saga';
 
 function* rootSaga() {
   yield all([
@@ -19,7 +20,8 @@ function* rootSaga() {
     call(getMeStart),
     call(updateDelete),
     call(setComment),
-    call(startGetComments)
+    call(startGetComments),
+    call(ressetPassword)
   ]);
 }
 
