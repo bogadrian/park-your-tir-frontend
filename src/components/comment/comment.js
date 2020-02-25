@@ -25,6 +25,7 @@ const Comment = ({ startComment, ...props }) => {
   };
 
   const id = props.id;
+
   const data = { id, commentValue, rating };
 
   const handleComment = () => {

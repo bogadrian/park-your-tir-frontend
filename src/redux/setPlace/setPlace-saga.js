@@ -30,8 +30,9 @@ export function* startCreatePlace() {
 }
 
 export function* onPatch(data) {
+  console.log(data);
   try {
-    const placeUpdated = yield call(makeCallToServerUpdate, data);
+    const placeUpdated = yield call(makeCallToServerUpdate, data.payload);
     yield put(patchSuccess(placeUpdated));
   } catch (err) {
     yield put(patchFailure(err));

@@ -22,85 +22,92 @@ const Place = ({ place, currentUser }) => {
   if (place.position) {
     [lat, lng] = place.position.coordinates;
   }
+
   const handleChange = () => {};
   const handleClick = () => {
-    window.location.assign(`https://google.com/maps?q=${lng},${lat}`);
+    if (lat && lng) {
+      window.location.assign(`https://google.com/maps?q=${lng},${lat}`);
+    }
   };
 
   return (
-    <div className="place-container">
-      <div className="google-map-container place-option">
-        <div className="place-name">
-          <h2 style={{ textAlign: 'center' }}>{place.name}</h2>
-          <CustomButton handleClick={handleClick}>Take me There</CustomButton>
-        </div>
-      </div>
-      <div className="place-option">
-        <PlaceIframe />
-      </div>
-      <div className="place-option">
-        {place.images ? (
-          <div className="place-option place-image-option">
-            {place.images[0] ? (
-              <Zoom>
-                <img
-                  className="img-place"
-                  src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[0]}`}
-                  alt="image1"
-                />
-              </Zoom>
-            ) : null}
+    <div>
+      {place ? (
+        <div className="place-container">
+          <div className="google-map-container place-option">
+            <div className="place-name">
+              <h2 style={{ textAlign: 'center' }}>{place.name}</h2>
+              <CustomButton handleClick={handleClick}>
+                Take me There
+              </CustomButton>
+            </div>
+          </div>
+          <div className="place-option">
+            <PlaceIframe />
+          </div>
+          <div className="place-option">
+            {place.images ? (
+              <div className="place-option place-image-option">
+                {place.images[0] ? (
+                  <Zoom>
+                    <img
+                      className="img-place"
+                      src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[0]}`}
+                      alt="image1"
+                    />
+                  </Zoom>
+                ) : null}
 
-            {place.images[1] ? (
-              <Zoom>
-                <img
-                  className="img-place"
-                  src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[1]}`}
-                  alt="image2"
-                />
-              </Zoom>
-            ) : null}
+                {place.images[1] ? (
+                  <Zoom>
+                    <img
+                      className="img-place"
+                      src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[1]}`}
+                      alt="image2"
+                    />
+                  </Zoom>
+                ) : null}
 
-            {place.images[2] ? (
-              <Zoom>
-                <img
-                  className="img-place"
-                  src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[2]}`}
-                  alt="image3"
-                />
-              </Zoom>
+                {place.images[2] ? (
+                  <Zoom>
+                    <img
+                      className="img-place"
+                      src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[2]}`}
+                      alt="image3"
+                    />
+                  </Zoom>
+                ) : null}
+              </div>
             ) : null}
           </div>
-        ) : null}
-      </div>
-      <div className="place-option">
-        <h3>{place.description}</h3>
-      </div>
-
-      <div className="place-option">
-        <h2>Place Rataing Average</h2>
-        <StarRate />
-      </div>
-      <div className="place-option">
-        <AuthorName />
-      </div>
-
-      <div>
-        <UpdateDeletePlace />
-      </div>
-      <div className="place-option">
-        <CommentsComp placeId={place._id} />
-      </div>
-      <div>
-        <h3>comments</h3>
-        {!currentUser ? (
-          <h2>Please login to comment!</h2>
-        ) : (
+          <div className="place-option">
+            <h3>{place.description}</h3>
+          </div>
+          <div className="place-option">
+            <h2>Place Rataing Average</h2>
+            <StarRate />
+          </div>
+          <div className="place-option">
+            <AuthorName />
+          </div>
+          <div>{currentUser ? <UpdateDeletePlace /> : null}</div>
+          <div className="place-option">
+            <CommentsComp placeId={place._id} />
+          </div>
           <div>
-            <Comment id={place.id} onChange={handleChange} />
+            <h3>comments</h3>
+            {!currentUser ? (
+              <h2>Please login to comment!</h2>
+            ) : (
+              <div>
+                <Comment id={place.id} onChange={handleChange} />
+              </div>
+            )}
           </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div>No Place Yet</div>
+      )}
     </div>
   );
 };

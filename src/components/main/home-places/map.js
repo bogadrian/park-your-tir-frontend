@@ -89,9 +89,9 @@ const MapComponent = ({
   return (
     <div className="map-container">
       <Map
+        className="map"
         google={props.google}
         zoom={10}
-        className="map"
         initialCenter={cent ? cent : roma}
         center={cent ? cent : roma}
       >

@@ -9,6 +9,7 @@ import { updateDelete } from './updateDelete/updateDelete-saga';
 import { setComment } from './setComment/setComment-saga';
 import { startGetComments } from './getComments/getComments-saga';
 import { ressetPassword } from './ressetPassword/ressetPassword-saga';
+import { updateDeleteCommentSaga } from './updateDeleteCommentReducer/updateDeleteComment-saga';
 
 function* rootSaga() {
   yield all([
@@ -21,7 +22,8 @@ function* rootSaga() {
     call(updateDelete),
     call(setComment),
     call(startGetComments),
-    call(ressetPassword)
+    call(ressetPassword),
+    call(updateDeleteCommentSaga)
   ]);
 }
 

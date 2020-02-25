@@ -32,3 +32,31 @@ $react-rater-active: orange !default;
     cursor: default;
   }
 }
+.delete-update-comment {
+  display: inline-block;
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.update-comment {
+  color: blue;
+  cursor: pointer;
+}
+
+.delete-comment {
+  color: red;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.is-hidden {
+  background-color: rgba(249, 249, 255, 0.979);
+  border: none !important;
+  font-size: 20px;
+}
+
+.is-shown {
+  border: none !important;
+  background-color: white;
+  font-size: 20px;
+}

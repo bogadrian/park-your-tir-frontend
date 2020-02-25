@@ -8,21 +8,43 @@ import { selectPlaceItem } from '../../../redux/fetchPlace/fetchPlace-selector';
 import { startUpdatePlace } from '../../../redux/updateDelete/updateDelete-actions';
 import Modal from '../../../components/reuseble/modal/modal';
 import CustomButton from '../../../components/reuseble/custom-button/custom-button';
+
 import { deletePlace } from '../../../redux/setPlace/setPlace-action';
 import './update-place.scss';
 
 const UpdateDeletePlace = ({ place, deletePlace, history }) => {
   const [show, setShow] = useState(false);
+  const [confirm, setConfirm] = useState(false);
+
   const deletePlaceHandler = () => {
+    setConfirm(true);
+  };
+  const handleModal = () => {
     deletePlace(place.id);
     setShow(true);
+  };
+  const handleModalExit = () => {
+    setConfirm(false);
   };
 
   const handleModalClose = () => {
     setShow(false);
+    setConfirm(false);
   };
   return (
     <div className="update-container">
+      <Modal
+        show={confirm}
+        header="Delete Place?"
+        contentClass="place-item__modal-content"
+        footerClass="place-item__modal-actions"
+        footer={<CustomButton handleClick={handleModal}>YES</CustomButton>}
+        secondButton={
+          <CustomButton handleClick={handleModalExit}>NO</CustomButton>
+        }
+      >
+        ARE YOU SURE YOU WANT TO DELETE THIS PLACE?
+      </Modal>
       <Modal
         show={show}
         header="Place Deleted"

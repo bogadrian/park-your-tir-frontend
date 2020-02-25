@@ -2,31 +2,41 @@ import axios from 'axios';
 const token = localStorage.getItem('jwt');
 
 export const makeCallToServerUpdate = async data => {
-  const name = data.payload.placeData.name.payload;
-  const description = data.payload.placeData.desc.payload;
+  const { name, desc, fileImg } = data;
+  console.log(fileImg);
 
-  let dataJson;
-  if (!name && description) {
-    dataJson = JSON.stringify({ description });
-  } else if (!description && name) {
-    dataJson = JSON.stringify({ name });
-  } else {
-    dataJson = JSON.stringify({ name, description });
+  let form = new FormData();
+
+  fileImg.forEach(img => {
+    form.append('images', img);
+  });
+
+  if (name) {
+    form.append('name', name);
+  }
+
+  if (desc) {
+    form.append('description', desc);
   }
 
   const axiosInstance = await axios.create({
-    baseURL: `http://127.0.0.1:3000/api/v1/places/${data.payload.id}`,
+    baseURL: `http://127.0.0.1:3000/api/v1/places/${data.placeId}`,
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': `application/json`
     }
   });
 
+  for (let [key, value] of form.entries()) {
+    console.log(key, value);
+  }
+
   const placeUpdate = await axiosInstance({
     method: 'PATCH',
-    data: dataJson
+    data: form
   });
 
+  console.log(placeUpdate.data.data);
   return placeUpdate.data.data;
 };
 
