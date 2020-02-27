@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, withRouter } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 
 import CustomButton from '../../components/reuseble/custom-button/custom-button';
@@ -17,14 +17,18 @@ import { startPatch } from '../../redux/setPlace/setPlace-action';
 
 import './updDelPlace.scss';
 
-const UpdDelPlace = ({ place, placeData, startFetch, startPatch }) => {
+const UpdDelPlace = ({ place, placeData, startFetch, history, startPatch }) => {
+  const placeId = useParams().placeId;
+
+  if (place._id !== placeId) {
+    window.location.assign('/');
+  }
   const na = place.name;
   const de = place.description;
 
   const [fileImg, setFile] = useState([]);
-  console.log(fileImg);
+
   const [show, setShow] = useState(false);
-  const placeId = useParams().placeId;
 
   useEffect(() => {
     startFetch(placeId);
@@ -55,11 +59,13 @@ const UpdDelPlace = ({ place, placeData, startFetch, startPatch }) => {
     startPatch(data);
     setShow(true);
   };
+
   const fileHandler = file => {
     setFile([...fileImg, file]);
   };
   const handleError = () => {
     setShow(false);
+    history.push('/my-profile');
   };
 
   return (
@@ -73,13 +79,19 @@ const UpdDelPlace = ({ place, placeData, startFetch, startPatch }) => {
       >
         "The Place was updated!"
       </Modal>
-      <div style={{ height: 400 }}>
+      <div style={{ height: '30vw' }}>
         <PlaceDataName place={place} name={place.na} desc={place.de} />
       </div>
       <div className="photo-container">
-        <ImageUpload onInput={fileHandler} />
-        <ImageUpload onInput={fileHandler} />
-        <ImageUpload onInput={fileHandler} />
+        <div>
+          <ImageUpload onInput={fileHandler} />
+        </div>
+        <div>
+          <ImageUpload onInput={fileHandler} />
+        </div>
+        <div>
+          <ImageUpload onInput={fileHandler} />
+        </div>
       </div>
       <div className="button-update">
         <CustomButton type="click" handleClick={handleClick}>
@@ -100,4 +112,6 @@ const mapDispatchToProps = dispatch => ({
   startPatch: data => dispatch(startPatch(data))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UpdDelPlace);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(UpdDelPlace)
+);

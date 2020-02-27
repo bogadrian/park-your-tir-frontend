@@ -33,7 +33,7 @@ const CommentsComp = ({
   const [text, setText] = useState(null);
 
   let commentMeId;
-  if (me) {
+  if (me.user.currentUser) {
     commentMeId = me.user.currentUser.data.user._id;
   }
 
@@ -50,6 +50,7 @@ const CommentsComp = ({
 
   const handleClose = () => {
     setShow(false);
+    window.location.reload();
   };
 
   const handleChangeText = e => {
@@ -73,11 +74,11 @@ const CommentsComp = ({
         ? com.map(co => (
             <ul key={co._id}>
               {co.place === props.placeId ? (
-                <li>
-                  <h3>
+                <li className="li-element">
+                  <h3 className="li-element">
                     <textarea
                       className={`${dis ? 'is-shown' : 'is-hidden'}`}
-                      rows="2"
+                      rows="5"
                       cols="50"
                       name="comment"
                       disabled={dis}

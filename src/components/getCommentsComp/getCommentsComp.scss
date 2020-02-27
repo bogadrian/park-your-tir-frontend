@@ -51,12 +51,20 @@ $react-rater-active: orange !default;
 
 .is-hidden {
   background-color: rgba(249, 249, 255, 0.979);
-  border: none !important;
+  border: none;
   font-size: 20px;
+  width: 30vw;
+  text-decoration: none;
 }
 
 .is-shown {
-  border: none !important;
+  border: none;
   background-color: white;
   font-size: 20px;
+  width: 30vw;
+  text-decoration: none;
+}
+
+.li-element {
+  text-decoration: none;
 }

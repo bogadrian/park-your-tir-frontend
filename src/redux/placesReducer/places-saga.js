@@ -7,6 +7,7 @@ import { fetchPlacesSuccess, fetchPlacesFailure } from './places-actions';
 import { makeCallToServerFetchPlaces } from '../appis/apiPlaces';
 
 export function* onStartFetching(payload) {
+  console.log(payload);
   try {
     const places = yield call(makeCallToServerFetchPlaces, payload.payload);
 

@@ -103,7 +103,7 @@ const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
   const fileHandler = photo => {
     setPhoto(photo);
   };
-  console.log(currentUser.data.user.photo);
+
   return (
     <React.Fragment>
       <Modal

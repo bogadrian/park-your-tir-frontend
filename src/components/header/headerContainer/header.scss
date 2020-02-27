@@ -65,9 +65,24 @@
     font-size: 30px;
     color: #1c9aae;
     font-weight: 700;
+    @media screen and (max-width: 900px) {
+      font-size: 20px;
+    }
   }
 
   @media screen and (max-width: 600) {
     font-size: 10px;
+  }
+}
+.create-place-button {
+  background-color: #1c9aae;
+  color: white;
+  padding: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  @media screen and (max-width: 900px) {
+    font-size: 15px;
   }
 }

@@ -8,3 +8,8 @@ export const selectUser = createSelector(
 );
 
 export const selectError = createSelector([user], error => error.error);
+
+export const selectUserIsLoded = createSelector(
+  [user],
+  current => !!current.currentUser
+);

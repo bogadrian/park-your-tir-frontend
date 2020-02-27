@@ -9,11 +9,10 @@ import { selectAddress } from '../../../redux/coordsReducer/coords-selector';
 import './address.scss';
 
 const Address = ({ address }) => {
-  console.log(address);
   return (
     <div className="address-container">
       <div className="gro">
-        <h2 style={{ marginTop: '0px' }}>{address}</h2>
+        <h2>{address}</h2>
         <FetchAddress />
         <FetchCoords />
       </div>

@@ -25,44 +25,28 @@ const MapComponent = ({
   coords,
   ...props
 }) => {
-  const [coord, setCoord] = useState(null);
-  try {
-    if (coords) {
-      const { lat, lng } = coords.payload;
-
-      setCoord({ lat, lng });
-    }
-  } catch (err) {
-    console.log(err);
-  }
-
+  console.log(coords.payload);
+  //const [coord, setCoord] = useState(null);
   const [marker, setMarker] = useState({});
   const [visible, setVisible] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState({});
 
-  const { latitude, longitude } = usePosition();
+  let { latitude, longitude } = usePosition();
 
-  const lat = latitude;
-  const lng = longitude;
-
-  let cent;
-  if (coord) {
-    cent = coord;
-  } else {
-    cent = {
-      lat: parseFloat(lat),
-      lng: parseFloat(lng)
-    };
+  let lat, lng, cent;
+  if (latitude && longitude) {
+    lat = latitude;
+    lng = longitude;
+    cent = { lat, lng };
   }
 
-  const roma = {
-    lat: 41.922385,
-    lng: 12.48051
-  };
+  if (coords.payload) {
+    cent = coords.payload;
+  }
 
   useEffect(() => {
-    startFetchPlacesWithin({ range: 100, lat, lng });
-  }, [startFetchPlacesWithin, lat, lng]);
+    startFetchPlacesWithin({ range: 100, latitude, longitude });
+  }, [startFetchPlacesWithin, latitude, longitude]);
 
   const onMarkerClick = (props, marker, e) => {
     setMarker(marker);
@@ -77,7 +61,17 @@ const MapComponent = ({
           history.push(`/place/${selectedPlace.id}`);
         }}
       >
-        See Place
+        <div
+          style={{
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          See Place
+        </div>
       </CustomButton>
     );
     ReactDOM.render(
@@ -88,49 +82,47 @@ const MapComponent = ({
 
   return (
     <div className="map-container">
-      <Map
-        className="map"
-        google={props.google}
-        zoom={10}
-        initialCenter={cent ? cent : roma}
-        center={cent ? cent : roma}
-      >
-        {places.length > 0
-          ? places.map((place, index) => {
-              return (
-                <Marker
-                  key={index}
-                  id={place.id}
-                  position={{
-                    lat: place.position.coordinates[1],
-                    lng: place.position.coordinates[0]
-                  }}
-                  icon={{
-                    url: Icon
-                  }}
-                  onClick={onMarkerClick}
-                  name={place.name}
-                  imaage={place.images[0]}
-                />
-              );
-            })
-          : null}
-
-        <InfoWindow
-          marker={marker}
-          visible={visible}
-          onOpen={e => onInfoWindowOpen()}
+      {places ? (
+        <Map
+          className="map"
+          google={props.google}
+          zoom={10}
+          initialCenter={cent}
+          center={cent}
         >
-          <div>
-            <h1>{selectedPlace.name}</h1>
-            <img
-              src={`http://127.0.0.1:3000/images/${selectedPlace.image}`}
-              alt={selectedPlace.name}
-            />
-            <div style={{ marginTop: '-30%' }} id="iwc" />
-          </div>
-        </InfoWindow>
-      </Map>
+          {places.length > 0
+            ? places.map((place, index) => {
+                return (
+                  <Marker
+                    key={index}
+                    id={place.id}
+                    position={{
+                      lat: place.position.coordinates[1],
+                      lng: place.position.coordinates[0]
+                    }}
+                    icon={{
+                      url: Icon
+                    }}
+                    onClick={onMarkerClick}
+                    name={place.name}
+                    imaage={place.images[0]}
+                  />
+                );
+              })
+            : null}
+
+          <InfoWindow
+            marker={marker}
+            visible={visible}
+            onOpen={e => onInfoWindowOpen()}
+          >
+            <div>
+              <h1 style={{ textAlign: 'center' }}>{selectedPlace.name}</h1>
+              <div style={{ marginTop: '-15px' }} id="iwc" />
+            </div>
+          </InfoWindow>
+        </Map>
+      ) : null}
     </div>
   );
 };

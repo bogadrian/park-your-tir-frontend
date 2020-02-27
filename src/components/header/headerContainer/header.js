@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import ImageLogo from '../logo/logo';
 import LoggedIn from '../loggedIn/loggedIn';
 import LoggedOut from '../loggedOut/loggedOut';
+
+import { selectUser } from '../../../redux/userReducer/user-selector';
 
 import './header.scss';
 
@@ -23,17 +26,7 @@ const Header = ({ currentUser }) => {
       <div className="options">
         {currentUser ? (
           <Link to="/create-place">
-            <h2
-              style={{
-                backgroundColor: '#1c9aae',
-                color: 'white',
-                padding: '10px',
-                marginLeft: '20px',
-                marginRigth: '20px'
-              }}
-            >
-              Create Place
-            </h2>
+            <div className="create-place-button">Create Place</div>
           </Link>
         ) : (
           <h3>Please login to create a place!</h3>
@@ -44,7 +37,8 @@ const Header = ({ currentUser }) => {
   );
 };
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectUser
 });
+
 export default connect(mapStateToProps)(Header);

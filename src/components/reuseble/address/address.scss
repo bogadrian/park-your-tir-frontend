@@ -8,9 +8,7 @@ $main-color: black;
 }
 
 .gro {
-  position: relative;
   margin: 0 auto;
-  height: 200px;
 
   .input {
     background: none;
@@ -63,4 +61,5 @@ $main-color: black;
 .address-container {
   display: flex;
   justify-content: center;
+  //margin-top: 50px;
 }

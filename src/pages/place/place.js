@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
@@ -14,13 +15,19 @@ import CommentsComp from '../../components/getCommentsComp/getCommentsComp';
 import UpdateDeletePlace from './update-place/update-place';
 import CustomButton from '../../components/reuseble/custom-button/custom-button';
 import { selectUser } from '../../redux/userReducer/user-selector';
+import Spinner from '../../components/spinner/spinner';
 
 import './place.scss';
 
-const Place = ({ place, currentUser }) => {
+const Place = ({ place, currentUser, history }) => {
   let lat, lng;
-  if (place.position) {
-    [lat, lng] = place.position.coordinates;
+  try {
+    if (place.position) {
+      [lat, lng] = place.position.coordinates;
+    }
+  } catch (err) {
+    console.log(err);
+    history.push('/');
   }
 
   const handleChange = () => {};
@@ -35,8 +42,10 @@ const Place = ({ place, currentUser }) => {
       {place ? (
         <div className="place-container">
           <div className="google-map-container place-option">
-            <div className="place-name">
-              <h2 style={{ textAlign: 'center' }}>{place.name}</h2>
+            <div className="place-option ">
+              <h2>{place.name}</h2>
+            </div>
+            <div className="place-option">
               <CustomButton handleClick={handleClick}>
                 Take me There
               </CustomButton>
@@ -54,6 +63,7 @@ const Place = ({ place, currentUser }) => {
                       className="img-place"
                       src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[0]}`}
                       alt="image1"
+                      width="200"
                     />
                   </Zoom>
                 ) : null}
@@ -64,6 +74,7 @@ const Place = ({ place, currentUser }) => {
                       className="img-place"
                       src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[1]}`}
                       alt="image2"
+                      width="200"
                     />
                   </Zoom>
                 ) : null}
@@ -74,6 +85,7 @@ const Place = ({ place, currentUser }) => {
                       className="img-place"
                       src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[2]}`}
                       alt="image3"
+                      width="200"
                     />
                   </Zoom>
                 ) : null}
@@ -94,7 +106,7 @@ const Place = ({ place, currentUser }) => {
           <div className="place-option">
             <CommentsComp placeId={place._id} />
           </div>
-          <div>
+          <div className="place-option">
             <h3>comments</h3>
             {!currentUser ? (
               <h2>Please login to comment!</h2>
@@ -106,7 +118,7 @@ const Place = ({ place, currentUser }) => {
           </div>
         </div>
       ) : (
-        <div>No Place Yet</div>
+        <Spinner />
       )}
     </div>
   );
@@ -117,4 +129,4 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectUser
 });
 
-export default connect(mapStateToProps)(Place);
+export default withRouter(connect(mapStateToProps)(Place));

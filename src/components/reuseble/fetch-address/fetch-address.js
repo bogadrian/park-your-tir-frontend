@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { connect } from 'react-redux';
 
 import CustomButton from '../custom-button/custom-button';
+import FormInput from '../input-form/input-form';
+import { VALIDATOR_MINLENGTH } from '../../../utils/validators';
 import {
   fetchAddressFromCoords,
   fetchCoordsFromAdress
@@ -17,10 +19,9 @@ const FetchAddress = ({ startFetchCoords, startSetAddressToDisplay }) => {
   const [address, setAddress] = useState(null);
   const [coordinates, setCoords] = useState(null);
 
-  const handleInput = e => {
-    const addr = e.target.value;
-    setAddress(addr);
-  };
+  const handleInput = useCallback((id, value, isValid) => {
+    setAddress(value);
+  }, []);
 
   const fetchAddress = async e => {
     e.preventDefault();
@@ -47,10 +48,16 @@ const FetchAddress = ({ startFetchCoords, startSetAddressToDisplay }) => {
     <div className="address-container">
       <div className="gro">
         <form>
-          <input className="input" onChange={handleInput} />
-          <label className="form-input-label">
-            Search Parking Arround An Address
-          </label>
+          <FormInput
+            id="input"
+            element="input"
+            label="City Name, Streat, Number"
+            texterror="Search Parking Arround An Address"
+            validators={[VALIDATOR_MINLENGTH(2)]}
+            onInput={handleInput}
+            required={true}
+          />
+
           <CustomButton type="submit" handleClick={fetchAddress}>
             Find Address
           </CustomButton>

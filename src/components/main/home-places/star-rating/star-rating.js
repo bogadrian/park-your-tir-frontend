@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import StarRatings from 'react-star-ratings';
 import CustomButton from '../../../reuseble/custom-button/custom-button';
@@ -9,7 +10,7 @@ import Modal from '../../../reuseble/modal/modal';
 
 import './star-rating.scss';
 
-const StarRating = ({ place, startCreate, ratingStart, ...props }) => {
+const StarRating = ({ place, startCreate, ratingStart, history, ...props }) => {
   const [rating, setRating] = useState(0);
 
   const [show, setShow] = useState(false);
@@ -20,6 +21,7 @@ const StarRating = ({ place, startCreate, ratingStart, ...props }) => {
 
   const handleClick = () => {
     startCreate(place);
+    history.push('/');
 
     setShow(true);
   };
@@ -67,4 +69,6 @@ const mapDispatchToProps = dispatch => ({
   ratingStart: rating => dispatch(ratingStart(rating)),
   startCreate: place => dispatch(startCreate(place))
 });
-export default connect(mapStateToProps, mapDispatchToProps)(StarRating);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(StarRating)
+);

@@ -15,19 +15,24 @@ const CreatePlace = props => {
   const chevronWidth = 40;
   return (
     <div className="place-container">
-      <h2>
-        You can create a place filling the adress or just allowing the
-        geolocation on your device to fetch your actual position
-      </h2>
-      <div className="create-place-container">
-        <div style={{ padding: `0 ${chevronWidth}px` }}>
+      <div>
+        <h2 className="create-place-headline">
+          You can create a place filling the adress or just allowing the
+          geolocation on your device to fetch your actual position
+        </h2>
+      </div>
+      <div>
+        <div
+          className="chevron-carusel"
+          style={{ padding: `0 ${chevronWidth}px` }}
+        >
           <ItemsCarousel
             requestToChangeActive={setActiveItemIndex}
             activeItemIndex={activeItemIndex}
             numberOfCards={1}
-            gutter={40}
-            leftChevron={<CustomButton>{'< PREVIOUS'}</CustomButton>}
-            rightChevron={<CustomButton>{'NEXT >'}</CustomButton>}
+            gutter={20}
+            leftChevron={<CustomButton>{'<PREV'}</CustomButton>}
+            rightChevron={<CustomButton>{'NEXT>'}</CustomButton>}
             outsideChevron
             chevronWidth={chevronWidth}
           >

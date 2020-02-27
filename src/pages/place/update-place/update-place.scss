@@ -4,4 +4,13 @@
   gap: 60px;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 900px) {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+  }
 }

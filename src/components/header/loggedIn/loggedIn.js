@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import { createStructuredSelector } from 'reselect';
 import './loggedIn.scss';
 import { signOutStart } from '../../../redux/userReducer/user-actions';
+import { selectUser } from '../../../redux/userReducer/user-selector';
 
 const LoggedIn = ({ currentUser, signOutStart }) => {
   return (
@@ -24,8 +25,8 @@ const LoggedIn = ({ currentUser, signOutStart }) => {
     </div>
   );
 };
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectUser
 });
 
 const mapDispatchToProps = dispatch => ({

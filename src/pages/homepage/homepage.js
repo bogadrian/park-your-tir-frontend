@@ -9,9 +9,6 @@ import MapComponent from '../../components/main/home-places/map';
 import FetchAddress from '../../components/reuseble/fetch-address/fetch-address';
 
 const HomePage = ({ address }) => {
-  if (address) {
-    console.log(address);
-  }
   return (
     <div>
       <div className="homepage-container">

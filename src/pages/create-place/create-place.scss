@@ -1,11 +1,19 @@
-.create-place-container {
+.place-container {
   display: grid;
-  grid-template-columns: 70vw;
-  margin-top: 50px;
+  grid-template-columns: 80%;
+
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (max-width: 700px) {
+    display: grid;
+    grid-template-columns: 70%;
+
+    align-items: center;
+    justify-content: center;
+  }
 }
 
-.place-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
+.create-place-headline {
+  text-align: center;
 }

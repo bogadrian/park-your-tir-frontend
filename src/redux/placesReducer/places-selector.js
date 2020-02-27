@@ -6,3 +6,8 @@ export const selectPlacesSel = createSelector(
   [selectPlaces],
   places => places.places
 );
+
+export const selectPlacesIsLoading = createSelector(
+  [selectPlaces],
+  places => !!places.places
+);
