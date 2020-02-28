@@ -5,6 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import { selectPlaceItem } from '../../../redux/fetchPlace/fetchPlace-selector';
 
 import './author-name.scss';
+const urlActual = process.env.REACT_APP_URL;
 
 const AuthorName = ({ place }) => {
   return (
@@ -16,7 +17,7 @@ const AuthorName = ({ place }) => {
 
             <img
               className="place-author-image"
-              src={`http://127.0.0.1:3000/api/v1/img/users/${place.placeAuthor.photo}`}
+              src={`${urlActual}/api/v1/img/users/${place.placeAuthor.photo}`}
               alt={place.placeAuthor.name}
             />
           </div>

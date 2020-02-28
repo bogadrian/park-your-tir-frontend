@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+
 import { useParams, withRouter } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 
@@ -21,7 +22,7 @@ const UpdDelPlace = ({ place, placeData, startFetch, history, startPatch }) => {
   const placeId = useParams().placeId;
 
   if (place._id !== placeId) {
-    window.location.assign('/');
+    history.push('/');
   }
   const na = place.name;
   const de = place.description;

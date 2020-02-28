@@ -1,5 +1,5 @@
 import React, { useReducer, useCallback, useState } from 'react';
-
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import FormInput from '../../reuseble/input-form/input-form';
@@ -20,6 +20,7 @@ import Modal from '../../reuseble/modal/modal';
 import ImageUpload from '../../reuseble/ImageUpload/image-upload';
 
 import './modify-me.scss';
+const urlActual = process.env.REACT_APP_URL;
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -46,7 +47,6 @@ const formReducer = (state, action) => {
   }
 };
 
-// the component
 const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
   const [photo, setPhoto] = useState(null);
 
@@ -91,8 +91,6 @@ const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
     let name = formState.inputs.name.value;
     let email = formState.inputs.email.value;
 
-    console.log(photo);
-
     uploadStart(
       photo ? photo : currentUser.data.user.photo,
       email ? email : currentUser.data.user.email,
@@ -119,7 +117,7 @@ const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
         <form onSubmit={handleSubmit}>
           <img
             className="photo-profile-main"
-            src={`http://127.0.0.1:3000/api/v1/img/users/${currentUser.data.user.photo}`}
+            src={`${urlActual}/api/v1/img/users/${currentUser.data.user.photo}`}
             alt={currentUser.data.user.name}
           />
           <ImageUpload onInput={fileHandler} />
@@ -151,6 +149,11 @@ const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
             Update Profile
           </CustomButton>
         </form>
+        <div style={{ marginTop: '20px' }}>
+          <Link to="/password-resset">
+            <h4>Passowrd Forgotten?</h4>
+          </Link>
+        </div>
       </div>
     </React.Fragment>
   );
@@ -167,4 +170,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(uploadStart({ photo, email, name }))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModifyMe);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(ModifyMe)
+);

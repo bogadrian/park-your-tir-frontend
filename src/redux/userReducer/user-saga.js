@@ -100,22 +100,6 @@ export function* onUploadStart() {
   yield takeLatest(userActionTypes.SET_CURRENT_USER_UPLOAD, onUpload);
 }
 
-///////////////////////////////////////
-// Set Current User from App.js
-
-// export function* onSetCurrent(user) {
-//   console.log(user);
-//   try {
-//     yield put(setCurrentUserSuccess(user));
-//   } catch (err) {
-//     yield put(setCurrentUserFailure(err));
-//   }
-// }
-
-// export function* onSetCurrentUser() {
-//   yield takeLatest(userActionTypes.SET_CURRENT_USER, onSetCurrent);
-// }
-
 // //////////////////////////////////
 // //all Saga
 
@@ -126,6 +110,5 @@ export function* userSaga() {
     call(onSignUpStart),
     call(onClearErrors),
     call(onUploadStart)
-    //call(onSetCurrentUser),
   ]);
 }

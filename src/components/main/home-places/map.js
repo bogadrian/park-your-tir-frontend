@@ -25,8 +25,6 @@ const MapComponent = ({
   coords,
   ...props
 }) => {
-  console.log(coords.payload);
-  //const [coord, setCoord] = useState(null);
   const [marker, setMarker] = useState({});
   const [visible, setVisible] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState({});

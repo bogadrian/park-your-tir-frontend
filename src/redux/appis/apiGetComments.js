@@ -1,8 +1,9 @@
 import axios from 'axios';
+const urlActual = process.env.REACT_APP_URL;
 
 export const makeCallToServerGetComments = async placeId => {
   const comments = await axios.get(
-    `http://127.0.0.1:3000/api/v1/places/${placeId}/comments`
+    `${urlActual}/api/v1/places/${placeId}/comments`
   );
 
   return comments.data;

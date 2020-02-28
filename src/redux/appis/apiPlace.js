@@ -1,6 +1,7 @@
 import truck from '../../images/truck.png';
 import axios from 'axios';
 const FormData = require('form-data');
+const urlActual = process.env.REACT_APP_URL;
 
 export const makeCallToServerWithPlace = async place => {
   const data = place.payload;
@@ -59,7 +60,7 @@ export const makeCallToServerWithPlace = async place => {
     form.append('position', [lng, lat]);
 
     const axiosInstance = await axios.create({
-      baseURL: 'http://127.0.0.1:3000/api/v1/places',
+      baseURL: `${urlActual}/api/v1/places`,
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': `multipart/form-data; boundary=${form._boundary}`,
@@ -67,9 +68,9 @@ export const makeCallToServerWithPlace = async place => {
       }
     });
 
-    for (let [key, value] of form.entries()) {
-      console.log(key, value);
-    }
+    // for (let [key, value] of form.entries()) {
+    //   console.log(key, value);
+    // }
 
     const placeUpdate = await axiosInstance({
       method: 'POST',

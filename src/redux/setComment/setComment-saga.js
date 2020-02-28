@@ -5,6 +5,7 @@ import { makeCallToServerWithComment } from '../appis/apiComment';
 import { commentSuccess, commentFailure } from './setComment-actions';
 
 export function* onComment(comment) {
+  console.log(comment);
   try {
     const commentPosted = yield call(
       makeCallToServerWithComment,

@@ -13,6 +13,7 @@ import commentReducer from './setComment/setComment-reducer';
 import getCommentsReducer from './getComments/getComments-reducer';
 import ressetPasswordReducer from './ressetPassword/ressetPassword-reducer';
 import updateDeleteCommentReducer from './updateDeleteCommentReducer/updateDeleteComment-reducer';
+import passwordRessetReducer from './passwordResset/passwordResset-reducer';
 
 const persistConfig = {
   key: 'root',
@@ -31,7 +32,8 @@ const rootReducer = combineReducers({
   comment: commentReducer,
   comments: getCommentsReducer,
   email: ressetPasswordReducer,
-  updateDeleteComment: updateDeleteCommentReducer
+  updateDeleteComment: updateDeleteCommentReducer,
+  passwords: passwordRessetReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

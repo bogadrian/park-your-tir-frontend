@@ -18,6 +18,7 @@ import { selectUser } from '../../redux/userReducer/user-selector';
 import Spinner from '../../components/spinner/spinner';
 
 import './place.scss';
+const urlActual = process.env.REACT_APP_URL;
 
 const Place = ({ place, currentUser, history }) => {
   let lat, lng;
@@ -61,7 +62,7 @@ const Place = ({ place, currentUser, history }) => {
                   <Zoom>
                     <img
                       className="img-place"
-                      src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[0]}`}
+                      src={`${urlActual}/api/v1/img/places/${place.images[0]}`}
                       alt="image1"
                       width="200"
                     />
@@ -72,7 +73,7 @@ const Place = ({ place, currentUser, history }) => {
                   <Zoom>
                     <img
                       className="img-place"
-                      src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[1]}`}
+                      src={`${urlActual}/api/v1/img/places/${place.images[1]}`}
                       alt="image2"
                       width="200"
                     />
@@ -83,7 +84,7 @@ const Place = ({ place, currentUser, history }) => {
                   <Zoom>
                     <img
                       className="img-place"
-                      src={`http://127.0.0.1:3000/api/v1/img/places/${place.images[2]}`}
+                      src={`${urlActual}/api/v1/img/places/${place.images[2]}`}
                       alt="image3"
                       width="200"
                     />
@@ -112,7 +113,7 @@ const Place = ({ place, currentUser, history }) => {
               <h2>Please login to comment!</h2>
             ) : (
               <div>
-                <Comment id={place.id} onChange={handleChange} />
+                <Comment id={place._id} onChange={handleChange} />
               </div>
             )}
           </div>

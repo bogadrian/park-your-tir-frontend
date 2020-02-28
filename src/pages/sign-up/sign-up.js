@@ -37,7 +37,6 @@ const formReducer = (state, action) => {
 const SignUp = ({ signUpStart, clearErorr, error }) => {
   const handleError = () => {
     clearErorr();
-   
   };
 
   let show;

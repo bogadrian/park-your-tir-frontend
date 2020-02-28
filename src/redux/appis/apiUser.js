@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const FormData = require('form-data');
+const urlActual = process.env.REACT_APP_URL;
 
 export const makeCallToServerLogin = async userData => {
-  // Ensureconst url = 'https://bogdan-park-your-tir.herokuapp.com/api/v1/users/login'; //'http://127.0.0.1:3000/api/v1/users/login';
-  const url = 'http://127.0.0.1:3000/api/v1/users/login';
+  const url = `${urlActual}/api/v1/users/login`;
 
   const data = userData.payload;
 
@@ -24,8 +24,7 @@ export const makeCallToServerLogin = async userData => {
 };
 
 export const makeCallToServerSignUp = async userData => {
-  // const url = 'https://bogdan-park-your-tir.herokuapp.com/api/v1/users/signup';
-  const url = 'http://127.0.0.1:3000/api/v1/users/signup';
+  const url = `${urlActual}/api/v1/users/signup`;
   const config = {
     headers: { 'Content-Type': 'application/json' }
   };
@@ -44,10 +43,7 @@ export const makeCallToServerSignUp = async userData => {
 export const makeCallToServerUplod = async ({ photo, email, name }) => {
   const token = localStorage.getItem('jwt');
 
-  //if (!token) return;
-  // const url =
-  //'https://bogdan-park-your-tir.herokuapp.com/api/v1/users/updateMe'
-  const url = 'http://127.0.0.1:3000/api/v1/users/updateMe';
+  const url = `${urlActual}/api/v1/users/updateMe`;
 
   const form = new FormData();
   form.append('photo', photo);

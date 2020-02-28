@@ -15,6 +15,8 @@ const Comment = ({ startComment, ...props }) => {
   const [commentValue, setCommentValue] = useState(null);
   const [valid, setValid] = useState(false);
 
+  //const id = useParams().placeId;
+
   const handleInput = useCallback((id, value, isValid) => {
     setValid(!isValid);
     setCommentValue(value);
@@ -27,6 +29,7 @@ const Comment = ({ startComment, ...props }) => {
   const id = props.id;
 
   const data = { id, commentValue, rating };
+  console.log(data);
 
   const handleComment = () => {
     startComment(data);

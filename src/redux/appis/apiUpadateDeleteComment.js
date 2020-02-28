@@ -1,12 +1,12 @@
 import axios from 'axios';
 const token = localStorage.getItem('jwt');
+const urlActual = process.env.REACT_APP_URL;
 
 export const makeCallToServerDeleteComment = async data => {
   const { commentId, placeId } = data;
-  //console.log(commentId, placeId);
 
   const axiosInstance = await axios.create({
-    baseURL: `http://127.0.0.1:3000/api/v1/places/${placeId}/comments/${commentId}`,
+    baseURL: `${urlActual}/api/v1/places/${placeId}/comments/${commentId}`,
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -27,7 +27,7 @@ export const makeCallToServerUpdateComment = async dataPlain => {
   };
 
   const axiosInstance = await axios.create({
-    baseURL: `http://127.0.0.1:3000/api/v1/places/${placeId}/comments/${commentId}`,
+    baseURL: `${urlActual}/api/v1/places/${placeId}/comments/${commentId}`,
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': `application/json`,

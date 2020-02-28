@@ -2,7 +2,7 @@ import React from 'react';
 
 import './not-found.scss';
 
-const NotFound = props => {
+const NotFound = () => {
   return (
     <div className="not-found">
       <div className="not-found-number">404</div>

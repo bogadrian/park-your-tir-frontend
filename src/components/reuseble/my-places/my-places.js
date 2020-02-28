@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -8,17 +9,14 @@ import { selectMe } from '../../../redux/getMe/getMe-selector';
 
 import MyPlacesContainer from './my-place-container';
 import Pagination from './pagination';
-import Spinner from '../../spinner/spinner';
 
 import './my-places.scss';
 
-const MyPlaces = ({ startGetMe, me}) => {
+const MyPlaces = ({ startGetMe, me }) => {
   const posts = me.places;
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(6);
-
-  console.log(currentPage);
 
   useEffect(() => {
     startGetMe();
@@ -43,7 +41,12 @@ const MyPlaces = ({ startGetMe, me}) => {
             currentPage={currentPage}
           />
         ) : (
-          <Spinner />
+          <h2>
+            No Place Yet!{' '}
+            <Link to="/create-place">
+              <div style={{ color: '#1C9AAE' }}>Please create one!</div>
+            </Link>
+          </h2>
         )}
       </div>
     </div>
