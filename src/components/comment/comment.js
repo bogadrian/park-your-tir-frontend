@@ -5,17 +5,16 @@ import StarRatings from 'react-star-ratings';
 import FormInput from '../reuseble/input-form/input-form';
 import CustomButton from '../../components/reuseble/custom-button/custom-button';
 import { VALIDATOR_MINLENGTH } from '../../utils/validators';
-
+import Modal from '../reuseble/modal/modal';
 import { startComment } from '../../redux/setComment/setComment-actions';
 
 import './comment.scss';
 
 const Comment = ({ startComment, ...props }) => {
+  const [show, setShow] = useState(false);
   const [rating, setRating] = useState(0);
   const [commentValue, setCommentValue] = useState(null);
   const [valid, setValid] = useState(false);
-
-  //const id = useParams().placeId;
 
   const handleInput = useCallback((id, value, isValid) => {
     setValid(!isValid);
@@ -33,11 +32,25 @@ const Comment = ({ startComment, ...props }) => {
 
   const handleComment = () => {
     startComment(data);
+    setShow(true);
+  };
+
+  const handleClose = () => {
+    setShow(false);
     window.location.reload();
   };
 
   return (
     <div className="comment-container">
+      <Modal
+        show={show}
+        header="Comment"
+        contentClass="place-item__modal-content"
+        footerClass="place-item__modal-actions"
+        footer={<CustomButton handleClick={handleClose}>CLOSE</CustomButton>}
+      >
+        The comment was posted!
+      </Modal>
       <div>
         <FormInput
           id="input"
