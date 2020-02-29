@@ -27,8 +27,6 @@ const MapComponent = ({
   coords,
   ...props
 }) => {
-  console.log(process.env.REACT_APP_GEOLOCATION_KEY);
-
   const [marker, setMarker] = useState({});
   const [visible, setVisible] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState({});
