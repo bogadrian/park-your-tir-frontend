@@ -20,7 +20,7 @@ import Modal from '../../reuseble/modal/modal';
 import ImageUpload from '../../reuseble/ImageUpload/image-upload';
 
 import './modify-me.scss';
-const urlActual = process.env.REACT_APP_URL;
+const urlActual = 'https://bogdan-park-your-tir.herokuapp.com';
 
 const formReducer = (state, action) => {
   switch (action.type) {

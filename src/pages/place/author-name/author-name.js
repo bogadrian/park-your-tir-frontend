@@ -5,7 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import { selectPlaceItem } from '../../../redux/fetchPlace/fetchPlace-selector';
 
 import './author-name.scss';
-const urlActual = process.env.REACT_APP_URL;
+const urlActual = 'https://bogdan-park-your-tir.herokuapp.com';
 
 const AuthorName = ({ place }) => {
   return (
