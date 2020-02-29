@@ -5,7 +5,7 @@ export const fetchAddressFromCoords = async latlng => {
   // const env = runtimeEnv();
 
   const response = await axios.get(
-    `${process.env.REACT_APP_URL}/api/v1/places/addressByCoords/${latlng}`
+    `https://bogdan-park-your-tir.herokuapp.com/api/v1/places/addressByCoords/${latlng}`
   );
 
   return response;
@@ -19,7 +19,7 @@ export const fetchCoordsFromAdress = async address => {
 
   const data = address;
 
-  const url = `${process.env.REACT_APP_URL}/api/v1/places/coordByAdress/${address}`;
+  const url = `https://bogdan-park-your-tir.herokuapp.com/api/v1/places/coordByAdress/${address}`;
 
   const response = await axios.get(url, data, config);
 

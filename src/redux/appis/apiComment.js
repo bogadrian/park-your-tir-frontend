@@ -11,7 +11,7 @@ export const makeCallToServerWithComment = async data => {
   const dataComment = JSON.stringify({ comment, rating });
 
   const axiosInstance = await axios.create({
-    baseURL: `${process.env.REACT_APP_URL}/api/v1/places/${id}/comments`,
+    baseURL: `https://bogdan-park-your-tir.herokuapp.com/api/v1/places/${id}/comments`,
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': `application/json`

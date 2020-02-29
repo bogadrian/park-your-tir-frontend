@@ -5,7 +5,7 @@ const makeCallToServerWithPlaceId = async placeId => {
   //const env = runtimeEnv();
   const place = await axios({
     method: 'GET',
-    url: `${process.env.REACT_APP_URL}/api/v1/places/${placeId.payload}`
+    url: `https://bogdan-park-your-tir.herokuapp.com/api/v1/places/${placeId.payload}`
   });
 
   return place.data.data.data;

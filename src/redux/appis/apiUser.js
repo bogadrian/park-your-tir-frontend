@@ -4,7 +4,7 @@ const FormData = require('form-data');
 
 export const makeCallToServerLogin = async userData => {
   //const env = runtimeEnv();
-  const url = `${process.env.REACT_APP_URL}/api/v1/users/login`;
+  const url = `https://bogdan-park-your-tir.herokuapp.com/api/v1/users/login`;
 
   const data = userData.payload;
 
@@ -25,7 +25,7 @@ export const makeCallToServerLogin = async userData => {
 
 export const makeCallToServerSignUp = async userData => {
   //const env = runtimeEnv();
-  const url = `${process.env.REACT_APP_URL}/api/v1/users/signup`;
+  const url = `https://bogdan-park-your-tir.herokuapp.com/api/v1/users/signup`;
   const config = {
     headers: { 'Content-Type': 'application/json' }
   };
@@ -45,7 +45,7 @@ export const makeCallToServerUplod = async ({ photo, email, name }) => {
   //const env = runtimeEnv();
   const token = localStorage.getItem('jwt');
 
-  const url = `${process.env.REACT_APP_URL}/api/v1/users/updateMe`;
+  const url = `https://bogdan-park-your-tir.herokuapp.com/api/v1/users/updateMe`;
 
   const form = new FormData();
   form.append('photo', photo);

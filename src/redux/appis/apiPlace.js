@@ -62,7 +62,7 @@ export const makeCallToServerWithPlace = async place => {
     form.append('position', [lng, lat]);
 
     const axiosInstance = await axios.create({
-      baseURL: `${process.env.REACT_APP_URL}/api/v1/places`,
+      baseURL: `https://bogdan-park-your-tir.herokuapp.com/api/v1/places`,
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': `multipart/form-data; boundary=${form._boundary}`,

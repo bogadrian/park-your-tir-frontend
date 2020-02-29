@@ -4,7 +4,7 @@ import axios from 'axios';
 export const makeCallToServerGetComments = async placeId => {
   //const env = runtimeEnv();
   const comments = await axios.get(
-    `${process.env.REACT_APP_URL}/api/v1/places/${placeId}/comments`
+    `https://bogdan-park-your-tir.herokuapp.com/api/v1/places/${placeId}/comments`
   );
 
   return comments.data;
