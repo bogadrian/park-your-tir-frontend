@@ -18,6 +18,7 @@ import { selectUser } from '../../redux/userReducer/user-selector';
 import Spinner from '../../components/spinner/spinner';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 import './place.scss';
+const urlImage = 'https://bogdan-park-your-tir.herokuapp.com';
 
 const Place = ({ place, currentUser, history }) => {
   let lat, lng;
@@ -61,7 +62,7 @@ const Place = ({ place, currentUser, history }) => {
                   <Zoom>
                     <img
                       className="img-place"
-                      src={`https://bogdan-park-your-tir.herokuapp.com/api/v1/img/places/${place.images[0]}`}
+                      src={`${urlImage}/api/v1/img/places/${place.images[0]}`}
                       alt="image1"
                       width="200"
                     />
@@ -72,7 +73,7 @@ const Place = ({ place, currentUser, history }) => {
                   <Zoom>
                     <img
                       className="img-place"
-                      src={`https://bogdan-park-your-tir.herokuapp.com/api/v1/img/places/${place.images[1]}`}
+                      src={`${urlImage}/api/v1/img/places/${place.images[1]}`}
                       alt="image2"
                       width="200"
                     />
@@ -83,7 +84,7 @@ const Place = ({ place, currentUser, history }) => {
                   <Zoom>
                     <img
                       className="img-place"
-                      src={`https://bogdan-park-your-tir.herokuapp.com/api/v1/img/places/${place.images[2]}`}
+                      src={`${urlImage}/api/v1/img/places/${place.images[2]}`}
                       alt="image3"
                       width="200"
                     />
