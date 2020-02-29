@@ -17,7 +17,7 @@ import { selectPlacesSel } from '../../../redux/placesReducer/places-selector';
 import './map.scss';
 import Icon from '../../../images/icon.png';
 //const env = runtimeEnv();
-const urlActual = `${process.env.REACT_APP_GEOLOCATION_KEY}`;
+
 const MapComponent = ({
   places,
   startFetchPlacesWithin,
@@ -26,7 +26,7 @@ const MapComponent = ({
   coords,
   ...props
 }) => {
-  console.log(urlActual);
+  console.log(process.env.REACT_APP_GEOLOCATION_KEY);
 
   const [marker, setMarker] = useState({});
   const [visible, setVisible] = useState(false);
@@ -144,6 +144,6 @@ export default connect(
   mapDispatchToProps
 )(
   GoogleApiWrapper({
-    apiKey: urlActual
+    apiKey: process.env.REACT_APP_GEOLOCATION_KEY
   })(MapComponenttWithRouter)
 );

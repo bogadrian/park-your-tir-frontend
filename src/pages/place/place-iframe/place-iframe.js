@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { startFetch } from '../../../redux/fetchPlace/fetchPlace-action';
 import { selectPlaceItem } from '../../../redux/fetchPlace/fetchPlace-selector';
-const urlActual = `${process.env.REACT_APP_EMBADED_MAP}`;
 
 const PlaceIframe = ({ startFetch, place, ...props }) => {
   //const env = runtimeEnv();
@@ -31,7 +30,7 @@ const PlaceIframe = ({ startFetch, place, ...props }) => {
       height="450"
       frameBorder="0"
       style={{ border: 0 }}
-      src={`https://www.google.com/maps/embed/v1/place?key=${urlActual}
+      src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_EMBADED_MAP}
           &q=${lng},${lat}&zoom=13" `}
       allowFullScreen
     ></iframe>

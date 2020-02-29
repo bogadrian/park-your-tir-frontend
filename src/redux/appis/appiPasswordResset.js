@@ -1,13 +1,12 @@
 import axios from 'axios';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
-const urlActual = `${process.env.REACT_APP_URL}`;
 
 export const makeCallToServerPasswordResset = async email => {
   //const env = runtimeEnv();
   const emailData = JSON.stringify({ email });
 
   const axiosInstance = await axios.create({
-    baseURL: `${urlActual}/api/v1/users/forgotPassword`,
+    baseURL: `${process.env.REACT_APP_URL}/api/v1/users/forgotPassword`,
     headers: {
       'Content-Type': `application/json`
     }
