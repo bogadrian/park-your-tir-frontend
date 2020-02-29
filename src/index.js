@@ -7,6 +7,7 @@ import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { persistor, store } from './redux/store';
+require('dotenv').config();
 
 ReactDOM.render(
   <Provider store={store}>
