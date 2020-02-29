@@ -1,10 +1,11 @@
 import axios from 'axios';
-const urlActual = process.env.REACT_APP_URL;
+import runtimeEnv from '@mars/heroku-js-runtime-env';
 
 export const makeCallToServerGetMe = async () => {
+  const env = runtimeEnv();
   const token = localStorage.getItem('jwt');
 
-  const url = `${urlActual}/api/v1/users/me`;
+  const url = `${env.REACT_APP_URL}/api/v1/users/me`;
 
   const axiosInstance = await axios.create({
     baseURL: url,

@@ -16,9 +16,9 @@ import UpdateDeletePlace from './update-place/update-place';
 import CustomButton from '../../components/reuseble/custom-button/custom-button';
 import { selectUser } from '../../redux/userReducer/user-selector';
 import Spinner from '../../components/spinner/spinner';
-
+import runtimeEnv from '@mars/heroku-js-runtime-env';
 import './place.scss';
-const urlActual = process.env.REACT_APP_URL;
+const env = runtimeEnv();
 
 const Place = ({ place, currentUser, history }) => {
   let lat, lng;
@@ -62,7 +62,7 @@ const Place = ({ place, currentUser, history }) => {
                   <Zoom>
                     <img
                       className="img-place"
-                      src={`${urlActual}/api/v1/img/places/${place.images[0]}`}
+                      src={`${env.REACT_APP_EMBADED_MAP}/api/v1/img/places/${place.images[0]}`}
                       alt="image1"
                       width="200"
                     />
@@ -73,7 +73,7 @@ const Place = ({ place, currentUser, history }) => {
                   <Zoom>
                     <img
                       className="img-place"
-                      src={`${urlActual}/api/v1/img/places/${place.images[1]}`}
+                      src={`${env.REACT_APP_EMBADED_MAP}/api/v1/img/places/${place.images[1]}`}
                       alt="image2"
                       width="200"
                     />
@@ -84,7 +84,7 @@ const Place = ({ place, currentUser, history }) => {
                   <Zoom>
                     <img
                       className="img-place"
-                      src={`${urlActual}/api/v1/img/places/${place.images[2]}`}
+                      src={`${env.REACT_APP_EMBADED_MAP}/api/v1/img/places/${place.images[2]}`}
                       alt="image3"
                       width="200"
                     />

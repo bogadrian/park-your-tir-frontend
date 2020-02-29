@@ -1,10 +1,11 @@
 import axios from 'axios';
-const urlActual = process.env.REACT_APP_URL;
+import runtimeEnv from '@mars/heroku-js-runtime-env';
 
 const makeCallToServerWithPlaceId = async placeId => {
+  const env = runtimeEnv();
   const place = await axios({
     method: 'GET',
-    url: `${urlActual}/api/v1/places/${placeId.payload}`
+    url: `${env.REACT_APP_URL}/api/v1/places/${placeId.payload}`
   });
 
   return place.data.data.data;

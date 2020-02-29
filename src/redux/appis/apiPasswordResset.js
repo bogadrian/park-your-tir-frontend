@@ -1,14 +1,15 @@
 import axios from 'axios';
-const urlActual = process.env.REACT_APP_URL;
+import runtimeEnv from '@mars/heroku-js-runtime-env';
 
 export const makeCallToServerPasswordResset = async passwords => {
+  const env = runtimeEnv();
   const { password, passwordConfirm, token } = passwords.payload;
 
   const data = { password, passwordConfirm };
 
   const response = await axios({
     method: 'PATCH',
-    url: `${urlActual}/api/v1/users/resetPassword/${token}`,
+    url: `${env.REACT_APP_URL}/api/v1/users/resetPassword/${token}`,
     data
   });
 

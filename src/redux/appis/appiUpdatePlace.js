@@ -1,8 +1,9 @@
 import axios from 'axios';
+import runtimeEnv from '@mars/heroku-js-runtime-env';
 const token = localStorage.getItem('jwt');
-const urlActual = process.env.REACT_APP_URL;
 
 export const makeCallToServerUpdate = async data => {
+  const env = runtimeEnv();
   const { name, desc, fileImg } = data;
 
   let form = new FormData();
@@ -20,7 +21,7 @@ export const makeCallToServerUpdate = async data => {
   }
 
   const axiosInstance = await axios.create({
-    baseURL: `${urlActual}/api/v1/places/${data.placeId}`,
+    baseURL: `${env.REACT_APP_URL}/api/v1/places/${data.placeId}`,
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': `application/json`
@@ -40,8 +41,9 @@ export const makeCallToServerUpdate = async data => {
 };
 
 export const makeCallToSeverDeletePlace = async placeId => {
+  const env = runtimeEnv();
   const axiosInstance = await axios.create({
-    baseURL: `http://127.0.0.1:3000/api/v1/places/${placeId}`,
+    baseURL: `${env.REACT_APP_URL}/api/v1/places/${placeId}`,
     headers: {
       Authorization: `Bearer ${token}`
     }

@@ -1,10 +1,10 @@
 import axios from 'axios';
-
+import runtimeEnv from '@mars/heroku-js-runtime-env';
 const FormData = require('form-data');
-const urlActual = process.env.REACT_APP_URL;
 
 export const makeCallToServerLogin = async userData => {
-  const url = `${urlActual}/api/v1/users/login`;
+  const env = runtimeEnv();
+  const url = `${env.REACT_APP_URL}/api/v1/users/login`;
 
   const data = userData.payload;
 
@@ -24,7 +24,8 @@ export const makeCallToServerLogin = async userData => {
 };
 
 export const makeCallToServerSignUp = async userData => {
-  const url = `${urlActual}/api/v1/users/signup`;
+  const env = runtimeEnv();
+  const url = `${env.REACT_APP_URL}/api/v1/users/signup`;
   const config = {
     headers: { 'Content-Type': 'application/json' }
   };
@@ -41,9 +42,10 @@ export const makeCallToServerSignUp = async userData => {
 };
 
 export const makeCallToServerUplod = async ({ photo, email, name }) => {
+  const env = runtimeEnv();
   const token = localStorage.getItem('jwt');
 
-  const url = `${urlActual}/api/v1/users/updateMe`;
+  const url = `${env.REACT_APP_URL}/api/v1/users/updateMe`;
 
   const form = new FormData();
   form.append('photo', photo);
