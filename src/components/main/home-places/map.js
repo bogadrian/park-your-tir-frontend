@@ -18,6 +18,7 @@ import './map.scss';
 import Icon from '../../../images/icon.png';
 //const env = runtimeEnv();
 const api = 'AIzaSyCclgIF4D1AwftMA57ZoPFG0lmSF5XOJW4';
+
 const MapComponent = ({
   places,
   startFetchPlacesWithin,
