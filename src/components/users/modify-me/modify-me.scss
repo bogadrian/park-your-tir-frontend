@@ -1,0 +1,23 @@
+.sign-up {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  justify-content: space-between;
+  margin: 30px auto;
+
+  .title {
+    margin: 10px 0px;
+  }
+}
+
+.user-photo-label {
+  margin-left: -20px;
+}
+
+.photo-profile-main {
+  width: 150px;
+  height: 150px;
+  border-radius: 30%;
+  align-items: center;
+  margin-bottom: -156px;
+}

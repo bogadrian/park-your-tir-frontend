@@ -1,0 +1,13 @@
+.place-author-container {
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.place-author-image {
+  width: 70px;
+  margin-left: 20px;
+  border-radius: 50%;
+}

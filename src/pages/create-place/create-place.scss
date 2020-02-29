@@ -1,0 +1,19 @@
+.place-container {
+  display: grid;
+  grid-template-columns: 80%;
+
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (max-width: 700px) {
+    display: grid;
+    grid-template-columns: 70%;
+
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.create-place-headline {
+  text-align: center;
+}

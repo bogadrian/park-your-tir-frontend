@@ -1,0 +1,70 @@
+$react-rater-link: #ccc !default;
+$react-rater-hover: #666 !default;
+$react-rater-active: orange !default;
+
+.react-rater-comp {
+  display: inline-block;
+  font-size: 20px;
+  line-height: normal;
+  > * {
+    display: inline-block;
+  }
+}
+.react-rater-star-comp {
+  cursor: pointer;
+  color: $react-rater-link;
+  position: relative;
+  &.will-be-active {
+    color: $react-rater-hover;
+  }
+  &.is-active {
+    color: $react-rater-active;
+  }
+  &.is-active-half:before {
+    color: $react-rater-active;
+    content: '\2605';
+    position: absolute;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+  &.is-disabled {
+    cursor: default;
+  }
+}
+.delete-update-comment {
+  display: inline-block;
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.update-comment {
+  color: blue;
+  cursor: pointer;
+}
+
+.delete-comment {
+  color: red;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.is-hidden {
+  background-color: rgba(249, 249, 255, 0.979);
+  border: none;
+  font-size: 20px;
+  width: 30vw;
+  text-decoration: none;
+}
+
+.is-shown {
+  border: none;
+  background-color: white;
+  font-size: 20px;
+  width: 30vw;
+  text-decoration: none;
+}
+
+.li-element {
+  text-decoration: none;
+}

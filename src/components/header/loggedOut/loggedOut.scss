@@ -1,0 +1,14 @@
+.loggedOut-container {
+  display: flex;
+  flex-direction: row;
+  margin: 0 15px;
+  justify-items: center;
+  align-items: center;
+
+  padding: 10px;
+}
+
+.link-login {
+  font-size: 20px;
+  margin: 0 10px;
+}
