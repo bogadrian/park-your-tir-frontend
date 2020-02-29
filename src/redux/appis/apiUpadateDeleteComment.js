@@ -1,13 +1,14 @@
 import axios from 'axios';
-import runtimeEnv from '@mars/heroku-js-runtime-env';
+//import runtimeEnv from '@mars/heroku-js-runtime-env';
 const token = localStorage.getItem('jwt');
+const urlActual = `${process.env.REACT_APP_URL}`;
 
 export const makeCallToServerDeleteComment = async data => {
-  const env = runtimeEnv();
+  //const env = runtimeEnv();
   const { commentId, placeId } = data;
 
   const axiosInstance = await axios.create({
-    baseURL: `${env.REACT_APP_URL}/api/v1/places/${placeId}/comments/${commentId}`,
+    baseURL: `${urlActual}/api/v1/places/${placeId}/comments/${commentId}`,
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -21,7 +22,7 @@ export const makeCallToServerDeleteComment = async data => {
 };
 
 export const makeCallToServerUpdateComment = async dataPlain => {
-  const env = runtimeEnv();
+  //const env = runtimeEnv();
   const { commentId, placeId, text } = dataPlain.payload;
 
   const post = {
@@ -29,7 +30,7 @@ export const makeCallToServerUpdateComment = async dataPlain => {
   };
 
   const axiosInstance = await axios.create({
-    baseURL: `${env.REACT_APP_URL}/api/v1/places/${placeId}/comments/${commentId}`,
+    baseURL: `${urlActual}/api/v1/places/${placeId}/comments/${commentId}`,
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': `application/json`,

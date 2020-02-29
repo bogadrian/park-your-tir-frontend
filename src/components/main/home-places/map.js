@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CustomButton from '../../reuseble/custom-button/custom-button';
-import runtimeEnv from '@mars/heroku-js-runtime-env';
+//import runtimeEnv from '@mars/heroku-js-runtime-env';
 import { usePosition } from 'use-position';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { startFetchPlacesWithin } from '../../../redux/placesReducer/places-actions';
@@ -16,8 +16,8 @@ import {
 import { selectPlacesSel } from '../../../redux/placesReducer/places-selector';
 import './map.scss';
 import Icon from '../../../images/icon.png';
-const env = runtimeEnv();
-
+//const env = runtimeEnv();
+const urlActual = `${process.env.REACT_APP_GEOLOCATION_KEY}`;
 const MapComponent = ({
   places,
   startFetchPlacesWithin,
@@ -26,6 +26,8 @@ const MapComponent = ({
   coords,
   ...props
 }) => {
+  console.log(urlActual);
+
   const [marker, setMarker] = useState({});
   const [visible, setVisible] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState({});
@@ -142,6 +144,6 @@ export default connect(
   mapDispatchToProps
 )(
   GoogleApiWrapper({
-    apiKey: env.REACT_APP_GEOLOCATION_KEY
+    apiKey: urlActual
   })(MapComponenttWithRouter)
 );

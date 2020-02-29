@@ -1,11 +1,12 @@
 import truck from '../../images/truck.png';
 import axios from 'axios';
 
-import runtimeEnv from '@mars/heroku-js-runtime-env';
+//import runtimeEnv from '@mars/heroku-js-runtime-env';
 const FormData = require('form-data');
+const urlActual = `${process.env.REACT_APP_URL}`;
 
 export const makeCallToServerWithPlace = async place => {
-  const env = runtimeEnv();
+  //const env = runtimeEnv();
   const data = place.payload;
 
   const coords = data.coords.payload;
@@ -62,7 +63,7 @@ export const makeCallToServerWithPlace = async place => {
     form.append('position', [lng, lat]);
 
     const axiosInstance = await axios.create({
-      baseURL: `${env.REACT_APP_URL}/api/v1/places`,
+      baseURL: `${urlActual}/api/v1/places`,
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': `multipart/form-data; boundary=${form._boundary}`,

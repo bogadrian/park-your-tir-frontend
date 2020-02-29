@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-
+//import runtimeEnv from '@mars/heroku-js-runtime-env';
 import { useParams } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { startFetch } from '../../../redux/fetchPlace/fetchPlace-action';
 import { selectPlaceItem } from '../../../redux/fetchPlace/fetchPlace-selector';
+const urlActual = `${process.env.REACT_APP_EMBADED_MAP}`;
 
 const PlaceIframe = ({ startFetch, place, ...props }) => {
+  //const env = runtimeEnv();
   const placeId = useParams().placeId;
   let lat;
   let lng;
@@ -17,8 +19,6 @@ const PlaceIframe = ({ startFetch, place, ...props }) => {
   } catch (err) {
     console.log(err);
   }
-
-  const apiKey = process.env.REACT_APP_EMBADED_MAP;
 
   useEffect(() => {
     startFetch(placeId);
@@ -31,7 +31,7 @@ const PlaceIframe = ({ startFetch, place, ...props }) => {
       height="450"
       frameBorder="0"
       style={{ border: 0 }}
-      src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}
+      src={`https://www.google.com/maps/embed/v1/place?key=${urlActual}
           &q=${lng},${lat}&zoom=13" `}
       allowFullScreen
     ></iframe>
