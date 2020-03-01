@@ -70,15 +70,16 @@ export const makeCallToServerWithPlace = async place => {
       }
     });
 
-    // for (let [key, value] of form.entries()) {
-    //   console.log(key, value);
-    // }
+    for (let [key, value] of form.entries()) {
+      console.log(key, value);
+    }
 
     const placeUpdate = await axiosInstance({
       method: 'POST',
       data: form
     });
 
+    console.log(place.data);
     return placeUpdate.data.data;
   } catch (err) {
     console.log(err);

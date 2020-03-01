@@ -50,6 +50,7 @@ const formReducer = (state, action) => {
 const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
   const [photo, setPhoto] = useState(null);
 
+  console.log(currentUser.data.user.photo);
   const handleError = () => {
     clearErorr();
   };

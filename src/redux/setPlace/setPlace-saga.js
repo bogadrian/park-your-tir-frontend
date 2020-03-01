@@ -43,7 +43,6 @@ export function* patchPlace() {
 }
 
 export function* onDelete(placeId) {
-  console.log(placeId.payload);
   try {
     const placeDeleted = yield call(
       makeCallToSeverDeletePlace,

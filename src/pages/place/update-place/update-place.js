@@ -14,6 +14,7 @@ import './update-place.scss';
 
 const UpdateDeletePlace = ({ place, deletePlace, history }) => {
   const [show, setShow] = useState(false);
+  const [message, setMessage] = useState(null);
   const [confirm, setConfirm] = useState(false);
 
   const deletePlaceHandler = () => {
@@ -22,15 +23,20 @@ const UpdateDeletePlace = ({ place, deletePlace, history }) => {
   const handleModal = () => {
     deletePlace(place.id);
     setShow(true);
+    setMessage('ARE YOU SURE YOU WANT TO DELETE THIS PLACE?');
   };
   const handleModalExit = () => {
     setConfirm(false);
+    //setShow(true);
   };
 
   const handleModalClose = () => {
     setShow(false);
     setConfirm(false);
+    setMessage('The place was deleted!');
+    history.push('/');
   };
+
   return (
     <div className="update-container">
       <Modal
@@ -43,7 +49,7 @@ const UpdateDeletePlace = ({ place, deletePlace, history }) => {
           <CustomButton handleClick={handleModalExit}>NO</CustomButton>
         }
       >
-        ARE YOU SURE YOU WANT TO DELETE THIS PLACE?
+        {message}
       </Modal>
       <Modal
         show={show}

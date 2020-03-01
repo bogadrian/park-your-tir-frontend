@@ -21,8 +21,6 @@ const StarRating = ({ place, startCreate, ratingStart, history, ...props }) => {
 
   const handleClick = () => {
     startCreate(place);
-    history.push('/');
-
     setShow(true);
   };
 
@@ -32,6 +30,7 @@ const StarRating = ({ place, startCreate, ratingStart, history, ...props }) => {
 
   const handleError = () => {
     setShow(false);
+    history.push('/');
   };
   return (
     <Fragment>

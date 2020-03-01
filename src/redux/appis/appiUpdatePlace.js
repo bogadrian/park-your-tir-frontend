@@ -3,6 +3,7 @@ import axios from 'axios';
 const token = localStorage.getItem('jwt');
 
 export const makeCallToServerUpdate = async data => {
+  console.log(data);
   //const env = runtimeEnv();
   const { name, desc, fileImg } = data;
 
@@ -28,9 +29,9 @@ export const makeCallToServerUpdate = async data => {
     }
   });
 
-  // for (let [key, value] of form.entries()) {
-  //   console.log(key, value);
-  // }
+  for (let [key, value] of form.entries()) {
+    console.log(key, value);
+  }
 
   const placeUpdate = await axiosInstance({
     method: 'PATCH',
