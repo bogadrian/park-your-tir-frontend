@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { startFetch } from '../../../redux/fetchPlace/fetchPlace-action';
 import { selectPlaceItem } from '../../../redux/fetchPlace/fetchPlace-selector';
-const api = 'AIzaSyCclgIF4D1AwftMA57ZoPFG0lmSF5XOJW4';
+
 
 const PlaceIframe = ({ startFetch, place, ...props }) => {
   //const env = runtimeEnv();
