@@ -17,8 +17,12 @@ import { selectPlacesSel } from '../../../redux/placesReducer/places-selector';
 import './map.scss';
 import Icon from '../../../images/icon.png';
 //const env = runtimeEnv();
+<<<<<<< HEAD
 //const api = process.env.REACT_APP_GEOLOCATION_KEY;
 const api = 'AIzaSyCclgIF4D1AwftMA57ZoPFG0lmSF5XOJW4';
+=======
+
+>>>>>>> e3bf618ba77097a4282bf7963105be515ce5de7b
 
 const MapComponent = ({
   places,

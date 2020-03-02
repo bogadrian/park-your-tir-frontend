@@ -79,7 +79,10 @@ export const makeCallToServerWithPlace = async place => {
       data: form
     });
 
+<<<<<<< HEAD
     console.log(place.data);
+=======
+>>>>>>> e3bf618ba77097a4282bf7963105be515ce5de7b
     return placeUpdate.data.data;
   } catch (err) {
     console.log(err);

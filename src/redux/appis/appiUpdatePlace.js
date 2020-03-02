@@ -3,7 +3,10 @@ import axios from 'axios';
 const token = localStorage.getItem('jwt');
 
 export const makeCallToServerUpdate = async data => {
+<<<<<<< HEAD
   console.log(data);
+=======
+>>>>>>> e3bf618ba77097a4282bf7963105be515ce5de7b
   //const env = runtimeEnv();
   const { name, desc, fileImg } = data;
 

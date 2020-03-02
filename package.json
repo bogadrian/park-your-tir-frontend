@@ -1,5 +1,5 @@
 {
-  "name": "park-the-ir",
+  "name": "park-the-tir",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -48,6 +48,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
@@ -57,4 +58,7 @@
   },
   "author": "Bogdan Adrian",
   "license": "ISC"
+=======
+  }
+>>>>>>> e3bf618ba77097a4282bf7963105be515ce5de7b
 }

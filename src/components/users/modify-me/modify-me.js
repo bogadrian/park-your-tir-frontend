@@ -20,7 +20,11 @@ import Modal from '../../reuseble/modal/modal';
 import ImageUpload from '../../reuseble/ImageUpload/image-upload';
 
 import './modify-me.scss';
+<<<<<<< HEAD
 const urlActual = 'https://bogdan-park-your-tir.herokuapp.com';
+=======
+const urlActual = process.env.REACT_APP_URL;
+>>>>>>> e3bf618ba77097a4282bf7963105be515ce5de7b
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -50,7 +54,7 @@ const formReducer = (state, action) => {
 const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
   const [photo, setPhoto] = useState(null);
 
-  console.log(currentUser.data.user.photo);
+  
   const handleError = () => {
     clearErorr();
   };
