@@ -5,8 +5,8 @@ import { useParams } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { startFetch } from '../../../redux/fetchPlace/fetchPlace-action';
 import { selectPlaceItem } from '../../../redux/fetchPlace/fetchPlace-selector';
-//const api = process.env.REACT_APP_EMBADED_MAP;
-const api = 'AIzaSyAee2KioVGpSKOBFCX0Xkm7zLbTGBEc3zU';
+const api = process.env.REACT_APP_EMBADED_MAP;
+
 
 const PlaceIframe = ({ startFetch, place, ...props }) => {
   //const env = runtimeEnv();
