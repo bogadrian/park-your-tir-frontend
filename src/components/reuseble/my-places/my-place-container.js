@@ -2,11 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import './my-places-container.scss';
-<<<<<<< HEAD
 const urlActual = 'https://bogdan-park-your-tir.herokuapp.com';
-=======
-const urlActual = process.env.REACT_APP_URL;
->>>>>>> e3bf618ba77097a4282bf7963105be515ce5de7b
 
 const MyPlacesContainer = ({ posts }) => {
   let history = useHistory();

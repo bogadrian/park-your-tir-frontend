@@ -32,8 +32,7 @@ const PlaceIframe = ({ startFetch, place, ...props }) => {
       height="450"
       frameBorder="0"
       style={{ border: 0 }}
-      src={`https://www.google.com/maps/embed/v1/place?key=${api}
-          &q=${lng},${lat}&zoom=13" `}
+      src={`https://www.google.com/maps/embed/v1/place?key=${api}&q=${lng},${lat}&zoom=13"`}
       allowFullScreen
     ></iframe>
   );

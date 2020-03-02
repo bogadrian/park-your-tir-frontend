@@ -31,7 +31,6 @@ const MyPlaces = ({ startGetMe, me }) => {
   return (
     <div className="myplaces-container">
       <div>
-<<<<<<< HEAD
         {posts ? (
           <MyPlacesContainer posts={currentPosts} />
         ) : (
@@ -42,9 +41,6 @@ const MyPlaces = ({ startGetMe, me }) => {
             </Link>
           </h2>
         )}
-=======
-        {me ? <MyPlacesContainer posts={currentPosts} /> : null}
->>>>>>> e3bf618ba77097a4282bf7963105be515ce5de7b
 
         {posts.length > postsPerPage ? (
           <Pagination
@@ -53,18 +49,7 @@ const MyPlaces = ({ startGetMe, me }) => {
             paginate={paginate}
             currentPage={currentPage}
           />
-<<<<<<< HEAD
         ) : null}
-=======
-        ) : (
-          <h2>
-            No Place Yet!{' '}
-            <Link to="/create-place">
-              <div style={{ color: '#1C9AAE' }}>Please create one!</div>
-            </Link>
-          </h2>
-        )}
->>>>>>> e3bf618ba77097a4282bf7963105be515ce5de7b
       </div>
     </div>
   );
