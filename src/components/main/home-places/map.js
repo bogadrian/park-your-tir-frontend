@@ -18,7 +18,7 @@ import './map.scss';
 import Icon from '../../../images/icon.png';
 //const env = runtimeEnv();
 //const api = process.env.REACT_APP_GEOLOCATION_KEY;
-const api = 'AIzaSyA-bLuVAuNLU0uUM1RW3PvslCYraiuh1pI';
+const api = 'AIzaSyAdeFnOt-0wLwc_XYhBfRyG1bINOJKoFu0';
 
 const MapComponent = ({
   places,
