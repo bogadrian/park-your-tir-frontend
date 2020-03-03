@@ -6,7 +6,7 @@ import { createStructuredSelector } from 'reselect';
 import { startFetch } from '../../../redux/fetchPlace/fetchPlace-action';
 import { selectPlaceItem } from '../../../redux/fetchPlace/fetchPlace-selector';
 //const api = process.env.REACT_APP_EMBADED_MAP;
-
+const api = 'AIzaSyAFviCKR0G5AvfAqDILrkNhK157kZ1DF84';
 
 const PlaceIframe = ({ startFetch, place, ...props }) => {
   //const env = runtimeEnv();
