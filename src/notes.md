@@ -1,4 +1,6 @@
-https://bogdan-park-your-tir.herokuapp.com
+backend: https://bogdan-park-your-tir.herokuapp.com
+
+frontend: https://park-your-tir.herokuapp.com
 
 How do I clear the build cache?
 Issue
