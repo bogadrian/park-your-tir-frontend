@@ -4,7 +4,6 @@ const token = localStorage.getItem('jwt');
 const url = process.env.REACT_APP_URL;
 
 export const makeCallToServerUpdate = async data => {
-
   //const env = runtimeEnv();
   const { name, desc, fileImg } = data;
 
@@ -23,7 +22,7 @@ export const makeCallToServerUpdate = async data => {
   }
 
   const axiosInstance = await axios.create({
-    baseURL: `${url}/api/v1/places/${data.placeId}`,
+    baseURL: `https://bogdan-park-your-tir.herokuapp.com/api/v1/places/${data.placeId}`,
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': `application/json`
@@ -45,7 +44,7 @@ export const makeCallToServerUpdate = async data => {
 export const makeCallToSeverDeletePlace = async placeId => {
   //const env = runtimeEnv();
   const axiosInstance = await axios.create({
-    baseURL: `${url}/api/v1/places/${placeId}`,
+    baseURL: `https://bogdan-park-your-tir.herokuapp.com/api/v1/places/${placeId}`,
     headers: {
       Authorization: `Bearer ${token}`
     }

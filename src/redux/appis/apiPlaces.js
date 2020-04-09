@@ -17,7 +17,7 @@ export const makeCallToServerFetchPlaces = async payload => {
   const { range } = payload;
 
   const response = await axios.get(
-    `${url}/api/v1/places/places-within/${range}/center/${lat},${lng}`
+    `https://bogdan-park-your-tir.herokuapp.com/api/v1/places/places-within/${range}/center/${lat},${lng}`
   );
 
   return response;
