@@ -1,10 +1,11 @@
 import axios from 'axios';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 const FormData = require('form-data');
+const url = process.env.REACT_APP_URL;
 
 export const makeCallToServerLogin = async userData => {
   //const env = runtimeEnv();
-  const url = `https://bogdan-park-your-tir.herokuapp.com/api/v1/users/login`;
+  const urlLog = `${url}/api/v1/users/login`;
 
   const data = userData.payload;
 
@@ -12,7 +13,7 @@ export const makeCallToServerLogin = async userData => {
     headers: { 'Content-Type': 'application/json' }
   };
 
-  const user = await axios.post(url, data, config);
+  const user = await axios.post(urlLog, data, config);
 
   localStorage.removeItem('jwt');
 
@@ -25,14 +26,14 @@ export const makeCallToServerLogin = async userData => {
 
 export const makeCallToServerSignUp = async userData => {
   //const env = runtimeEnv();
-  const url = `https://bogdan-park-your-tir.herokuapp.com/api/v1/users/signup`;
+  const urlSign = `${url}/api/v1/users/signup`;
   const config = {
     headers: { 'Content-Type': 'application/json' }
   };
 
   const data = userData.payload;
 
-  const user = await axios.post(url, data, config);
+  const user = await axios.post(urlSign, data, config);
 
   localStorage.removeItem('jwt');
 
@@ -45,7 +46,7 @@ export const makeCallToServerUplod = async ({ photo, email, name }) => {
   //const env = runtimeEnv();
   const token = localStorage.getItem('jwt');
 
-  const url = `https://bogdan-park-your-tir.herokuapp.com/api/v1/users/updateMe`;
+  const urlUpdate = `${url}/api/v1/users/updateMe`;
 
   const form = new FormData();
   form.append('photo', photo);
@@ -53,7 +54,7 @@ export const makeCallToServerUplod = async ({ photo, email, name }) => {
   form.append('email', email);
 
   const axiosInstance = await axios.create({
-    baseURL: url,
+    baseURL: urlUpdate,
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': `multipart/form-data; boundary=${form._boundary}`,

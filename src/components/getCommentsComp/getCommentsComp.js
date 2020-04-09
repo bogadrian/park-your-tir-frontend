@@ -25,12 +25,14 @@ const CommentsComp = ({
   getCommentsStart,
   startUpdateComment,
   startDeleteComment,
+
   ...props
 }) => {
   const [show, setShow] = useState(false);
   const [message, setMessage] = useState(null);
   let [dis, setDisabled] = useState(true);
   const [text, setText] = useState(null);
+  const placeId = useParams().placeId;
 
   let commentMeId;
   if (me.user.currentUser) {
@@ -42,15 +44,14 @@ const CommentsComp = ({
     com = comments.comments.data;
   }
 
-  const placeId = useParams().placeId;
-
   useEffect(() => {
     getCommentsStart(props.placeId);
-  }, [getCommentsStart, props.placeId]);
+  }, [getCommentsStart, props.placeId, comment]);
 
   const handleClose = () => {
     setShow(false);
-    window.location.reload();
+    getCommentsStart(props.placeId);
+    setDisabled(true);
   };
 
   const handleChangeText = e => {

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import StarRatings from 'react-star-ratings';
@@ -13,22 +13,21 @@ import './comment.scss';
 const Comment = ({ startComment, ...props }) => {
   const [show, setShow] = useState(false);
   const [rating, setRating] = useState(0);
-  const [commentValue, setCommentValue] = useState(null);
+  let [commentValue, setCommentValue] = useState('');
   const [valid, setValid] = useState(false);
 
-  const handleInput = useCallback((id, value, isValid) => {
+  const handleInput = (id, value, isValid) => {
     setValid(!isValid);
     setCommentValue(value);
-  }, []);
+  };
 
-  const changeRating = newRating => {
+  const changeRating = (newRating) => {
     setRating(newRating);
   };
 
   const id = props.id;
 
   const data = { id, commentValue, rating };
-  console.log(data);
 
   const handleComment = () => {
     startComment(data);
@@ -37,7 +36,6 @@ const Comment = ({ startComment, ...props }) => {
 
   const handleClose = () => {
     setShow(false);
-    window.location.reload();
   };
 
   return (
@@ -60,6 +58,7 @@ const Comment = ({ startComment, ...props }) => {
           validators={[VALIDATOR_MINLENGTH(2)]}
           onInput={handleInput}
           required={true}
+          value={commentValue}
         />
       </div>
       <div>
@@ -85,8 +84,8 @@ const Comment = ({ startComment, ...props }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  startComment: data => dispatch(startComment(data))
+const mapDispatchToProps = (dispatch) => ({
+  startComment: (data) => dispatch(startComment(data)),
 });
 
 export default connect(null, mapDispatchToProps)(Comment);

@@ -1,45 +1,46 @@
 import axios from 'axios';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 const token = localStorage.getItem('jwt');
+const url = process.env.REACT_APP_URL;
 
-export const makeCallToServerDeleteComment = async data => {
+export const makeCallToServerDeleteComment = async (data) => {
   //const env = runtimeEnv();
   const { commentId, placeId } = data;
 
   const axiosInstance = await axios.create({
-    baseURL: `https://bogdan-park-your-tir.herokuapp.com/api/v1/places/${placeId}/comments/${commentId}`,
+    baseURL: `${url}/api/v1/places/${placeId}/comments/${commentId}`,
     headers: {
-      Authorization: `Bearer ${token}`
-    }
+      Authorization: `Bearer ${token}`,
+    },
   });
 
   const placeDeleted = await axiosInstance({
-    method: 'DELETE'
+    method: 'DELETE',
   });
 
   return placeDeleted;
 };
 
-export const makeCallToServerUpdateComment = async dataPlain => {
+export const makeCallToServerUpdateComment = async (dataPlain) => {
   //const env = runtimeEnv();
   const { commentId, placeId, text } = dataPlain.payload;
 
   const post = {
-    comment: text
+    comment: text,
   };
 
   const axiosInstance = await axios.create({
-    baseURL: `https://bogdan-park-your-tir.herokuapp.com/api/v1/places/${placeId}/comments/${commentId}`,
+    baseURL: `${url}/api/v1/places/${placeId}/comments/${commentId}`,
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': `application/json`,
-      'Access-Control-Allow-Origin': '*'
-    }
+      'Access-Control-Allow-Origin': '*',
+    },
   });
 
   const placeUpdated = await axiosInstance({
     method: 'PATCH',
-    data: post
+    data: post,
   });
 
   return placeUpdated.data.data;

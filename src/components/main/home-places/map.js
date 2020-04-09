@@ -17,7 +17,6 @@ import { selectPlacesSel } from '../../../redux/placesReducer/places-selector';
 import './map.scss';
 import Icon from '../../../images/icon.png';
 
-//const api = process.env.REACT_APP_GEOLOCATION_KEY;
 const api = 'AIzaSyAFviCKR0G5AvfAqDILrkNhK157kZ1DF84';
 
 const MapComponent = ({
@@ -28,27 +27,32 @@ const MapComponent = ({
   coords,
   ...props
 }) => {
-  console.log(api);
   const [marker, setMarker] = useState({});
   const [visible, setVisible] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState({});
 
   let { latitude, longitude } = usePosition();
 
-  let lat, lng, cent;
-  if (latitude && longitude) {
+  let lat, lng, centPosition;
+  if (latitude && longitude && !coords.payload) {
     lat = latitude;
     lng = longitude;
-    cent = { lat, lng };
+    centPosition = { lat, lng };
   }
 
+  let centCoords;
   if (coords.payload) {
-    cent = coords.payload;
+    centCoords = coords.payload;
   }
 
   useEffect(() => {
     startFetchPlacesWithin({ range: 100, latitude, longitude });
   }, [startFetchPlacesWithin, latitude, longitude]);
+
+  useEffect(() => {
+    // const coo = coords.payload ? coords.payload : cent;
+    startFetchPlacesWithin({ range: 100, centCoords });
+  }, [startFetchPlacesWithin, centCoords]);
 
   const onMarkerClick = (props, marker, e) => {
     setMarker(marker);
@@ -89,8 +93,8 @@ const MapComponent = ({
           className="map"
           google={props.google}
           zoom={10}
-          initialCenter={cent}
-          center={cent}
+          initialCenter={coords.payload ? coords.payload : centPosition}
+          center={coords.payload ? coords.payload : centPosition}
         >
           {places.length > 0
             ? places.map((place, index) => {

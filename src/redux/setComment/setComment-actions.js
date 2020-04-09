@@ -24,3 +24,23 @@ export const commentRating = rating => ({
   type: setCommentTypes.COMMENT_RATING_SUCCESS,
   payload: rating
 });
+export const getLastCommentInCommentsFailure = error => ({
+  type: setCommentTypes.GET_LAST_COMMENT_FAILURE,
+  payload: error
+});
+
+export const getLastCommentInCommentsSuccess = comment => {
+ 
+  return {
+    type: setCommentTypes.GET_LAST_COMMENT_SUCCESS,
+    payload: comment
+  };
+};
+
+export const getLastCommentStart = comment => {
+  
+  return {
+    type: setCommentTypes.GET_LAST_COMMENT_START,
+    payload: comment
+  };
+};

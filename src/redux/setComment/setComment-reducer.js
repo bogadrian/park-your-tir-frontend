@@ -27,6 +27,12 @@ const commentReducer = (state = INITIAL_STATE, action) => {
         rating: action.payload,
         error: null
       };
+    case setCommentTypes.GET_LAST_COMMENT_FAILURE:
+      return {
+        ...state,
+        comments: null,
+        error: action.payload
+      };
     default:
       return state;
   }

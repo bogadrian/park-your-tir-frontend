@@ -11,7 +11,7 @@ import { makeCallToServerPasswordResset } from '../appis/apiPasswordResset';
 export function* onResset(passwords) {
   try {
     const response = yield call(makeCallToServerPasswordResset, passwords);
-    console.log(response.status);
+
     if (response.status === 'success') {
       yield put(passwordRessetSuccess(response));
     }

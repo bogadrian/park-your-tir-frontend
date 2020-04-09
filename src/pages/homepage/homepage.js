@@ -12,8 +12,8 @@ const HomePage = ({ address }) => {
   return (
     <div>
       <div className="homepage-container">
-        <FetchAddress />
         <h2>{address}</h2>
+        <FetchAddress />
       </div>
       <div>
         <MapComponent />

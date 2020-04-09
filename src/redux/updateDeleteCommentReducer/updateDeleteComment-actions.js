@@ -5,8 +5,9 @@ export const startDeleteComment = data => ({
   payload: data
 });
 
-export const deleteCommentSuccess = () => ({
-  type: updateDeleteCommentTypes.DELETE_COMMENT_SUCCESS
+export const deleteCommentSuccess = response => ({
+  type: updateDeleteCommentTypes.DELETE_COMMENT_SUCCESS,
+  payload: response
 });
 
 export const deleteCommentFailure = error => ({
@@ -25,6 +26,16 @@ export const updateCommentSuccess = comment => ({
 });
 
 export const updateCommentFailure = error => ({
+  type: updateDeleteCommentTypes.UPDATE_COMMENT_FAILURE,
+  payload: error
+});
+
+export const updateLastCommentSuccess = comment => ({
+  type: updateDeleteCommentTypes.UPDATE_COMMENT_SUCCESS,
+  payload: comment
+});
+
+export const updateLastCommentFailure = error => ({
   type: updateDeleteCommentTypes.UPDATE_COMMENT_FAILURE,
   payload: error
 });

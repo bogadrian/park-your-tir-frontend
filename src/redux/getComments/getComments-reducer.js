@@ -1,4 +1,6 @@
 import getCommentsTypes from './getComments-types';
+import setCommentTypes from '../setComment/setComment-types';
+import updateDeleteCommentTypes from '../updateDeleteCommentReducer/updateDeleteComment-types';
 
 const INITIAL_STATE = {
   comments: null,
@@ -17,6 +19,24 @@ const getCommentsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         comments: [],
+        error: action.payload
+      };
+    case setCommentTypes.GET_LAST_COMMENT_SUCCESS:
+      return {
+        ...state,
+        comments: action.payload,
+        error: null
+      };
+    case updateDeleteCommentTypes.UPDATE_LAST_COMMENT_SUCCESS:
+      return {
+        ...state,
+        comments: action.payload,
+        error: null
+      };
+    case updateDeleteCommentTypes.UPDATE_LAST_COMMENT_FAILURE:
+      return {
+        ...state,
+        comments: null,
         error: action.payload
       };
     default:

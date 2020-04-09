@@ -5,7 +5,9 @@ import {
   deleteCommentSuccess,
   deleteCommentFailure,
   updateCommentSuccess,
-  updateCommentFailure
+  updateLastCommentSuccess,
+  updateCommentFailure,
+  updateLastCommentFailure
 } from './updateDeleteComment-actions';
 
 import {
@@ -17,7 +19,7 @@ export function* onDeleteComment(data) {
   try {
     const response = yield call(makeCallToServerDeleteComment, data.payload);
     if (response) {
-      yield put(deleteCommentSuccess());
+      yield put(deleteCommentSuccess(response));
     }
   } catch (err) {
     yield put(deleteCommentFailure);
@@ -35,8 +37,10 @@ export function* onUpdate(data) {
   try {
     const commentUpdated = yield call(makeCallToServerUpdateComment, data);
     yield put(updateCommentSuccess(commentUpdated));
+    yield put(updateLastCommentSuccess(commentUpdated));
   } catch (err) {
-    yield put(updateCommentFailure);
+    yield put(updateCommentFailure(err));
+    yield put(updateLastCommentFailure(err));
   }
 }
 

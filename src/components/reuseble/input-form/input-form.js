@@ -9,12 +9,12 @@ const inputReducer = (state, action) => {
       return {
         ...state,
         value: action.val,
-        isValid: validate(action.val, action.validators)
+        isValid: validate(action.val, action.validators),
       };
     case 'TOUCH':
       return {
         ...state,
-        isTouched: true
+        isTouched: true,
       };
     default:
       return state;
@@ -25,7 +25,7 @@ const FormInput = ({ label, ...otherProps }) => {
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: '',
     isTouched: false,
-    isValid: false
+    isValid: false,
   });
 
   const { id, onInput } = otherProps;
@@ -35,11 +35,11 @@ const FormInput = ({ label, ...otherProps }) => {
     onInput(id, value, isValid);
   }, [id, value, isValid, onInput]);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     dispatch({
       type: 'CHANGE',
       val: e.target.value,
-      validators: otherProps.validators
+      validators: otherProps.validators,
     });
   };
 

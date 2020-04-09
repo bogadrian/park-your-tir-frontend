@@ -2,18 +2,25 @@ import { takeLatest, put, call, all } from 'redux-saga/effects';
 import setCommentTypes from './setComment-types';
 
 import { makeCallToServerWithComment } from '../appis/apiComment';
-import { commentSuccess, commentFailure } from './setComment-actions';
+import {
+  commentSuccess,
+  commentFailure,
+  getLastCommentInCommentsSuccess,
+  getLastCommentInCommentsFailure
+} from './setComment-actions';
 
 export function* onComment(comment) {
-  console.log(comment);
   try {
     const commentPosted = yield call(
       makeCallToServerWithComment,
       comment.payload
     );
+
     yield put(commentSuccess(commentPosted));
+    yield put(getLastCommentInCommentsSuccess(commentPosted));
   } catch (err) {
     yield put(commentFailure(err));
+    yield put(getLastCommentInCommentsFailure(err));
   }
 }
 

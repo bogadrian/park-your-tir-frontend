@@ -7,7 +7,7 @@ import { fetchPlace } from './fetchPlace/fetchPlace-saga';
 import { getMeStart } from './getMe/getMe-saga';
 import { updateDelete } from './updateDelete/updateDelete-saga';
 import { setComment } from './setComment/setComment-saga';
-import { startGetComments } from './getComments/getComments-saga';
+import { getCommentsStart } from './getComments/getComments-saga';
 import { ressetPassword } from './ressetPassword/ressetPassword-saga';
 import { updateDeleteCommentSaga } from './updateDeleteCommentReducer/updateDeleteComment-saga';
 import { passwordRessetSaga } from './passwordResset/passwordResset-saga';
@@ -19,13 +19,13 @@ function* rootSaga() {
     call(coordsSaga),
     call(setPlace),
     call(fetchPlace),
-    call(getMeStart),
+    call(getCommentsStart),
     call(updateDelete),
     call(setComment),
-    call(startGetComments),
+    call(getMeStart),
     call(ressetPassword),
     call(updateDeleteCommentSaga),
-    call(passwordRessetSaga)
+    call(passwordRessetSaga),
   ]);
 }
 

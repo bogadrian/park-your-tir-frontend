@@ -22,6 +22,7 @@ const urlImage = 'https://bogdan-park-your-tir.herokuapp.com';
 
 const Place = ({ place, currentUser, history }) => {
   let lat, lng;
+
   try {
     if (place.position) {
       [lat, lng] = place.position.coordinates;
