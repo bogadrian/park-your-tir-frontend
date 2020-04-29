@@ -20,7 +20,7 @@ import Modal from '../../reuseble/modal/modal';
 import ImageUpload from '../../reuseble/ImageUpload/image-upload';
 
 import './modify-me.scss';
-const urlActual = 'https://bogdan-park-your-tir.herokuapp.com';
+const urlActual = process.env.REACT_APP_URL;
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -50,7 +50,6 @@ const formReducer = (state, action) => {
 const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
   const [photo, setPhoto] = useState(null);
 
-  
   const handleError = () => {
     clearErorr();
   };
@@ -152,7 +151,7 @@ const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
         </form>
         <div style={{ marginTop: '20px' }}>
           <Link to="/password-resset">
-            <h4>Passowrd Forgotten?</h4>
+            <h4>Password Forgotten?</h4>
           </Link>
         </div>
       </div>

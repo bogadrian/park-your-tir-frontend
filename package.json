@@ -1,4 +1,5 @@
 {
+  "homepage": "https://localhost:8080",
   "name": "park-the-tir",
   "version": "0.1.0",
   "private": true,
@@ -29,6 +30,7 @@
     "use-position": "0.0.6"
   },
   "scripts": {
+    "deploy": "npm run build && gh-pages -d build",
     "start": "set PORT=5000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -56,5 +58,8 @@
     "url": "park-the-tir"
   },
   "author": "Bogdan Adrian",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
+  }
 }

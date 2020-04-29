@@ -31,8 +31,26 @@ const CreatePlace = props => {
             activeItemIndex={activeItemIndex}
             numberOfCards={1}
             gutter={20}
-            leftChevron={<CustomButton>{'<PREV'}</CustomButton>}
-            rightChevron={<CustomButton>{'NEXT>'}</CustomButton>}
+            leftChevron={
+              <div>
+                <div className="buttonPrevBig">
+                  <CustomButton>{'<PREV'}</CustomButton>
+                </div>
+                <div className="buttonPrevLittle">
+                  <h4>{'<<'}</h4>
+                </div>
+              </div>
+            }
+            rightChevron={
+              <div>
+                <div className="buttonNextBig">
+                  <CustomButton>{'NEXT>'}</CustomButton>
+                </div>
+                <div className="buttonNextLittle">
+                  <h4>{'>>'}</h4>
+                </div>
+              </div>
+            }
             outsideChevron
             chevronWidth={chevronWidth}
           >

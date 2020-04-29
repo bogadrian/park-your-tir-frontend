@@ -18,9 +18,41 @@ import { selectUser } from '../../redux/userReducer/user-selector';
 import Spinner from '../../components/spinner/spinner';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 import './place.scss';
-const urlImage = 'https://bogdan-park-your-tir.herokuapp.com';
+const urlImage = process.env.REACT_APP_URL;
 
 const Place = ({ place, currentUser, history }) => {
+  let placeName;
+  if (place && place.name) {
+    placeName = place.name;
+  }
+
+  let image1, image2, image3;
+  if (place && place.images) {
+    image1 = place.images[0];
+    image2 = place.images[1];
+    image3 = place.images[2];
+  }
+
+  let description;
+  if (place && place.data && place.data.description) {
+    description = place.data.description;
+  }
+
+  let idAuthor;
+  if (place && place.placeAuthor && place.placeAuthor.id) {
+    idAuthor = place.placeAuthor.id;
+  }
+
+  let currentIdAuthor;
+  if (
+    currentUser &&
+    currentUser.data &&
+    currentUser.data.user &&
+    currentUser.data.user._id
+  ) {
+    currentIdAuthor = currentUser.data.user._id;
+  }
+
   let lat, lng;
 
   try {
@@ -40,12 +72,12 @@ const Place = ({ place, currentUser, history }) => {
   };
 
   return (
-    <div>
+    <div className="the-container">
       {place ? (
         <div className="place-container">
           <div className="google-map-container place-option">
             <div className="place-option ">
-              <h2>{place.name}</h2>
+              <h2>{placeName}</h2>
             </div>
             <div className="place-option">
               <CustomButton handleClick={handleClick}>
@@ -54,69 +86,66 @@ const Place = ({ place, currentUser, history }) => {
             </div>
           </div>
           <div className="place-option">
-            <PlaceIframe />
+            <PlaceIframe className="the-map" />
           </div>
-          <div className="place-option">
-            {place.images ? (
-              <div className="place-option place-image-option">
-                {place.images[0] ? (
-                  <Zoom>
-                    <img
-                      className="img-place"
-                      src={`${urlImage}/api/v1/img/places/${place.images[0]}`}
-                      alt="image1"
-                      width="200"
-                    />
-                  </Zoom>
-                ) : null}
 
-                {place.images[1] ? (
-                  <Zoom>
-                    <img
-                      className="img-place"
-                      src={`${urlImage}/api/v1/img/places/${place.images[1]}`}
-                      alt="image2"
-                      width="200"
-                    />
-                  </Zoom>
-                ) : null}
+          <div className="images">
+            <div className=" place-image-option">
+              <Zoom>
+                <img
+                  className="img-place"
+                  src={`${urlImage}/api/v1/img/places/${image1}`}
+                  alt="image1"
+                  width="200"
+                />
+              </Zoom>
 
-                {place.images[2] ? (
-                  <Zoom>
-                    <img
-                      className="img-place"
-                      src={`${urlImage}/api/v1/img/places/${place.images[2]}`}
-                      alt="image3"
-                      width="200"
-                    />
-                  </Zoom>
-                ) : null}
-              </div>
-            ) : null}
+              <Zoom>
+                <img
+                  className="img-place"
+                  src={`${urlImage}/api/v1/img/places/${image2}`}
+                  alt="image2"
+                  width="200"
+                />
+              </Zoom>
+
+              <Zoom>
+                <img
+                  className="img-place"
+                  src={`${urlImage}/api/v1/img/places/${image3}`}
+                  alt="image3"
+                  width="200"
+                />
+              </Zoom>
+            </div>
           </div>
-          <div className="place-option">
-            <h3>{place.description}</h3>
-          </div>
-          <div className="place-option">
-            <h2>Place Rataing Average</h2>
-            <StarRate />
-          </div>
-          <div className="place-option">
-            <AuthorName />
-          </div>
-          <div>{currentUser ? <UpdateDeletePlace /> : null}</div>
-          <div className="place-option">
-            <CommentsComp placeId={place._id} />
-          </div>
-          <div className="place-option">
-            <h3>comments</h3>
-            {!currentUser ? (
-              <h2>Please login to comment!</h2>
-            ) : (
-              <div>
-                <Comment id={place._id} onChange={handleChange} />
-              </div>
-            )}
+          <div className="under-map">
+            <div className="place-option">
+              <h3>{description}</h3>
+            </div>
+            <div className="place-option">
+              <h2>Place Rataing Average</h2>
+              <StarRate />
+            </div>
+            <div className="place-option">
+              <AuthorName />
+            </div>
+            <div>
+              {idAuthor === currentIdAuthor ? <UpdateDeletePlace /> : null}
+            </div>
+            <div className="place-option">
+              <CommentsComp placeId={place.id} />
+            </div>
+            <div className="place-option">
+              <h3>comments</h3>
+              {!currentUser ? (
+                <h2>Please login to comment!</h2>
+              ) : (
+                <div>
+                  <Comment id={place.id} onChange={handleChange} />
+                </div>
+              )}
+            </div>
           </div>
         </div>
       ) : (

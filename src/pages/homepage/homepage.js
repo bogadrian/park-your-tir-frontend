@@ -10,15 +10,17 @@ import FetchAddress from '../../components/reuseble/fetch-address/fetch-address'
 
 const HomePage = ({ address }) => {
   return (
-    <div>
+    <React.Fragment>
       <div className="homepage-container">
-        <h2>{address}</h2>
-        <FetchAddress />
+        <div className="fetch-address">
+          {address ? <h2>{address}</h2> : null}
+          <FetchAddress />
+        </div>
+        <div>
+          <MapComponent />
+        </div>
       </div>
-      <div>
-        <MapComponent />
-      </div>
-    </div>
+    </React.Fragment>
   );
 };
 const mapStateToProps = createStructuredSelector({

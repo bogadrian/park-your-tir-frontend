@@ -30,16 +30,18 @@ const formReducer = (state, action) => {
         },
         genValid: formIsValid
       };
+    case 'RESET_INPUT':
+      return {
+        ...state,
+        inputs: '',
+        genValid: false
+      };
     default:
       return state;
   }
 };
 
 const SignIn = ({ history, signInStart, error, clearErorr }) => {
-  const handleError = () => {
-    clearErorr();
-  };
-
   let show;
   let message;
   if (error) {
@@ -74,6 +76,7 @@ const SignIn = ({ history, signInStart, error, clearErorr }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+
     let newUser = {
       email: formState.inputs.email.value,
       password: formState.inputs.password.value
@@ -82,6 +85,10 @@ const SignIn = ({ history, signInStart, error, clearErorr }) => {
     if (newUser) {
       signInStart(newUser);
     }
+  };
+
+  const handleError = () => {
+    clearErorr();
   };
 
   return (

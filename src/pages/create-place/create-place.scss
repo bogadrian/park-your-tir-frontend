@@ -5,15 +5,39 @@
   align-items: center;
   justify-content: center;
 
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   @media screen and (max-width: 700px) {
     display: grid;
-    grid-template-columns: 70%;
+    grid-template-columns: 1;
 
     align-items: center;
     justify-content: center;
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
 
 .create-place-headline {
   text-align: center;
+}
+
+.buttonNextBig,
+.buttonPrevBig {
+  margin-top: 100px;
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
+}
+
+.buttonNextLittle,
+.buttonPrevLittle {
+  color: #357ae8;
+  @media screen and (min-width: 700px) {
+    display: none;
+  }
 }

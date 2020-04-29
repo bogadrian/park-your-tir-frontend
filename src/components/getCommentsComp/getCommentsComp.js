@@ -35,13 +35,21 @@ const CommentsComp = ({
   const placeId = useParams().placeId;
 
   let commentMeId;
-  if (me.user.currentUser) {
+  if (
+    me &&
+    me.user &&
+    me.user &&
+    me.user.currentUser &&
+    me.user.currentUser.data &&
+    me.user.currentUser.data.user &&
+    me.user.currentUser.data.user._id
+  ) {
     commentMeId = me.user.currentUser.data.user._id;
   }
 
   let com;
-  if (comments.comments) {
-    com = comments.comments.data;
+  if (comments && comments.data) {
+    com = comments.data;
   }
 
   useEffect(() => {
@@ -74,7 +82,7 @@ const CommentsComp = ({
       {com
         ? com.map(co => (
             <ul key={co._id}>
-              {co.place === props.placeId ? (
+              {co?.place === props.placeId ? (
                 <li className="li-element">
                   <h3 className="li-element">
                     <textarea
@@ -89,7 +97,7 @@ const CommentsComp = ({
                     />
                   </h3>
 
-                  <h3 style={{ color: '#1c9aae' }}>{co.author.name}</h3>
+                  <h3 style={{ color: '#1c9aae' }}>{co?.author?.name}</h3>
                   <p>Comment author Rating for this place</p>
 
                   <Rater

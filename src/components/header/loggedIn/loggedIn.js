@@ -5,7 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import './loggedIn.scss';
 import { signOutStart } from '../../../redux/userReducer/user-actions';
 import { selectUser } from '../../../redux/userReducer/user-selector';
-const urlActual = 'https://bogdan-park-your-tir.herokuapp.com';
+const urlActual = process.env.REACT_APP_URL;
 
 const LoggedIn = ({ currentUser, signOutStart }) => {
   return (

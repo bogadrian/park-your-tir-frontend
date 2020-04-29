@@ -22,10 +22,11 @@ export const makeCallToServerUpdate = async data => {
   }
 
   const axiosInstance = await axios.create({
-    baseURL: `https://bogdan-park-your-tir.herokuapp.com/api/v1/places/${data.placeId}`,
+    baseURL: `${url}/api/v1/places/${data.placeId}`,
     headers: {
       Authorization: `Bearer ${token}`,
-      'Content-Type': `application/json`
+      'Content-Type': `multipart/form-data boundary=${form._boundary}`,
+      'Access-Control-Allow-Origin': '*'
     }
   });
 
@@ -44,7 +45,7 @@ export const makeCallToServerUpdate = async data => {
 export const makeCallToSeverDeletePlace = async placeId => {
   //const env = runtimeEnv();
   const axiosInstance = await axios.create({
-    baseURL: `https://bogdan-park-your-tir.herokuapp.com/api/v1/places/${placeId}`,
+    baseURL: `${url}/api/v1/places/${placeId}`,
     headers: {
       Authorization: `Bearer ${token}`
     }

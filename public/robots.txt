@@ -1,2 +1,11 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
+
+
+cors chrome development 
+Go to Terminal
+
+windows  + R
+Execute the following command:
+
+open /Applications/Google\ Chrome.app --args --user-data-dir="/var/tmp/Chrome dev session

@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, forwardRef } from 'react';
 import { validate } from '../../../utils/validators';
 
 import './input-form.scss';
@@ -9,23 +9,24 @@ const inputReducer = (state, action) => {
       return {
         ...state,
         value: action.val,
-        isValid: validate(action.val, action.validators),
+        isValid: validate(action.val, action.validators)
       };
     case 'TOUCH':
       return {
         ...state,
-        isTouched: true,
+        isTouched: true
       };
+
     default:
       return state;
   }
 };
 
-const FormInput = ({ label, ...otherProps }) => {
+const FormInput = forwardRef(({ label, ref, ...otherProps }) => {
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: '',
     isTouched: false,
-    isValid: false,
+    isValid: false
   });
 
   const { id, onInput } = otherProps;
@@ -35,11 +36,11 @@ const FormInput = ({ label, ...otherProps }) => {
     onInput(id, value, isValid);
   }, [id, value, isValid, onInput]);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     dispatch({
       type: 'CHANGE',
       val: e.target.value,
-      validators: otherProps.validators,
+      validators: otherProps.validators
     });
   };
 
@@ -64,6 +65,7 @@ const FormInput = ({ label, ...otherProps }) => {
         onBlur={touchHandler}
         value={inputState.value}
         type={otherProps.id}
+        ref={ref}
       />
     ) : (
       <textarea
@@ -74,6 +76,7 @@ const FormInput = ({ label, ...otherProps }) => {
         value={inputState.value}
         type={otherProps.id}
         rows={otherProps.rows || 3}
+        ref={ref}
       />
     );
 
@@ -89,5 +92,5 @@ const FormInput = ({ label, ...otherProps }) => {
       {label ? <label className={classes}>{label}</label> : null}
     </div>
   );
-};
+});
 export default FormInput;

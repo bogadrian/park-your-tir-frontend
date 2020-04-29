@@ -33,6 +33,8 @@ const App = ({ currentUser }) => {
         <ErrorBoundry>
           <Suspense fallback={<Spinner />}>
             <Route exact path="/" component={HomePage} />
+
+            <Route exact path="/homepage" component={HomePage} />
             <Route exact path="/place/:placeId" component={Place} />
             <Route exact path="/create-place" component={CreatePlace} />
             <Route exact path="/resset/:token" component={FormRessetPassword} />

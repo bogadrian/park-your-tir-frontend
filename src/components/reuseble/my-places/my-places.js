@@ -14,6 +14,7 @@ import './my-places.scss';
 
 const MyPlaces = ({ startGetMe, me }) => {
   const posts = me.places;
+  console.log(posts);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(6);
@@ -31,11 +32,11 @@ const MyPlaces = ({ startGetMe, me }) => {
   return (
     <div className="myplaces-container">
       <div>
-        {posts ? (
+        {posts.length !== 0 ? (
           <MyPlacesContainer posts={currentPosts} />
         ) : (
           <h2>
-            No Place Yet!{' '}
+            No Place Yet!
             <Link to="/create-place">
               <div style={{ color: '#1C9AAE' }}>Please create one!</div>
             </Link>

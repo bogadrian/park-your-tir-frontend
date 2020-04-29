@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CustomButton from '../../reuseble/custom-button/custom-button';
-//import runtimeEnv from '@mars/heroku-js-runtime-env';
+
 import { usePosition } from 'use-position';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { startFetchPlacesWithin } from '../../../redux/placesReducer/places-actions';
@@ -17,7 +17,7 @@ import { selectPlacesSel } from '../../../redux/placesReducer/places-selector';
 import './map.scss';
 import Icon from '../../../images/icon.png';
 
-const api = 'AIzaSyAFviCKR0G5AvfAqDILrkNhK157kZ1DF84';
+const api = process.env.REACT_APP_GEOLOCATION_KEY;
 
 const MapComponent = ({
   places,
@@ -50,7 +50,6 @@ const MapComponent = ({
   }, [startFetchPlacesWithin, latitude, longitude]);
 
   useEffect(() => {
-    // const coo = coords.payload ? coords.payload : cent;
     startFetchPlacesWithin({ range: 100, centCoords });
   }, [startFetchPlacesWithin, centCoords]);
 
@@ -86,6 +85,7 @@ const MapComponent = ({
     );
   };
 
+  console.log();
   return (
     <div className="map-container">
       {places ? (

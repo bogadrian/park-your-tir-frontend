@@ -1,4 +1,4 @@
-backend: https://bogdan-park-your-tir.herokuapp.com
+backend: \${url}
 
 frontend: https://park-your-tir.herokuapp.com
 

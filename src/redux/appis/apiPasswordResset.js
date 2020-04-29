@@ -10,7 +10,7 @@ export const makeCallToServerPasswordResset = async passwords => {
 
   const response = await axios({
     method: 'PATCH',
-    url: `https://bogdan-park-your-tir.herokuapp.com/api/v1/users/resetPassword/${token}`,
+    url: `${url}/api/v1/users/resetPassword/${token}`,
     data
   });
 

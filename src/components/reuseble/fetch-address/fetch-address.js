@@ -46,23 +46,21 @@ const FetchAddress = ({ startFetchCoords, startSetAddressToDisplay }) => {
 
   return (
     <div className="address-container">
-      <div className="gro">
-        <form>
-          <FormInput
-            id="input"
-            element="input"
-            label="City Name, Streat, Number"
-            texterror="Search Parking Arround An Address"
-            validators={[VALIDATOR_MINLENGTH(2)]}
-            onInput={handleInput}
-            required={true}
-          />
+      <form>
+        <FormInput
+          id="input"
+          element="input"
+          label="City Name, Streat, Number"
+          texterror="Search Parking Arround An Address"
+          validators={[VALIDATOR_MINLENGTH(2)]}
+          onInput={handleInput}
+          required={true}
+        />
 
-          <CustomButton type="submit" handleClick={fetchAddress}>
-            Find Address
-          </CustomButton>
-        </form>
-      </div>
+        <CustomButton type="submit" handleClick={fetchAddress}>
+          Find Address
+        </CustomButton>
+      </form>
     </div>
   );
 };

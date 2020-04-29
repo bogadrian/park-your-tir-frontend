@@ -8,7 +8,7 @@ export const makeCallToServerDeleteComment = async data => {
   const { commentId, placeId } = data;
 
   const axiosInstance = await axios.create({
-    baseURL: `https://bogdan-park-your-tir.herokuapp.com/api/v1/places/${placeId}/comments/${commentId}`,
+    baseURL: `${url}/api/v1/places/${placeId}/comments/${commentId}`,
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -30,7 +30,7 @@ export const makeCallToServerUpdateComment = async dataPlain => {
   };
 
   const axiosInstance = await axios.create({
-    baseURL: `https://bogdan-park-your-tir.herokuapp.com/api/v1/places/${placeId}/comments/${commentId}`,
+    baseURL: `${url}/api/v1/places/${placeId}/comments/${commentId}`,
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': `application/json`,

@@ -1,6 +1,12 @@
 .homepage-container {
   display: grid;
-  grid-template-columns: auto;
-  justify-content: center;
+  grid-template-columns: 1;
+  // justify-content: center;
   align-items: center;
+}
+
+.fetch-address {
+  margin: auto;
+  margin-bottom: 20px;
+  text-align: center;
 }

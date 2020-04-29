@@ -33,7 +33,7 @@ const PasswordResset = ({ startResset, ...props }) => {
     );
   };
   return (
-    <div className="resset-password-container">
+    <div className="resset-container">
       <h1>Password resset</h1>{' '}
       <Modal
         show={show}

@@ -21,7 +21,14 @@
   margin-bottom: -2px;
 }
 .name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: -20px;
+
+  @media screen and (max-width: 700px) {
+    margin-top: -10px;
+  }
 }
 
 .photoUser {
