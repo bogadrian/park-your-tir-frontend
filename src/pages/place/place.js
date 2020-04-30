@@ -26,11 +26,10 @@ const Place = ({ place, currentUser, history }) => {
     placeName = place.name;
   }
 
-  let image1, image2, image3;
+  let image1, image2;
   if (place && place.images) {
     image1 = place.images[0];
     image2 = place.images[1];
-    image3 = place.images[2];
   }
 
   let description;
@@ -91,32 +90,27 @@ const Place = ({ place, currentUser, history }) => {
 
           <div className="images">
             <div className=" place-image-option">
-              <Zoom>
-                <img
-                  className="img-place"
-                  src={`${urlImage}/api/v1/img/places/${image1}`}
-                  alt="image1"
-                  width="200"
-                />
-              </Zoom>
+              {image1 && (
+                <Zoom>
+                  <img
+                    className="img-place"
+                    src={`${urlImage}/api/v1/img/places/${image1}`}
+                    alt="image1"
+                    width="200"
+                  />
+                </Zoom>
+              )}
 
-              <Zoom>
-                <img
-                  className="img-place"
-                  src={`${urlImage}/api/v1/img/places/${image2}`}
-                  alt="image2"
-                  width="200"
-                />
-              </Zoom>
-
-              <Zoom>
-                <img
-                  className="img-place"
-                  src={`${urlImage}/api/v1/img/places/${image3}`}
-                  alt="image3"
-                  width="200"
-                />
-              </Zoom>
+              {image2 && (
+                <Zoom>
+                  <img
+                    className="img-place"
+                    src={`${urlImage}/api/v1/img/places/${image2}`}
+                    alt="image2"
+                    width="200"
+                  />
+                </Zoom>
+              )}
             </div>
           </div>
           <div className="under-map">
