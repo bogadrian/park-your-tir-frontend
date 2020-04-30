@@ -63,7 +63,16 @@ const App = ({ currentUser }) => {
         </ErrorBoundry>
         <Route path="/*" component={NotFound} />
       </Switch>
-      <Footer />
+
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        <Footer />
+      </div>
     </Fragment>
   );
 };

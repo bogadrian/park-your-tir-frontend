@@ -16,7 +16,7 @@ const HomePage = ({ address }) => {
           {address ? <h2>{address}</h2> : null}
           <FetchAddress />
         </div>
-        <div>
+        <div style={{ overflow: 'hidden' }}>
           <MapComponent />
         </div>
       </div>

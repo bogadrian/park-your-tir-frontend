@@ -87,10 +87,17 @@ const MapComponent = ({
 
   console.log();
   return (
-    <div className="map-container">
+    <div>
       {places ? (
         <Map
-          className="map"
+          style={{
+            width: '80%',
+            margin: 'auto',
+            height: '80%',
+            overflow: 'hidden',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
           google={props.google}
           zoom={10}
           initialCenter={coords.payload ? coords.payload : centPosition}
@@ -129,6 +136,7 @@ const MapComponent = ({
           </InfoWindow>
         </Map>
       ) : null}
+      <div style={{ marginTop: '400px', width: '80%', margin: 'auto' }}></div>
     </div>
   );
 };

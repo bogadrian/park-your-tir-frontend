@@ -10,7 +10,7 @@ import {
 } from '../../../redux/coordsReducer/coords-action';
 
 const FetchCoords = ({ startFetchCoords, startSetAddressToDisplay }) => {
-  const { latitude, longitude } = usePosition();
+  let { latitude, longitude } = usePosition();
   const [coordinates, setCoords] = useState(null);
 
   let latlng = `${latitude},${longitude}`;
