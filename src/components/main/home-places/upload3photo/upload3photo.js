@@ -20,7 +20,6 @@ const Upload3Photo = ({ startPhoto, ...props }) => {
     <div className="upload3">
       <ImageUpload onInput={fileHandler} />
       <ImageUpload onInput={fileHandler} />
-      <ImageUpload onInput={fileHandler} />
     </div>
   );
 };

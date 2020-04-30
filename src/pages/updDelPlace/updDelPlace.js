@@ -90,9 +90,6 @@ const UpdDelPlace = ({ place, placeData, startFetch, history, startPatch }) => {
         <div>
           <ImageUpload onInput={fileHandler} />
         </div>
-        <div>
-          <ImageUpload onInput={fileHandler} />
-        </div>
       </div>
       <div className="button-update">
         <CustomButton type="click" handleClick={handleClick}>

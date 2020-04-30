@@ -33,15 +33,9 @@ export const makeCallToServerWithPlace = async place => {
         form.append('images', imag[1][0]);
       }
 
-      if (imag[2] && imag[3] === undefined) {
-        form.append('images', imag[2][0]);
-        form.append('images', imag[2][1]);
-      }
-
       if (imag[3]) {
         form.append('images', imag[3][0]);
         form.append('images', imag[3][1]);
-        form.append('images', imag[3][2]);
       }
     } else {
       form.append('images', truck);
