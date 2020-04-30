@@ -89,7 +89,7 @@ const Place = ({ place, currentUser, history }) => {
           </div>
 
           <div className="images">
-            <div className=" place-image-option">
+            <div className="place-image-option">
               {image1 && (
                 <Zoom>
                   <img

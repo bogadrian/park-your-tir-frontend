@@ -21,34 +21,26 @@
   margin: 0 auto;
   text-align: center;
 
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
 .place-image-option {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: 20px;
-  @media screen and (max-width: 600px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-  }
 }
 
 .img-place {
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 700px) {
     width: 150px;
-    height: 150px;
+    height: 100px;
   }
 }
 
@@ -64,6 +56,6 @@
   align-items: center;
   justify-content: center;
   @media screen and (max-width: 600px) {
-    margin-left: 80px;
+    margin-left: 60px;
   }
 }
