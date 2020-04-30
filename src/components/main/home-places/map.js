@@ -91,9 +91,10 @@ const MapComponent = ({
       {places ? (
         <Map
           style={{
-            width: '80%',
-            margin: 'auto',
-            height: '80%',
+            width: '96%',
+
+            overflowX: 'hidden',
+            height: '100%',
             overflow: 'hidden',
             alignItems: 'center',
             justifyContent: 'center'
