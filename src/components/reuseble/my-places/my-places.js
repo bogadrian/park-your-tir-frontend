@@ -14,7 +14,6 @@ import './my-places.scss';
 
 const MyPlaces = ({ startGetMe, me }) => {
   const posts = me.places;
-  console.log(posts);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(6);

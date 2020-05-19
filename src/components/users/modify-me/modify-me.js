@@ -18,6 +18,7 @@ import {
 } from '../../../redux/userReducer/user-actions';
 import Modal from '../../reuseble/modal/modal';
 import ImageUpload from '../../reuseble/ImageUpload/image-upload';
+import SwitchComponent from '../../reuseble/switch/switch';
 
 import './modify-me.scss';
 const urlActual = process.env.REACT_APP_URL;
@@ -144,6 +145,8 @@ const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
             onInput={handleInput}
             required
           />
+          <p>Allow Messages</p>
+          <SwitchComponent />
 
           <CustomButton type="submit" disabled={formState.genValid}>
             Update Profile

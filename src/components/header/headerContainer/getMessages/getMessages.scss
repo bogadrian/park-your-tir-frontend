@@ -1,0 +1,36 @@
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 70px;
+  width: 70px;
+  border-radius: 50px;
+  border: 3px solid;
+  border-color: red;
+  @media screen and (max-width: 700px) {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+.messages {
+  max-width: 100%;
+}
+
+.messages-num {
+  align-self: center;
+  color: red;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.messages-text {
+  align-self: center;
+  color: red;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+}

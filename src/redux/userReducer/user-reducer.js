@@ -10,6 +10,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case userActionTypes.SET_CURRENT_USER_SUCCESS_SIGNUP:
     case userActionTypes.SET_CURRENT_USER_SUCCESS_LOGIN:
     case userActionTypes.SET_CURRENT_USER_SUCCESS_UPLOAD:
+    case userActionTypes.SET_CHANGE_ENBALED_SUCCESS:
       return {
         ...state,
         currentUser: action.payload,
@@ -28,6 +29,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case userActionTypes.SET_CURRENT_USER_FAILURE_LOGIN:
     case userActionTypes.SET_CURRENT_USER_FAILURE_SIGNUP:
     case userActionTypes.SET_CURRENT_USER_FAILURE_UPLOAD:
+    case userActionTypes.SET_CHANGE_NABLED_FAILURE:
       return {
         ...state,
         currentUser: null,

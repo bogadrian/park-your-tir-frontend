@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, forwardRef } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { validate } from '../../../utils/validators';
 
 import './input-form.scss';
@@ -22,7 +22,7 @@ const inputReducer = (state, action) => {
   }
 };
 
-const FormInput = forwardRef(({ label, ref, ...otherProps }) => {
+const FormInput = ({ label, ref, ...otherProps }) => {
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: '',
     isTouched: false,
@@ -92,5 +92,5 @@ const FormInput = forwardRef(({ label, ref, ...otherProps }) => {
       {label ? <label className={classes}>{label}</label> : null}
     </div>
   );
-});
+};
 export default FormInput;

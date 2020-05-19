@@ -32,6 +32,7 @@ export const makeCallToServerSignUp = async userData => {
   };
 
   const data = userData.payload;
+  console.log(data);
 
   const user = await axios.post(urlSign, data, config);
 
@@ -65,6 +66,29 @@ export const makeCallToServerUplod = async ({ photo, email, name }) => {
   const userUpdated = await axiosInstance({
     method: 'PATCH',
     data: form
+  });
+
+  return userUpdated.data;
+};
+
+export const callChangeEnabled = async enabled => {
+  const token = localStorage.getItem('jwt');
+
+  const urlUpdate = `${url}/api/v1/users/updateEnabled`;
+
+  const enab = JSON.stringify({ enabled });
+  const axiosInstance = await axios.create({
+    baseURL: urlUpdate,
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': `application/json`,
+      'Access-Control-Allow-Origin': '*'
+    }
+  });
+
+  const userUpdated = await axiosInstance({
+    method: 'PATCH',
+    data: enab
   });
 
   return userUpdated.data;

@@ -9,3 +9,5 @@ windows  + R
 Execute the following command:
 
 open /Applications/Google\ Chrome.app --args --user-data-dir="/var/tmp/Chrome dev session
+
+See if you implemnet calculate distance till the place - rouet already exists in Expres 

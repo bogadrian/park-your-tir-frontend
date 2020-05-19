@@ -10,13 +10,16 @@ import {
   signUpSuccess,
   setUserSuccessUpload,
   setUserFailureUpload,
-  clearingErrors
+  clearingErrors,
+  setChangeEnabledSucces,
+  setChangeEnabledFailure
 } from './user-actions';
 
 import {
   makeCallToServerLogin,
   makeCallToServerSignUp,
-  makeCallToServerUplod
+  makeCallToServerUplod,
+  callChangeEnabled
 } from '../appis/apiUser';
 
 export function* signIn(userData) {
@@ -100,6 +103,23 @@ export function* onUploadStart() {
   yield takeLatest(userActionTypes.SET_CURRENT_USER_UPLOAD, onUpload);
 }
 
+//// Change Enabled
+export function* onEnabled(data) {
+  try {
+    const result = yield call(callChangeEnabled, data.payload);
+
+    if (result) {
+      yield put(setChangeEnabledSucces(result));
+    }
+  } catch (err) {
+    yield put(setChangeEnabledFailure(err));
+  }
+}
+
+export function* onChangeEnabled() {
+  yield takeLatest(userActionTypes.SET_CHANGE_ENABLED_START, onEnabled);
+}
+
 // //////////////////////////////////
 // //all Saga
 
@@ -109,6 +129,7 @@ export function* userSaga() {
     call(onSignOutStart),
     call(onSignUpStart),
     call(onClearErrors),
-    call(onUploadStart)
+    call(onUploadStart),
+    call(onChangeEnabled)
   ]);
 }

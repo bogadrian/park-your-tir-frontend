@@ -6,6 +6,7 @@ import { createStructuredSelector } from 'reselect';
 import ImageLogo from '../logo/logo';
 import LoggedIn from '../loggedIn/loggedIn';
 import LoggedOut from '../loggedOut/loggedOut';
+import GetMessages from './getMessages/getMessages';
 
 import { selectUser } from '../../../redux/userReducer/user-selector';
 
@@ -24,6 +25,7 @@ const Header = ({ currentUser }) => {
       </div>
 
       <div className="options">
+        <GetMessages />
         {currentUser ? (
           <Link to="/create-place">
             <div className="create-place-button">Create Place</div>
