@@ -26,14 +26,6 @@ const GetMessages = ({ currentUser }) => {
     setMessagesFilt([...messagesFiltred]);
   }, [messages]);
 
-  let reciverEmail;
-
-  if (messages && messages.length > 0) {
-    messages.forEach(el => {
-      reciverEmail = el.reciverEmail;
-    });
-  }
-
   let myEmail, enabled;
   if (
     currentUser &&
@@ -52,14 +44,7 @@ const GetMessages = ({ currentUser }) => {
     enabled = currentUser.data.user.enabled;
   }
 
-  let isMe = false;
-  if (myEmail === reciverEmail) {
-    isMe = true;
-  }
-
   let read = messagesFilt.filter(el => el.read === false);
-
-  console.log(read.length);
 
   useEffect(() => {
     let clean = true;
@@ -76,7 +61,7 @@ const GetMessages = ({ currentUser }) => {
     return () => {
       clean = false;
     };
-  }, []);
+  }, [myEmail]);
 
   return (
     <div>
@@ -89,7 +74,7 @@ const GetMessages = ({ currentUser }) => {
           >
             <div className="messages-container">
               <div className="messages">
-                <span className="messages-num">{read.length}</span>{' '}
+                <span className="messages-num">{read.length}</span>
                 <span className="messages-text">M</span>
               </div>
             </div>
