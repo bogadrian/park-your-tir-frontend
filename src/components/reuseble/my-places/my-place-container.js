@@ -2,8 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import './my-places-container.scss';
-const urlActual = process.env.REACT_APP_URLC;
-
+const urlActual = 'https://bogdanpyt.xyz';
 const MyPlacesContainer = ({ posts }) => {
   let history = useHistory();
 

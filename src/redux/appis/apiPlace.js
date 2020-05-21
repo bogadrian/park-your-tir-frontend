@@ -1,6 +1,6 @@
 import truck from '../../images/truck.png';
 import axios from 'axios';
-const url = process.env.REACT_APP_URLC;
+const url = 'https://bogdanpyt.xyz';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 const FormData = require('form-data');
 

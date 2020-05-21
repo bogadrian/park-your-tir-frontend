@@ -1,7 +1,7 @@
 import axios from 'axios';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 const token = localStorage.getItem('jwt');
-const url = process.env.REACT_APP_URLC;
+const url = 'https://bogdanpyt.xyz';
 
 export const makeCallToServerUpdate = async data => {
   //const env = runtimeEnv();

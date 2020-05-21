@@ -18,7 +18,7 @@ import { selectUser } from '../../redux/userReducer/user-selector';
 import Spinner from '../../components/spinner/spinner';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 import './place.scss';
-const urlImage = process.env.REACT_APP_URLC;
+const urlImage = 'https://bogdanpyt.xyz';
 
 const Place = ({ place, currentUser, history }) => {
   let placeName;

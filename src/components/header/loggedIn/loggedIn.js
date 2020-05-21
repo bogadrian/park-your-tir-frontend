@@ -5,7 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import './loggedIn.scss';
 import { signOutStart } from '../../../redux/userReducer/user-actions';
 import { selectUser } from '../../../redux/userReducer/user-selector';
-const urlActual = process.env.REACT_APP_URLC;
+const urlActual = 'https://bogdanpyt.xyz';
 
 const LoggedIn = ({ currentUser, signOutStart }) => {
   return (
