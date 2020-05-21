@@ -33,15 +33,15 @@ const ImageUpload = props => {
     if (fileInput) {
       Resizer.imageFileResizer(
         photo,
-        200,
+        300,
         200,
         'JPEG',
         100,
         0,
         uri => {
-          props.onInput(photo);
+          props.onInput(uri);
         },
-        'base64'
+        'blob'
       );
     }
   };
