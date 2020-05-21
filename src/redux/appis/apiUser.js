@@ -2,6 +2,7 @@ import axios from 'axios';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 const FormData = require('form-data');
 const url = process.env.REACT_APP_URL;
+console.log(url);
 
 export const makeCallToServerLogin = async userData => {
   //const env = runtimeEnv();
@@ -32,7 +33,6 @@ export const makeCallToServerSignUp = async userData => {
   };
 
   const data = userData.payload;
-  console.log(data);
 
   const user = await axios.post(urlSign, data, config);
 
