@@ -49,7 +49,8 @@ export const makeCallToSeverDeletePlace = async placeId => {
   const axiosInstance = await axios.create({
     baseURL: `${url}/api/v1/places/${placeId}`,
     headers: {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
+      'Access-Control-Allow-Origin': '*'
     }
   });
 
