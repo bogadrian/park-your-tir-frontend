@@ -44,7 +44,7 @@ const GetMessages = ({ currentUser }) => {
     enabled = currentUser.data.user.enabled;
   }
 
-  let read = messagesFilt.filter(el => el.read === false);
+  let read = messagesFilt.filter((el, i) => el.read === false);
 
   useEffect(() => {
     let clean = true;
@@ -53,7 +53,7 @@ const GetMessages = ({ currentUser }) => {
         const mes = await axios.get(
           `http://localhost:5002/messages/${myEmail}`
         );
-        console.log(mes.data.data);
+
         setMessages([...mes.data.data]);
       };
       fetchMessages();
