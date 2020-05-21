@@ -103,7 +103,7 @@ const AuthorName = ({ place, currentUser }) => {
 
             <img
               className="place-author-image"
-              src={`https://bogdanpyt.xyz/api/v1/img/users/${place.placeAuthor.photo}`}
+              src={`https://bogdanpyt.xyz/api/v1/img/users${place.placeAuthor.photo}`}
               alt={place.placeAuthor.name}
             />
           </div>

@@ -7,6 +7,7 @@ import { signOutStart } from '../../../redux/userReducer/user-actions';
 import { selectUser } from '../../../redux/userReducer/user-selector';
 
 const LoggedIn = ({ currentUser, signOutStart }) => {
+  console.log(currentUser);
   return (
     <div>
       <div className="loggedIn-container">
