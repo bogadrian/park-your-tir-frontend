@@ -31,7 +31,7 @@
     "use-position": "0.0.6"
   },
   "scripts": {
-    "deploy": "npm run build && gh-pages -d build",
+    "deploy": "npm run build",
     "start": "set PORT=5001 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
