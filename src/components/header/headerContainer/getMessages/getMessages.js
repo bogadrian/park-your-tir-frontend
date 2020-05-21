@@ -46,28 +46,28 @@ const GetMessages = ({ currentUser }) => {
 
   let read = messagesFilt.filter((el, i) => el.read === false);
 
-  // useEffect(() => {
-  //   let clean = true;
-  //   if (clean) {
-  //     let fetchMessages = async () => {
-  //       const mes = await axios.get(
-  //         `http://localhost:5002/messages/${myEmail}`
-  //       );
+  useEffect(() => {
+    let clean = true;
+    if (clean) {
+      let fetchMessages = async () => {
+        const mes = await axios.get(
+          `http://localhost:5002/messages/${myEmail}`
+        );
 
-  //       setMessages([...mes.data.data]);
-  //     };
-  //     fetchMessages();
-  //   }
-  //   return () => {
-  //     clean = false;
-  //   };
-  // }, [myEmail]);
+        setMessages([...mes.data.data]);
+      };
+      fetchMessages();
+    }
+    return () => {
+      clean = false;
+    };
+  }, [myEmail]);
 
   return (
     <div>
       {enabled && (
         <div>
-          {/*<a
+          <a
             href={`http://localhost:3000/?token=${localStorage.getItem(
               'jwt'
             )}&enabled=true&myEmail=${myEmail}`}
@@ -78,7 +78,7 @@ const GetMessages = ({ currentUser }) => {
                 <span className="messages-text">M</span>
               </div>
             </div>
-          </a>*/}
+          </a>
         </div>
       )}
     </div>
