@@ -51,7 +51,7 @@ const GetMessages = ({ currentUser }) => {
     if (clean) {
       let fetchMessages = async () => {
         const mes = await axios.get(
-          `http://localhost:5002/messages/${myEmail}`
+          `https://messanger-back.herokuapp.com/messages/${myEmail}`
         );
 
         setMessages([...mes.data.data]);
