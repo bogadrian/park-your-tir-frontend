@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Resizer from 'react-image-file-resizer';
+
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 const token = localStorage.getItem('jwt');
 const url = process.env.REACT_APP_URLC;
