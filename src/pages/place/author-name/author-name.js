@@ -101,12 +101,15 @@ const AuthorName = ({ place, currentUser }) => {
                 )}
               </span>
             )}
-
-            <img
-              className="place-author-image"
-              src={`${url}/api/v1/img/users/${currentUser.data.user.photo}`}
-              alt={place.placeAuthor.name}
-            />
+            <div>
+              <Link to="/my-profile">
+                <img
+                  className="place-author-image"
+                  src={`${url}/api/v1/img/users/${currentUser.data.user.photo}`}
+                  alt={place.placeAuthor.name}
+                />
+              </Link>
+            </div>
           </div>
         </div>
       ) : null}
