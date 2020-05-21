@@ -104,7 +104,7 @@ const AuthorName = ({ place, currentUser }) => {
 
             <img
               className="place-author-image"
-              src={`${url}/api/v1/img/users${place.placeAuthor.photo}`}
+              src={`${url}/api/v1/img/users/${currentUser.data.user.photo}`}
               alt={place.placeAuthor.name}
             />
           </div>

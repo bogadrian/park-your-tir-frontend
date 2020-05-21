@@ -20,18 +20,18 @@ const SwitchComponent = ({ changeEnabled, currentUser }) => {
   }, [currentUser.data.user.enabled, currentUser.data.user.email]);
 
   const handleChange = checked => {
-    // setChecked(checked);
-    // if (checked) {
-    //   const jwt = localStorage.getItem('jwt');
-    //   // eslint-disable-next-line no-restricted-globals
-    //   window.open(
-    //     `http://localhost:3000/?token=${jwt}&enabled=true%myEmail=${myEmail}`
-    //   );
-    // } else {
-    //   // eslint-disable-next-line no-restricted-globals
-    //   window.open('http://localhost:3000/?token=null&enabled=false');
-    // }
-    // changeEnabled(checked);
+    setChecked(checked);
+    if (checked) {
+      const jwt = localStorage.getItem('jwt');
+      // eslint-disable-next-line no-restricted-globals
+      window.open(
+        `http://localhost:3000/?token=${jwt}&enabled=true%myEmail=${myEmail}`
+      );
+    } else {
+      // eslint-disable-next-line no-restricted-globals
+      window.open('http://localhost:3000/?token=null&enabled=false');
+    }
+    changeEnabled(checked);
   };
 
   return (
