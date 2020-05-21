@@ -74,15 +74,16 @@ const AuthorName = ({ place, currentUser }) => {
               <span>
                 {isMe && <h2 style={{ color: 'green' }}>Messages On</h2>}
                 {!isMe && <h2>Send Message</h2>}
-                {!isMe && (
-                  <a
+                {!isMe &&
+                  {
+                    /* <a
                     href={`http://localhost:3000/chat?name=${myName}&reciver=${reciver}&myEmail=${myEmail}&reciverEmail=${reciverEmail}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <img src={MessageOn} alt="message on" />
-                  </a>
-                )}
+                  </a>*/
+                  }}
               </span>
             ) : (
               <span>
