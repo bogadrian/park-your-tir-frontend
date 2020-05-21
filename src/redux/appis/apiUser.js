@@ -1,7 +1,7 @@
 import axios from 'axios';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 const FormData = require('form-data');
-const url = process.env.REACT_APP_URL;
+const url = process.env.REACT_APP_URLC;
 console.log(url);
 
 export const makeCallToServerLogin = async userData => {

@@ -21,7 +21,7 @@ import ImageUpload from '../../reuseble/ImageUpload/image-upload';
 import SwitchComponent from '../../reuseble/switch/switch';
 
 import './modify-me.scss';
-const urlActual = process.env.REACT_APP_URL;
+const urlActual = process.env.REACT_APP_URLC;
 
 const formReducer = (state, action) => {
   switch (action.type) {

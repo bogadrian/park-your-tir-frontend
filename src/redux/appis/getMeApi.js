@@ -1,6 +1,6 @@
 import axios from 'axios';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
-const url = process.env.REACT_APP_URL;
+const url = process.env.REACT_APP_URLC;
 
 export const makeCallToServerGetMe = async () => {
   //const env = runtimeEnv();

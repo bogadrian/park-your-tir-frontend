@@ -9,7 +9,7 @@ import './author-name.scss';
 
 import MessageOn from '../../../images/message-on.svg';
 import MessageOff from '../../../images/message-off.svg';
-const urlActual = process.env.REACT_APP_URL;
+const urlActual = process.env.REACT_APP_URLC;
 
 const AuthorName = ({ place, currentUser }) => {
   const [checked, setChecked] = useState(true);

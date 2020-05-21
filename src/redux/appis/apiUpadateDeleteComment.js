@@ -1,7 +1,7 @@
 import axios from 'axios';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 const token = localStorage.getItem('jwt');
-const url = process.env.REACT_APP_URL;
+const url = process.env.REACT_APP_URLC;
 
 export const makeCallToServerDeleteComment = async data => {
   //const env = runtimeEnv();
