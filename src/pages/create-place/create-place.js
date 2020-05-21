@@ -37,7 +37,7 @@ const CreatePlace = props => {
                   <CustomButton>{'<PREV'}</CustomButton>
                 </div>
                 <div className="buttonPrevLittle">
-                  <h1 style={{ 'font-size': 30 }}>{'<<'}</h1>
+                  <h1 style={{ fontSize: 30 }}>{'<<'}</h1>
                 </div>
               </div>
             }

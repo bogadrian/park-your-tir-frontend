@@ -48,6 +48,7 @@ const formReducer = (state, action) => {
 };
 
 const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
+  const url = process.env.REACT_APP_URLC;
   const [photo, setPhoto] = useState(null);
 
   const handleError = () => {
@@ -117,7 +118,7 @@ const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
         <form onSubmit={handleSubmit}>
           <img
             className="photo-profile-main"
-            src={`https://bogdanpyt.xyz/api/v1/img/users/${currentUser.data.user.photo}`}
+            src={`${url}/api/v1/img/users/${currentUser.data.user.photo}`}
             alt={currentUser.data.user.name}
           />
           <ImageUpload onInput={fileHandler} />

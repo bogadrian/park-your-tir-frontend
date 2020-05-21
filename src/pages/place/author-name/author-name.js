@@ -11,6 +11,7 @@ import MessageOn from '../../../images/message-on.svg';
 import MessageOff from '../../../images/message-off.svg';
 
 const AuthorName = ({ place, currentUser }) => {
+  const url = process.env.REACT_APP_URLC;
   const [checked, setChecked] = useState(true);
 
   let reciverEmail, reciver;
@@ -103,7 +104,7 @@ const AuthorName = ({ place, currentUser }) => {
 
             <img
               className="place-author-image"
-              src={`https://bogdanpyt.xyz/api/v1/img/users${place.placeAuthor.photo}`}
+              src={`${url}/api/v1/img/users${place.placeAuthor.photo}`}
               alt={place.placeAuthor.name}
             />
           </div>

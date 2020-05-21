@@ -1,5 +1,6 @@
 import axios from 'axios';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
+const url = process.env.REACT_APP_URLC;
 
 export const makeCallToServerPasswordResset = async passwords => {
   // const env = runtimeEnv();
@@ -9,7 +10,7 @@ export const makeCallToServerPasswordResset = async passwords => {
 
   const response = await axios({
     method: 'PATCH',
-    url: `https://bogdanpyt.xyz/api/v1/users/resetPassword/${token}`,
+    url: `${url}/api/v1/users/resetPassword/${token}`,
     data
   });
 

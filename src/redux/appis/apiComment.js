@@ -1,6 +1,7 @@
 import axios from 'axios';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 const token = localStorage.getItem('jwt');
+const url = process.env.REACT_APP_URLC;
 
 export const makeCallToServerWithComment = async data => {
   //   const env = runtimeEnv();
@@ -11,7 +12,7 @@ export const makeCallToServerWithComment = async data => {
   const dataComment = JSON.stringify({ comment, rating });
 
   const axiosInstance = await axios.create({
-    baseURL: `https://bogdanpyt.xyz/api/v1/places/${id}/comments`,
+    baseURL: `${url}/api/v1/places/${id}/comments`,
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': `application/json`

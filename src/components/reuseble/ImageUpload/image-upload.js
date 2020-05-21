@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 
 import './image-upload.scss';
 import CustomButton from '../custom-button/custom-button';
+import Resizer from 'react-image-file-resizer';
 
 const ImageUpload = props => {
   const [file, setFile] = useState(null);
@@ -24,6 +25,27 @@ const ImageUpload = props => {
     filePickerRef.current.click();
   };
 
+  const fileChangeHandler = photo => {
+    var fileInput = false;
+    if (photo) {
+      fileInput = true;
+    }
+    if (fileInput) {
+      Resizer.imageFileResizer(
+        photo,
+        300,
+        300,
+        'JPEG',
+        100,
+        0,
+        uri => {
+          props.onInput(photo);
+        },
+        'base64'
+      );
+    }
+  };
+
   const fileHandler = e => {
     const photo = e.target.files[0];
     if (!photo && photo === 0) {
@@ -32,7 +54,7 @@ const ImageUpload = props => {
       setIsValid(false);
     }
     setFile(photo);
-    props.onInput(photo);
+    fileChangeHandler(photo);
   };
 
   return (

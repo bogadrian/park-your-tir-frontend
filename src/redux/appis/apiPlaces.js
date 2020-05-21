@@ -1,5 +1,6 @@
 import axios from 'axios';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
+const url = process.env.REACT_APP_URLC;
 
 export const makeCallToServerFetchPlaces = async payload => {
   let lat, lng;
@@ -16,7 +17,7 @@ export const makeCallToServerFetchPlaces = async payload => {
   const { range } = payload;
 
   const response = await axios.get(
-    `https://bogdanpyt.xyz/api/v1/places/places-within/${range}/center/${lat},${lng}`
+    `${url}/api/v1/places/places-within/${range}/center/${lat},${lng}`
   );
 
   return response;

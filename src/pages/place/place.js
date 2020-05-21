@@ -20,6 +20,7 @@ import Spinner from '../../components/spinner/spinner';
 import './place.scss';
 
 const Place = ({ place, currentUser, history }) => {
+  const url = process.env.REACT_APP_URLC;
   let placeName;
   if (place && place.name) {
     placeName = place.name;
@@ -93,7 +94,7 @@ const Place = ({ place, currentUser, history }) => {
                 <Zoom>
                   <img
                     className="img-place"
-                    src={`https://bogdanpyt.xyz/api/v1/img/places/${image1}`}
+                    src={`${url}/api/v1/img/places/${image1}`}
                     alt="image1"
                     width="200"
                   />
@@ -104,7 +105,7 @@ const Place = ({ place, currentUser, history }) => {
                 <Zoom>
                   <img
                     className="img-place"
-                    src={`https://bogdanpyt.xyz/api/v1/img/places/${image2}`}
+                    src={`${url}/api/v1/img/places/${image2}`}
                     alt="image2"
                     width="200"
                   />

@@ -1,8 +1,11 @@
 import axios from 'axios';
+import Resizer from 'react-image-file-resizer';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 const token = localStorage.getItem('jwt');
+const url = process.env.REACT_APP_URLC;
 
 export const makeCallToServerUpdate = async data => {
+  console.log('sss', data);
   //const env = runtimeEnv();
   const { name, desc, fileImg } = data;
 
@@ -21,7 +24,7 @@ export const makeCallToServerUpdate = async data => {
   }
 
   const axiosInstance = await axios.create({
-    baseURL: `https://bogdanpyt.xyz/api/v1/places/${data.placeId}`,
+    baseURL: `${url}/api/v1/places/${data.placeId}`,
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': `multipart/form-data boundary=${form._boundary}`,
@@ -44,7 +47,7 @@ export const makeCallToServerUpdate = async data => {
 export const makeCallToSeverDeletePlace = async placeId => {
   //const env = runtimeEnv();
   const axiosInstance = await axios.create({
-    baseURL: `https://bogdanpyt.xyz/api/v1/places/${placeId}`,
+    baseURL: `${url}/api/v1/places/${placeId}`,
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -53,6 +56,6 @@ export const makeCallToSeverDeletePlace = async placeId => {
   const placeDeleted = await axiosInstance({
     method: 'DELETE'
   });
-
+  console.log(placeDeleted);
   return placeDeleted;
 };

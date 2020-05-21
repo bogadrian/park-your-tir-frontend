@@ -1,10 +1,11 @@
 import axios from 'axios';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 const FormData = require('form-data');
+const url = process.env.REACT_APP_URLC;
 
 export const makeCallToServerLogin = async userData => {
   //const env = runtimeEnv();
-  const urlLog = `https://bogdanpyt.xyz/api/v1/users/login`;
+  const urlLog = `${url}/api/v1/users/login`;
 
   const data = userData.payload;
 
@@ -25,7 +26,7 @@ export const makeCallToServerLogin = async userData => {
 
 export const makeCallToServerSignUp = async userData => {
   //const env = runtimeEnv();
-  const urlSign = `https://bogdanpyt.xyz/api/v1/users/signup`;
+  const urlSign = `${url}/api/v1/users/signup`;
   const config = {
     headers: { 'Content-Type': 'application/json' }
   };
@@ -45,7 +46,7 @@ export const makeCallToServerUplod = async ({ photo, email, name }) => {
   //const env = runtimeEnv();
   const token = localStorage.getItem('jwt');
 
-  const urlUpdate = `https://bogdanpyt.xyz/api/v1/users/updateMe`;
+  const urlUpdate = `${url}/api/v1/users/updateMe`;
 
   const form = new FormData();
   form.append('photo', photo);
@@ -77,7 +78,7 @@ export const makeCallToServerUplod = async ({ photo, email, name }) => {
 export const callChangeEnabled = async enabled => {
   const token = localStorage.getItem('jwt');
 
-  const urlUpdate = `https://bogdanpyt.xyz/api/v1/users/updateEnabled`;
+  const urlUpdate = `${url}/api/v1/users/updateEnabled`;
 
   const enab = JSON.stringify({ enabled });
   const axiosInstance = await axios.create({

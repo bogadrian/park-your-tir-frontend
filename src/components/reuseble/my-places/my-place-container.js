@@ -5,6 +5,7 @@ import './my-places-container.scss';
 
 const MyPlacesContainer = ({ posts }) => {
   let history = useHistory();
+  const url = process.env.REACT_APP_URLC;
 
   const handleClick = ({ post }) => {
     history.push(`/place/${post.id}`);
@@ -21,7 +22,7 @@ const MyPlacesContainer = ({ posts }) => {
             <div>
               <img
                 className="img-place-tag"
-                src={`https://bogdanpyt.xyz/api/v1/img/places/${post.images[0]}`}
+                src={`${url}/api/v1/img/places/${post.images[0]}`}
                 alt="place"
               />
             </div>
