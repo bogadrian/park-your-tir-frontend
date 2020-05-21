@@ -18,7 +18,6 @@ import { selectUser } from '../../redux/userReducer/user-selector';
 import Spinner from '../../components/spinner/spinner';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 import './place.scss';
-const urlImage = 'https://bogdanpyt.xyz';
 
 const Place = ({ place, currentUser, history }) => {
   let placeName;
@@ -94,7 +93,7 @@ const Place = ({ place, currentUser, history }) => {
                 <Zoom>
                   <img
                     className="img-place"
-                    src={`${urlImage}/api/v1/img/places/${image1}`}
+                    src={`https://bogdanpyt.xyz/api/v1/img/places/${image1}`}
                     alt="image1"
                     width="200"
                   />
@@ -105,7 +104,7 @@ const Place = ({ place, currentUser, history }) => {
                 <Zoom>
                   <img
                     className="img-place"
-                    src={`${urlImage}/api/v1/img/places/${image2}`}
+                    src={`https://bogdanpyt.xyz/api/v1/img/places/${image2}`}
                     alt="image2"
                     width="200"
                   />

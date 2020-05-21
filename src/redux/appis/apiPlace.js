@@ -1,6 +1,6 @@
 import truck from '../../images/truck.png';
 import axios from 'axios';
-const url = 'https://bogdanpyt.xyz';
+
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 const FormData = require('form-data');
 
@@ -56,7 +56,7 @@ export const makeCallToServerWithPlace = async place => {
     form.append('position', [lng, lat]);
 
     const axiosInstance = await axios.create({
-      baseURL: `${url}/api/v1/places`,
+      baseURL: `https://bogdanpyt.xyz/api/v1/places`,
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': `multipart/form-data boundary=${form._boundary}`,

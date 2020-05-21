@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import './my-places-container.scss';
-const urlActual = 'https://bogdanpyt.xyz';
+
 const MyPlacesContainer = ({ posts }) => {
   let history = useHistory();
 
@@ -21,7 +21,7 @@ const MyPlacesContainer = ({ posts }) => {
             <div>
               <img
                 className="img-place-tag"
-                src={`${urlActual}/api/v1/img/places/${post.images[0]}`}
+                src={`https://bogdanpyt.xyz/api/v1/img/places/${post.images[0]}`}
                 alt="place"
               />
             </div>

@@ -5,7 +5,6 @@ import { createStructuredSelector } from 'reselect';
 import './loggedIn.scss';
 import { signOutStart } from '../../../redux/userReducer/user-actions';
 import { selectUser } from '../../../redux/userReducer/user-selector';
-const urlActual = 'https://bogdanpyt.xyz';
 
 const LoggedIn = ({ currentUser, signOutStart }) => {
   return (
@@ -18,7 +17,7 @@ const LoggedIn = ({ currentUser, signOutStart }) => {
           <h4 className="name">{currentUser.data.user.name}</h4>
           <img
             className="photoUser"
-            src={`${urlActual}/api/v1/img/users/${currentUser.data.user.photo}`}
+            src={`https://bogdanpyt.xyz/api/v1/img/users/${currentUser.data.user.photo}`}
             alt="user"
           />
         </Link>

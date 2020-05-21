@@ -1,7 +1,6 @@
 import axios from 'axios';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 const token = localStorage.getItem('jwt');
-const url = 'https://bogdanpyt.xyz';
 
 export const makeCallToServerUpdate = async data => {
   //const env = runtimeEnv();
@@ -22,7 +21,7 @@ export const makeCallToServerUpdate = async data => {
   }
 
   const axiosInstance = await axios.create({
-    baseURL: `${url}/api/v1/places/${data.placeId}`,
+    baseURL: `https://bogdanpyt.xyz/api/v1/places/${data.placeId}`,
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': `multipart/form-data boundary=${form._boundary}`,
@@ -45,7 +44,7 @@ export const makeCallToServerUpdate = async data => {
 export const makeCallToSeverDeletePlace = async placeId => {
   //const env = runtimeEnv();
   const axiosInstance = await axios.create({
-    baseURL: `${url}/api/v1/places/${placeId}`,
+    baseURL: `https://bogdanpyt.xyz/api/v1/places/${placeId}`,
     headers: {
       Authorization: `Bearer ${token}`
     }

@@ -21,7 +21,6 @@ import ImageUpload from '../../reuseble/ImageUpload/image-upload';
 import SwitchComponent from '../../reuseble/switch/switch';
 
 import './modify-me.scss';
-const urlActual = 'https://bogdanpyt.xyz';
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -118,7 +117,7 @@ const ModifyMe = ({ clearErorr, error, uploadStart, currentUser }) => {
         <form onSubmit={handleSubmit}>
           <img
             className="photo-profile-main"
-            src={`${urlActual}/api/v1/img/users/${currentUser.data.user.photo}`}
+            src={`https://bogdanpyt.xyz/api/v1/img/users/${currentUser.data.user.photo}`}
             alt={currentUser.data.user.name}
           />
           <ImageUpload onInput={fileHandler} />

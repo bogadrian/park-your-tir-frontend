@@ -9,7 +9,6 @@ import './author-name.scss';
 
 import MessageOn from '../../../images/message-on.svg';
 import MessageOff from '../../../images/message-off.svg';
-const urlActual = 'https://bogdanpyt.xyz';
 
 const AuthorName = ({ place, currentUser }) => {
   const [checked, setChecked] = useState(true);
@@ -104,7 +103,7 @@ const AuthorName = ({ place, currentUser }) => {
 
             <img
               className="place-author-image"
-              src={`${urlActual}/api/v1/img/users/${place.placeAuthor.photo}`}
+              src={`https://bogdanpyt.xyz/api/v1/img/users/${place.placeAuthor.photo}`}
               alt={place.placeAuthor.name}
             />
           </div>
