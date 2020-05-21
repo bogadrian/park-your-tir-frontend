@@ -67,7 +67,7 @@ const GetMessages = ({ currentUser }) => {
     <div>
       {enabled && (
         <div>
-          <a
+          {/*<a
             href={`http://localhost:3000/?token=${localStorage.getItem(
               'jwt'
             )}&enabled=true&myEmail=${myEmail}`}
@@ -78,7 +78,7 @@ const GetMessages = ({ currentUser }) => {
                 <span className="messages-text">M</span>
               </div>
             </div>
-          </a>
+          </a>*/}
         </div>
       )}
     </div>

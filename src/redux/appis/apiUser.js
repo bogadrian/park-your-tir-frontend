@@ -63,11 +63,16 @@ export const makeCallToServerUplod = async ({ photo, email, name }) => {
     }
   });
 
+  // for (let [key, value] of form.entries()) {
+  //   console.log(key, value);
+  // }
+
   const userUpdated = await axiosInstance({
     method: 'PATCH',
     data: form
   });
 
+  console.log(userUpdated);
   return userUpdated.data;
 };
 
