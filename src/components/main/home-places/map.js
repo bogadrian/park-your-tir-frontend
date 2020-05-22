@@ -70,7 +70,7 @@ const MapComponent = ({
   };
 
   const style = {
-    width: '99.9%',
+    width: '90%',
     height: '100%',
     margin: '0px auto',
     border: '1px solid'
