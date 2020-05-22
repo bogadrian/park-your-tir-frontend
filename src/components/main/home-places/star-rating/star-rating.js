@@ -55,7 +55,7 @@ const StarRating = ({ place, startCreate, ratingStart, history, ...props }) => {
         />
       </div>
       <div className="button">
-        <CustomButton handleClick={handleClick}>Create Place</CustomButton>
+        <CustomButton handleClick={handleClick}>Create</CustomButton>
       </div>
     </Fragment>
   );

@@ -9,6 +9,8 @@ import {
   startSetAddressToDisplay
 } from '../../../redux/coordsReducer/coords-action';
 
+import './fetch-adress.scss';
+
 const FetchCoords = ({ startFetchCoords, startSetAddressToDisplay }) => {
   let { latitude, longitude } = usePosition();
   const [coordinates, setCoords] = useState(null);
@@ -32,7 +34,7 @@ const FetchCoords = ({ startFetchCoords, startSetAddressToDisplay }) => {
     <div className="address-container">
       <div className="gro">
         <CustomButton type="submit" handleClick={fetchCoords}>
-          Create a place where you are now!
+          GeoLocation
         </CustomButton>
       </div>
     </div>

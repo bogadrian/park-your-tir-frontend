@@ -13,8 +13,10 @@ const Address = ({ address }) => {
     <div className="address-container">
       <div className="gro">
         <h2>{address}</h2>
-        <FetchAddress />
-        <FetchCoords />
+        <div className="adress-buttons">
+          <FetchAddress />
+          <FetchCoords />
+        </div>
       </div>
     </div>
   );

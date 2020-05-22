@@ -58,8 +58,10 @@ $main-color: black;
   color: red;
 }
 
-.address-container {
+.adress-buttons {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  //margin-top: 50px;
+  align-items: center;
+  gap: 20px;
 }
