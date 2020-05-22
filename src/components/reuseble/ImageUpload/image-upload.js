@@ -25,26 +25,26 @@ const ImageUpload = props => {
     filePickerRef.current.click();
   };
 
-  const fileChangeHandler = photo => {
-    var fileInput = false;
-    if (photo) {
-      fileInput = true;
-    }
-    if (fileInput) {
-      Resizer.imageFileResizer(
-        photo,
-        600,
-        500,
-        'JPEG',
-        100,
-        0,
-        uri => {
-          props.onInput(uri);
-        },
-        'blob'
-      );
-    }
-  };
+  // const fileChangeHandler = photo => {
+  //   var fileInput = false;
+  //   if (photo) {
+  //     fileInput = true;
+  //   }
+  //   if (fileInput) {
+  //     Resizer.imageFileResizer(
+  //       photo,
+  //       700,
+  //       500,
+  //       'JPEG',
+  //       100,
+  //       0,
+  //       uri => {
+  //         props.onInput(uri);
+  //       },
+  //       'blob'
+  //     );
+  //   }
+  // };
 
   const fileHandler = e => {
     const photo = e.target.files[0];
@@ -54,7 +54,8 @@ const ImageUpload = props => {
       setIsValid(false);
     }
     setFile(photo);
-    fileChangeHandler(photo);
+    //fileChangeHandler(photo);
+    props.onInput(photo);
   };
 
   return (
