@@ -25,7 +25,7 @@ const AuthorName = ({ place, currentUser }) => {
     reciver = place.placeAuthor.name;
   }
 
-  let myEmail, myName;
+  let myEmail, myName, photo;
   if (
     currentUser &&
     currentUser.data &&
@@ -34,6 +34,15 @@ const AuthorName = ({ place, currentUser }) => {
   ) {
     myEmail = currentUser.data.user.email;
     myName = currentUser.data.user.name;
+  }
+
+  if (
+    currentUser &&
+    currentUser.data &&
+    currentUser.data.user &&
+    currentUser.data.user.name
+  ) {
+    photo = currentUser.data.user.photo;
   }
 
   if (
@@ -66,53 +75,57 @@ const AuthorName = ({ place, currentUser }) => {
 
   return (
     <div>
-      {place.placeAuthor ? (
-        <div className="place-author-container">
-          <div>
-            <h2 style={{ color: '#1c9aae' }}>{place.placeAuthor.name}</h2>
-            {checked ? (
-              <span>
-                {isMe && <h2 style={{ color: 'green' }}>Messages On</h2>}
-                {!isMe && <h2>Send Message</h2>}
-                {!isMe && (
-                  <a
-                    href={`http://localhost:3000/chat?name=${myName}&reciver=${reciver}&myEmail=${myEmail}&reciverEmail=${reciverEmail}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={MessageOn} alt="message on" />
-                  </a>
-                )}
-              </span>
-            ) : (
-              <span>
-                <h2 style={{ color: 'red' }}>Messages Off</h2>
-
-                <p>
-                  You or the person you try to write may have Messanger turned
-                  off
-                </p>
-                {isMe ? (
-                  <Link to="/my-profile">
-                    <img src={MessageOff} alt="message off" />
-                  </Link>
+      {currentUser && (
+        <div>
+          {place.placeAuthor ? (
+            <div className="place-author-container">
+              <div>
+                <h2 style={{ color: '#1c9aae' }}>{place.placeAuthor.name}</h2>
+                {checked ? (
+                  <span>
+                    {isMe && <h2 style={{ color: 'green' }}>Messages On</h2>}
+                    {!isMe && <h2>Send Message</h2>}
+                    {!isMe && (
+                      <a
+                        href={`http://localhost:3000/chat?name=${myName}&reciver=${reciver}&myEmail=${myEmail}&reciverEmail=${reciverEmail}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img src={MessageOn} alt="message on" />
+                      </a>
+                    )}
+                  </span>
                 ) : (
-                  <img src={MessageOff} alt="message off" />
+                  <span>
+                    <h2 style={{ color: 'red' }}>Messages Off</h2>
+
+                    <p>
+                      You or the person you try to write may have Messanger
+                      turned off
+                    </p>
+                    {isMe ? (
+                      <Link to="/my-profile">
+                        <img src={MessageOff} alt="message off" />
+                      </Link>
+                    ) : (
+                      <img src={MessageOff} alt="message off" />
+                    )}
+                  </span>
                 )}
-              </span>
-            )}
-            <div>
-              <Link to="/my-profile">
-                <img
-                  className="place-author-image"
-                  src={`${url}/api/v1/img/users/${currentUser.data.user.photo}`}
-                  alt={place.placeAuthor.name}
-                />
-              </Link>
+                <div>
+                  <Link to="/my-profile">
+                    <img
+                      className="place-author-image"
+                      src={`${url}/api/v1/img/users/${photo}`}
+                      alt={place.placeAuthor.name}
+                    />
+                  </Link>
+                </div>
+              </div>
             </div>
-          </div>
+          ) : null}
         </div>
-      ) : null}
+      )}
     </div>
   );
 };

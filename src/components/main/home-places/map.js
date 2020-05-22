@@ -85,7 +85,6 @@ const MapComponent = ({
     );
   };
 
-  console.log();
   return (
     <div>
       {places ? (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useParams } from 'react-router-dom';
 
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
@@ -18,9 +18,11 @@ import { selectUser } from '../../redux/userReducer/user-selector';
 import Spinner from '../../components/spinner/spinner';
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
 import './place.scss';
+const url = process.env.REACT_APP_URLC;
 
 const Place = ({ place, currentUser, history }) => {
-  const url = process.env.REACT_APP_URLC;
+  const id = useParams().placeId;
+
   let placeName;
   if (place && place.name) {
     placeName = place.name;
@@ -128,7 +130,7 @@ const Place = ({ place, currentUser, history }) => {
               {idAuthor === currentIdAuthor ? <UpdateDeletePlace /> : null}
             </div>
             <div className="place-option">
-              <CommentsComp placeId={place.id} />
+              <CommentsComp placeId={id} />
             </div>
             <div className="place-option">
               <h3>comments</h3>
@@ -136,7 +138,7 @@ const Place = ({ place, currentUser, history }) => {
                 <h2>Please login to comment!</h2>
               ) : (
                 <div>
-                  <Comment id={place.id} onChange={handleChange} />
+                  <Comment id={id} onChange={handleChange} />
                 </div>
               )}
             </div>
