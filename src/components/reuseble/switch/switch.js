@@ -25,11 +25,13 @@ const SwitchComponent = ({ changeEnabled, currentUser }) => {
       const jwt = localStorage.getItem('jwt');
       // eslint-disable-next-line no-restricted-globals
       window.open(
-        `http://localhost:3000/?token=${jwt}&enabled=true%myEmail=${myEmail}`
+        `https://pyt-messanger.netlify.app/?token=${jwt}&enabled=true%myEmail=${myEmail}`
       );
     } else {
       // eslint-disable-next-line no-restricted-globals
-      window.open('http://localhost:3000/?token=null&enabled=false');
+      window.open(
+        'https://pyt-messanger.netlify.app/?token=null&enabled=false'
+      );
     }
     changeEnabled(checked);
   };

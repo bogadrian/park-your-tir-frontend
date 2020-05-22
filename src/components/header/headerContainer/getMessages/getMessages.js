@@ -68,7 +68,7 @@ const GetMessages = ({ currentUser }) => {
       {enabled && (
         <div>
           <a
-            href={`http://localhost:3000/?token=${localStorage.getItem(
+            href={`https://pyt-messanger.netlify.app/?token=${localStorage.getItem(
               'jwt'
             )}&enabled=true&myEmail=${myEmail}`}
           >
