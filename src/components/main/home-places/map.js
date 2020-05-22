@@ -59,6 +59,22 @@ const MapComponent = ({
     setSelectedPlace(props);
   };
 
+  const containerStyle = {
+    // display: 'grid',
+    // gridTemplateColumns: '500px',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // margin: 'auto',
+    // width: '90%',
+    // height: '100%'
+  };
+
+  const style = {
+    width: '99.9%',
+    height: '100%',
+    margin: '0px auto',
+    border: '1px solid'
+  };
   const onInfoWindowOpen = () => {
     const button = (
       <CustomButton
@@ -86,18 +102,11 @@ const MapComponent = ({
   };
 
   return (
-    <div>
+    <div className="map">
       {places ? (
         <Map
-          style={{
-            width: '96%',
-
-            overflowX: 'hidden',
-            height: '100%',
-            overflow: 'hidden',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
+          containerStyle={containerStyle}
+          style={style}
           google={props.google}
           zoom={10}
           initialCenter={coords.payload ? coords.payload : centPosition}
