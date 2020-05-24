@@ -14,18 +14,20 @@ const url = process.env.REACT_APP_URLC;
 const AuthorName = ({ place, currentUser }) => {
   const [checked, setChecked] = useState(true);
 
-  let reciverEmail, reciver;
+  let reciverEmail, reciver, photo;
   if (
     place &&
     place.placeAuthor &&
     place.placeAuthor.email &&
-    place.placeAuthor.name
+    place.placeAuthor.name &&
+    place.placeAuthor.photo
   ) {
     reciverEmail = place.placeAuthor.email;
     reciver = place.placeAuthor.name;
+    photo = place.placeAuthor.photo;
   }
 
-  let myEmail, myName, photo;
+  let myEmail, myName;
   if (
     currentUser &&
     currentUser.data &&
@@ -34,15 +36,6 @@ const AuthorName = ({ place, currentUser }) => {
   ) {
     myEmail = currentUser.data.user.email;
     myName = currentUser.data.user.name;
-  }
-
-  if (
-    currentUser &&
-    currentUser.data &&
-    currentUser.data.user &&
-    currentUser.data.user.name
-  ) {
-    photo = currentUser.data.user.photo;
   }
 
   if (
@@ -75,57 +68,65 @@ const AuthorName = ({ place, currentUser }) => {
 
   return (
     <div>
-      {currentUser && (
-        <div>
-          {place.placeAuthor ? (
-            <div className="place-author-container">
-              <div>
-                <h2 style={{ color: '#1c9aae' }}>{place.placeAuthor.name}</h2>
-                {checked ? (
-                  <span>
-                    {isMe && <h2 style={{ color: 'green' }}>Messages On</h2>}
-                    {!isMe && <h2>Send Message</h2>}
-                    {!isMe && (
-                      <a
-                        href={`https://pyt-messanger.netlify.app/chat?name=${myName}&reciver=${reciver}&myEmail=${myEmail}&reciverEmail=${reciverEmail}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <img src={MessageOn} alt="message on" />
-                      </a>
-                    )}
-                  </span>
-                ) : (
-                  <span>
-                    <h2 style={{ color: 'red' }}>Messages Off</h2>
+      <div>
+        {place.placeAuthor ? (
+          <div className="place-author-container">
+            <div>
+              {checked ? (
+                <span>
+                  {isMe && <h2 style={{ color: 'green' }}>Messages On</h2>}
+                  {!isMe && <h2>Send Message</h2>}
+                  {!isMe && (
+                    <a
+                      href={`https://pyt-messanger.netlify.app/chat?name=${myName}&reciver=${reciver}&myEmail=${myEmail}&reciverEmail=${reciverEmail}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        className="place-author-image"
+                        src={MessageOn}
+                        alt="message on"
+                      />
+                    </a>
+                  )}
+                </span>
+              ) : (
+                <span>
+                  <h2 style={{ color: 'red' }}>Messages Off</h2>
 
-                    <p>
-                      You or the person you try to write may have Messanger
-                      turned off
-                    </p>
-                    {isMe ? (
-                      <Link to="/my-profile">
-                        <img src={MessageOff} alt="message off" />
-                      </Link>
-                    ) : (
-                      <img src={MessageOff} alt="message off" />
-                    )}
-                  </span>
-                )}
-                <div>
-                  <Link to="/my-profile">
+                  <p>
+                    You or the person you try to write may have Messanger turned
+                    off
+                  </p>
+                  {isMe ? (
+                    <Link to="/my-profile">
+                      <img
+                        className="place-author-image"
+                        src={MessageOff}
+                        alt="message off"
+                      />
+                    </Link>
+                  ) : (
                     <img
                       className="place-author-image"
-                      src={`${url}/api/v1/img/users/${photo}`}
-                      alt={place.placeAuthor.name}
+                      src={MessageOff}
+                      alt="message off"
                     />
-                  </Link>
-                </div>
+                  )}
+                </span>
+              )}
+              <div>
+                <h2 style={{ color: '#1c9aae' }}>{place.placeAuthor.name}</h2>
+                <img
+                  className="place-author-image"
+                  src={`${url}/api/v1/img/users/${photo}`}
+                  alt={place.placeAuthor.name}
+                />
               </div>
             </div>
-          ) : null}
-        </div>
-      )}
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 };

@@ -86,7 +86,7 @@ export const uploadStart = user => ({
 });
 
 export const setChangeEnabledFailure = error => ({
-  type: userActionTypes.SET_CHANGE_NABLED_FAILURE,
+  type: userActionTypes.SET_CHANGE_ENABLED_FAILURE,
   payload: error
 });
 

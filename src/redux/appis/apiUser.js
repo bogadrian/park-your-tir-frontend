@@ -71,7 +71,6 @@ export const makeCallToServerUplod = async ({ photo, email, name }) => {
     data: form
   });
 
-  console.log(userUpdated);
   return userUpdated.data;
 };
 

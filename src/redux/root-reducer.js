@@ -24,15 +24,15 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   places: placesReducer,
-  coords: coordsReducer,
-  place: placeReducer,
+  coords: coordsReducer, // a clean coords action
+  place: placeReducer, // in places
   fetchPlace: fetchPlaceReducer,
   me: getMeReducer,
-  updateDelete: updateDeletePlaceReducer,
-  comment: commentReducer,
+  updateDelete: updateDeletePlaceReducer, // in places
+  comment: commentReducer, // in comments
   comments: getCommentsReducer,
   email: ressetPasswordReducer,
-  updateDeleteComment: updateDeleteCommentReducer,
+  updateDeleteComment: updateDeleteCommentReducer, // in comments
   passwords: passwordRessetReducer
 });
 

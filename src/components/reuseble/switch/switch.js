@@ -16,11 +16,14 @@ const SwitchComponent = ({ changeEnabled, currentUser }) => {
 
   useEffect(() => {
     setChecked(currentUser.data.user.enabled);
+  }, [currentUser.data.user.enabled]);
+
+  useEffect(() => {
     setMyEmail(currentUser.data.user.email);
-  }, [currentUser.data.user.enabled, currentUser.data.user.email]);
+  }, [currentUser.data.user.email]);
 
   const handleChange = checked => {
-    setChecked(checked);
+    setChecked(currentUser.data.user.enabled);
     if (checked) {
       const jwt = localStorage.getItem('jwt');
       // eslint-disable-next-line no-restricted-globals
@@ -33,6 +36,7 @@ const SwitchComponent = ({ changeEnabled, currentUser }) => {
         'https://pyt-messanger.netlify.app/?token=null&enabled=false'
       );
     }
+    console.log(checked);
     changeEnabled(checked);
   };
 

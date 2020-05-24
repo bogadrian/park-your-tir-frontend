@@ -39,7 +39,7 @@ const SignUp = ({ signUpStart, clearErorr, error }) => {
     clearErorr();
   };
 
-  let show;
+  let show = false;
   let mes;
   if (error !== null) {
     show = true;

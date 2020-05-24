@@ -27,6 +27,7 @@ export function* signIn(userData) {
     const result = yield call(makeCallToServerLogin, userData);
 
     if (result.data.status === 'success') {
+      console.log(result.data);
       yield put(signInSuccess(result.data));
     }
   } catch (err) {
@@ -60,8 +61,9 @@ export function* onSignOutStart() {
 export function* onSignUp(userr) {
   try {
     const result = yield call(makeCallToServerSignUp, userr);
+    console.log(result);
 
-    if (result.data.status === 'success') {
+    if (result.data.status === 200) {
       yield put(signUpSuccess(result.data));
     }
   } catch (err) {
@@ -108,8 +110,8 @@ export function* onEnabled(data) {
   try {
     const result = yield call(callChangeEnabled, data.payload);
 
-    if (result) {
-      yield put(setChangeEnabledSucces(result));
+    if (result.status === 'success') {
+      yield put(setChangeEnabledSucces(data.payload));
     }
   } catch (err) {
     yield put(setChangeEnabledFailure(err));

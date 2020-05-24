@@ -42,7 +42,7 @@ const formReducer = (state, action) => {
 };
 
 const SignIn = ({ history, signInStart, error, clearErorr }) => {
-  let show;
+  let show = false;
   let message;
   if (error) {
     show = true;

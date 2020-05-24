@@ -60,16 +60,18 @@ const MapComponent = ({
   };
 
   const containerStyle = {
-    // display: 'grid',
-    // gridTemplateColumns: '500px',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // margin: 'auto',
-    // width: '90%',
-    // height: '100%'
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '0px auto',
+    width: '94%',
+    height: '100%'
   };
 
   const style = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     width: '90%',
     height: '100%',
     margin: '0px auto',

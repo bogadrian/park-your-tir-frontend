@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter, useParams } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
@@ -21,12 +21,17 @@ import './place.scss';
 const url = process.env.REACT_APP_URLC;
 
 const Place = ({ place, currentUser, history }) => {
-  const id = useParams().placeId;
+  //const id = useParams().placeId;
 
   let placeName;
   if (place && place.name) {
     placeName = place.name;
   }
+  let id;
+  if (place && place._id) {
+    id = place._id;
+  }
+  console.log(place);
 
   let image1, image2;
   if (place && place.images) {
@@ -135,7 +140,9 @@ const Place = ({ place, currentUser, history }) => {
             <div className="place-option">
               <h3>comments</h3>
               {!currentUser ? (
-                <h2>Please login to comment!</h2>
+                <Link to="/signin">
+                  <h2>Please login to comment!</h2>
+                </Link>
               ) : (
                 <div>
                   <Comment id={id} onChange={handleChange} />
