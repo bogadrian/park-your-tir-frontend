@@ -16,22 +16,19 @@ import UpdateDeletePlace from './update-place/update-place';
 import CustomButton from '../../components/reuseble/custom-button/custom-button';
 import { selectUser } from '../../redux/userReducer/user-selector';
 import Spinner from '../../components/spinner/spinner';
-//import runtimeEnv from '@mars/heroku-js-runtime-env';
+
+import { get } from 'lodash';
+
 import './place.scss';
+
 const url = process.env.REACT_APP_URLC;
 
 const Place = ({ place, currentUser, history }) => {
-  //const id = useParams().placeId;
-
-  let placeName;
-  if (place && place.name) {
-    placeName = place.name;
-  }
-  let id;
-  if (place && place._id) {
-    id = place._id;
-  }
-  console.log(place);
+  const placeName = get(place, ['name']);
+  const id = get(place, ['_id']);
+  const description = get(place, ['description']);
+  const idAuthor = get(place, ['placeAuthor', 'id']);
+  const currentIdAuthor = get(currentUser, ['data', 'user', '_id']);
 
   let image1, image2;
   if (place && place.images) {
@@ -39,28 +36,7 @@ const Place = ({ place, currentUser, history }) => {
     image2 = place.images[1];
   }
 
-  let description;
-  if (place && place.data && place.data.description) {
-    description = place.data.description;
-  }
-
-  let idAuthor;
-  if (place && place.placeAuthor && place.placeAuthor.id) {
-    idAuthor = place.placeAuthor.id;
-  }
-
-  let currentIdAuthor;
-  if (
-    currentUser &&
-    currentUser.data &&
-    currentUser.data.user &&
-    currentUser.data.user._id
-  ) {
-    currentIdAuthor = currentUser.data.user._id;
-  }
-
   let lat, lng;
-
   try {
     if (place.position) {
       [lat, lng] = place.position.coordinates;

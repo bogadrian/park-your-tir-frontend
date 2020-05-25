@@ -5,10 +5,9 @@ import storage from 'redux-persist/lib/storage';
 import userReducer from './userReducer/user-reducer';
 import placesReducer from './placesReducer/places-reducer';
 import coordsReducer from './coordsReducer/coords-reducer';
-import placeReducer from './setPlace/setPlace-reducer';
+
 import fetchPlaceReducer from './fetchPlace/fetchPlace-reducer';
 import getMeReducer from './getMe/getMe-reducer';
-import updateDeletePlaceReducer from './updateDelete/updateDelete-reducer';
 import commentReducer from './setComment/setComment-reducer';
 import getCommentsReducer from './getComments/getComments-reducer';
 import ressetPasswordReducer from './ressetPassword/ressetPassword-reducer';
@@ -25,10 +24,8 @@ const rootReducer = combineReducers({
   user: userReducer,
   places: placesReducer,
   coords: coordsReducer,
-  place: placeReducer, // in places
   fetchPlace: fetchPlaceReducer,
   me: getMeReducer,
-  updateDelete: updateDeletePlaceReducer, // in places
   comment: commentReducer, // in comments
   comments: getCommentsReducer,
   email: ressetPasswordReducer,

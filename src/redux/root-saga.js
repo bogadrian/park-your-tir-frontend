@@ -5,7 +5,6 @@ import { coordsSaga } from './coordsReducer/coords-saga';
 import { setPlace } from './setPlace/setPlace-saga';
 import { fetchPlace } from './fetchPlace/fetchPlace-saga';
 import { getMeStart } from './getMe/getMe-saga';
-import { updateDelete } from './updateDelete/updateDelete-saga';
 import { setComment } from './setComment/setComment-saga';
 import { getCommentsStart } from './getComments/getComments-saga';
 import { ressetPassword } from './ressetPassword/ressetPassword-saga';
@@ -20,12 +19,11 @@ function* rootSaga() {
     call(setPlace),
     call(fetchPlace),
     call(getCommentsStart),
-    call(updateDelete),
     call(setComment),
     call(getMeStart),
     call(ressetPassword),
     call(updateDeleteCommentSaga),
-    call(passwordRessetSaga),
+    call(passwordRessetSaga)
   ]);
 }
 

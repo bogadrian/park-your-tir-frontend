@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import Placeholder from './placeholder-park.jpg';
 
 import './my-places-container.scss';
 
@@ -20,11 +21,15 @@ const MyPlacesContainer = ({ posts }) => {
               <h3>{post.name}</h3>
             </div>
             <div>
-              <img
-                className="img-place-tag"
-                src={`${url}/api/v1/img/places/${post.images[0]}`}
-                alt="place"
-              />
+              {post.images[0] ? (
+                <img
+                  className="img-place-tag"
+                  src={`${url}/api/v1/img/places/${post.images[0]}`}
+                  alt="place"
+                />
+              ) : (
+                <img src={Placeholder} alt="park" />
+              )}
             </div>
           </li>
         </div>

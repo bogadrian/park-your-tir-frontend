@@ -35,8 +35,9 @@ export const deletePlace = id => ({
   payload: id
 });
 
-export const deletePlaceSuccess = () => ({
-  type: setPlaceActionTypes.DELETE_SUCCESS
+export const deletePlaceSuccess = id => ({
+  type: setPlaceActionTypes.DELETE_SUCCESS,
+  payload: id
 });
 
 export const deletePlaceFailure = () => ({

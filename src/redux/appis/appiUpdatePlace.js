@@ -41,7 +41,7 @@ export const makeCallToServerUpdate = async data => {
     data: form
   });
 
-  return placeUpdate.data.data;
+  return placeUpdate.data.data.data;
 };
 
 export const makeCallToSeverDeletePlace = async placeId => {
@@ -57,6 +57,6 @@ export const makeCallToSeverDeletePlace = async placeId => {
   const placeDeleted = await axiosInstance({
     method: 'DELETE'
   });
-  console.log(placeDeleted);
+
   return placeDeleted;
 };

@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 
 import { selectPlaceItem } from '../../../redux/fetchPlace/fetchPlace-selector';
-import { startUpdatePlace } from '../../../redux/updateDelete/updateDelete-actions';
+//import { startUpdatePlace } from '../../../redux/updateDelete/updateDelete-actions';
 import Modal from '../../../components/reuseble/modal/modal';
 import CustomButton from '../../../components/reuseble/custom-button/custom-button';
 
@@ -76,7 +76,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  startUpdatePlace: placeData => dispatch(startUpdatePlace(placeData)),
+  //startUpdatePlace: placeData => dispatch(startUpdatePlace(placeData)),
   deletePlace: placeId => dispatch(deletePlace(placeId))
 });
 

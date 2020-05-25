@@ -32,6 +32,7 @@ export function* startCreatePlace() {
 export function* onPatch(data) {
   try {
     const placeUpdated = yield call(makeCallToServerUpdate, data.payload);
+
     yield put(patchSuccess(placeUpdated));
   } catch (err) {
     yield put(patchFailure(err));
@@ -48,8 +49,9 @@ export function* onDelete(placeId) {
       makeCallToSeverDeletePlace,
       placeId.payload
     );
+
     if (placeDeleted) {
-      yield put(deletePlaceSuccess());
+      yield put(deletePlaceSuccess(placeId.payload));
     }
   } catch (err) {
     yield put(deletePlaceFailure());
