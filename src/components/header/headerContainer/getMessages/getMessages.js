@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import axios from 'axios';
-
+import { get } from 'lodash';
 import { selectUser } from '../../../../redux/userReducer/user-selector';
 import './getMessages.scss';
 
 const GetMessages = ({ currentUser }) => {
   const [messages, setMessages] = useState([]);
   const [messagesFilt, setMessagesFilt] = useState([]);
+  const myEmail = get(currentUser, ['data', 'user', 'email']);
+  const enabled = get(currentUser, ['data', 'user', 'enabled']);
 
   useEffect(() => {
     let messagesFiltred = [];
@@ -25,24 +27,6 @@ const GetMessages = ({ currentUser }) => {
 
     setMessagesFilt([...messagesFiltred]);
   }, [messages]);
-
-  let myEmail, enabled;
-  if (
-    currentUser &&
-    currentUser.data &&
-    currentUser.data.user &&
-    currentUser.data.user.email
-  ) {
-    myEmail = currentUser.data.user.email;
-  }
-  if (
-    currentUser &&
-    currentUser.data &&
-    currentUser.data.user &&
-    currentUser.data.user.enabled
-  ) {
-    enabled = currentUser.data.user.enabled;
-  }
 
   let read = messagesFilt.filter((el, i) => el.read === false);
 

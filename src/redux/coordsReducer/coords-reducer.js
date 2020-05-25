@@ -36,6 +36,12 @@ const coordsReducer = (state = INITIAL_STATE, action) => {
         coords: null,
         error: action.payload
       };
+    case coordsActionTypes.FETCH_COORDS_CLEANUP:
+      return {
+        ...state,
+        coords: null,
+        error: null
+      };
     case coordsActionTypes.SET_NAME_SUCCESS:
       return {
         ...state,

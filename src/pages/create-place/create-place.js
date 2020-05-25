@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Address from '../../components/reuseble/address/address';
 import PlaceDataName from '../../components/main/place-data/place-data';
@@ -8,11 +8,18 @@ import StarRating from '../../components/main/home-places/star-rating/star-ratin
 import ItemsCarousel from 'react-items-carousel';
 import CustomButton from '../../components/reuseble/custom-button/custom-button';
 
+import { startSetAddressToDisplay } from '../../redux/coordsReducer/coords-action';
+
 import './create-place.scss';
 
-const CreatePlace = props => {
+const CreatePlace = () => {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const chevronWidth = 40;
+
+  useEffect(() => {
+    startSetAddressToDisplay('');
+  }, []);
+
   return (
     <div className="place-container">
       <div>
@@ -55,7 +62,7 @@ const CreatePlace = props => {
             chevronWidth={chevronWidth}
           >
             <div style={{ height: 500 }}>
-              <Address />
+              <Address canc={true} />
             </div>
             <div style={{ height: 500 }}>
               <PlaceDataName />

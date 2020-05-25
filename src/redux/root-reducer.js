@@ -24,7 +24,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   places: placesReducer,
-  coords: coordsReducer, // a clean coords action
+  coords: coordsReducer,
   place: placeReducer, // in places
   fetchPlace: fetchPlaceReducer,
   me: getMeReducer,

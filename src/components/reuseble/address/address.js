@@ -6,8 +6,6 @@ import FetchAddress from '../fetch-address/fetch-address';
 import FetchCoords from '../fetch-coords/fetch-coords';
 import { selectAddress } from '../../../redux/coordsReducer/coords-selector';
 
-import './address.scss';
-
 const Address = ({ address }) => {
   return (
     <div className="address-container">

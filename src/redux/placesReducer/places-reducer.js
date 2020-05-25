@@ -13,6 +13,7 @@ const placesReducer = (state = INITIAL_STATE, action) => {
         places: action.payload,
         error: null
       };
+
     case placesActionTypes.START_FETCH_PLACES_WITHIN_FAILURE:
       return {
         ...state,

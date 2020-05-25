@@ -27,7 +27,13 @@ const FetchCoords = ({ startFetchCoords, startSetAddressToDisplay }) => {
   };
 
   useEffect(() => {
-    startFetchCoords(coordinates);
+    let clean = true;
+    if (clean) {
+      startFetchCoords(coordinates);
+    }
+    return () => {
+      clean = false;
+    };
   }, [coordinates, startFetchCoords]);
 
   return (

@@ -78,7 +78,11 @@ const AuthorName = ({ place, currentUser }) => {
                   {!isMe && <h2>Send Message</h2>}
                   {!isMe && (
                     <a
-                      href={`https://pyt-messanger.netlify.app/chat?name=${myName}&reciver=${reciver}&myEmail=${myEmail}&reciverEmail=${reciverEmail}`}
+                      href={`https://pyt-messanger.netlify.app/chat?name=${
+                        myName.split(' ')[0]
+                      }&reciver=${
+                        reciver.split(' ')[0]
+                      }&myEmail=${myEmail}&reciverEmail=${reciverEmail}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

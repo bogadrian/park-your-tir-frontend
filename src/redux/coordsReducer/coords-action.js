@@ -15,6 +15,10 @@ export const fetchCoordsFailure = error => ({
   payload: error
 });
 
+export const fetchCoordsCleanup = () => ({
+  type: coordsActionTypes.FETCH_COORDS_Cleanup
+});
+
 export const setNameStart = name => ({
   type: coordsActionTypes.START_NAME,
   payload: name

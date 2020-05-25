@@ -9,7 +9,6 @@ import LoggedOut from '../loggedOut/loggedOut';
 import GetMessages from './getMessages/getMessages';
 
 import { selectUser } from '../../../redux/userReducer/user-selector';
-
 import './header.scss';
 
 const Header = ({ currentUser }) => {
@@ -27,9 +26,9 @@ const Header = ({ currentUser }) => {
       <div className="options">
         <GetMessages />
         {currentUser ? (
-          <Link to="/create-place">
+          <a href={`https://park-your-tir.netlify.app/create-place`}>
             <div className="create-place-button">Create Place</div>
-          </Link>
+          </a>
         ) : (
           <h3>Please login to create a place!</h3>
         )}
