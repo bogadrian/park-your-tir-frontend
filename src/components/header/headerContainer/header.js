@@ -26,7 +26,7 @@ const Header = ({ currentUser }) => {
       <div className="options">
         <GetMessages />
         {currentUser ? (
-          <a href={`https://park-yout-tir.netlify.app/create-place`}>
+          <a href={`https://park-your-tir.netlify.app/create-place`}>
             <div className="create-place-button">Create Place</div>
           </a>
         ) : (
