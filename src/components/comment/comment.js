@@ -12,7 +12,7 @@ import './comment.scss';
 
 const Comment = ({ startComment, ...props }) => {
   const [show, setShow] = useState(false);
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(4);
   let [commentValue, setCommentValue] = useState('');
   const [valid, setValid] = useState(false);
 
@@ -21,7 +21,7 @@ const Comment = ({ startComment, ...props }) => {
     setCommentValue(value);
   };
 
-  const changeRating = (newRating) => {
+  const changeRating = newRating => {
     setRating(newRating);
   };
 
@@ -77,15 +77,15 @@ const Comment = ({ startComment, ...props }) => {
       </div>
       <div className="button-comment-container">
         <CustomButton handleClick={handleComment} disabled={valid}>
-          Comment
+          Comment - Please Rate this place. Default 4 stars!
         </CustomButton>
       </div>
     </div>
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  startComment: (data) => dispatch(startComment(data)),
+const mapDispatchToProps = dispatch => ({
+  startComment: data => dispatch(startComment(data))
 });
 
 export default connect(null, mapDispatchToProps)(Comment);
