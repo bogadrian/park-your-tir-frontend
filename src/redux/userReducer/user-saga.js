@@ -61,9 +61,8 @@ export function* onSignOutStart() {
 export function* onSignUp(userr) {
   try {
     const result = yield call(makeCallToServerSignUp, userr);
-    console.log(result);
 
-    if (result.data.status === 200) {
+    if (result.data.status === 'success') {
       yield put(signUpSuccess(result.data));
     }
   } catch (err) {

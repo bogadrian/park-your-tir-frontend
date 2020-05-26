@@ -25,7 +25,6 @@ export const makeCallToServerLogin = async userData => {
 };
 
 export const makeCallToServerSignUp = async userData => {
-  //const env = runtimeEnv();
   const urlSign = `${url}/api/v1/users/signup`;
   const config = {
     headers: { 'Content-Type': 'application/json' }
