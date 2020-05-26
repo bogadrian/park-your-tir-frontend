@@ -11,6 +11,7 @@ import { selectComment } from '../../redux/setComment/setComment-selector';
 import { selectUser } from '../../redux/userReducer/user-selector';
 import selectMe from '../../redux/getMe/getMe-reducer';
 
+import { get } from 'lodash';
 import {
   startUpdateComment,
   startDeleteComment
@@ -34,23 +35,8 @@ const CommentsComp = ({
   const [text, setText] = useState(null);
   const placeId = useParams().placeId;
 
-  let commentMeId;
-  if (
-    me &&
-    me.user &&
-    me.user &&
-    me.user.currentUser &&
-    me.user.currentUser.data &&
-    me.user.currentUser.data.user &&
-    me.user.currentUser.data.user._id
-  ) {
-    commentMeId = me.user.currentUser.data.user._id;
-  }
-
-  let com;
-  if (comments && comments.data) {
-    com = comments.data;
-  }
+  const commentMeId = get(me, ['user', 'currentUser', 'data', 'user', '_id']);
+  const com = get(comments, ['data']);
 
   useEffect(() => {
     getCommentsStart(props.placeId);
@@ -82,7 +68,7 @@ const CommentsComp = ({
       {com
         ? com.map(co => (
             <ul key={co._id}>
-              {co?.place === props.placeId ? (
+              {co.place === props.placeId ? (
                 <li className="li-element">
                   <h3 className="li-element">
                     <textarea
@@ -97,7 +83,7 @@ const CommentsComp = ({
                     />
                   </h3>
 
-                  <h3 style={{ color: '#1c9aae' }}>{co?.author?.name}</h3>
+                  <h3 style={{ color: '#1c9aae' }}>{co.author.name}</h3>
                   <p>Comment author Rating for this place</p>
 
                   <Rater

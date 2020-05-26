@@ -24,7 +24,7 @@ const placesReducer = (state = INITIAL_STATE, action) => {
     case setPlaceActionTypes.DELETE_SUCCESS:
       return {
         ...state,
-        places: state.places,
+        places: [...state.places],
         error: null
       };
 
