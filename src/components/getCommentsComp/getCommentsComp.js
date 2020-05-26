@@ -73,6 +73,7 @@ const CommentsComp = ({
                   <h3 className="li-element">
                     <textarea
                       className={`${dis ? 'is-shown' : 'is-hidden'}`}
+                      row="50"
                       cols="50"
                       name="comment"
                       disabled={dis}
