@@ -10,7 +10,14 @@ import Modal from '../../../reuseble/modal/modal';
 
 import './star-rating.scss';
 
-const StarRating = ({ place, startCreate, ratingStart, history, ...props }) => {
+const StarRating = ({
+  place,
+  startCreate,
+  ratingStart,
+  error,
+  history,
+  ...props
+}) => {
   const [rating, setRating] = useState(0);
 
   const [show, setShow] = useState(false);
@@ -41,7 +48,9 @@ const StarRating = ({ place, startCreate, ratingStart, history, ...props }) => {
         footerClass="place-item__modal-actions"
         footer={<CustomButton handleClick={handleError}>CLOSE</CustomButton>}
       >
-        "The Place was updated!"
+        {error
+          ? 'The place coud not be created. Please check and try again!'
+          : 'The Place was created!'}
       </Modal>
       <div className="star-rating">
         <StarRatings
@@ -60,8 +69,9 @@ const StarRating = ({ place, startCreate, ratingStart, history, ...props }) => {
     </Fragment>
   );
 };
-const mapStateToProps = ({ coords }) => ({
-  place: coords
+const mapStateToProps = ({ coords, places: { error } }) => ({
+  place: coords,
+  error
 });
 
 const mapDispatchToProps = dispatch => ({

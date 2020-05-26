@@ -32,7 +32,7 @@ const placesReducer = (state = INITIAL_STATE, action) => {
     case setPlaceActionTypes.PATCH_FAILURE:
       return {
         ...state,
-        places: state.places,
+        places: [...state.places],
         error: action.payload
       };
     case placesActionTypes.START_FETCH_PLACES_WITHIN_FAILURE:

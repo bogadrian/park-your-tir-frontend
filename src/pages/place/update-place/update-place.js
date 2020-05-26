@@ -14,16 +14,16 @@ import './update-place.scss';
 
 const UpdateDeletePlace = ({ place, deletePlace, history }) => {
   const [show, setShow] = useState(false);
-  const [message, setMessage] = useState(null);
+  const [message, setMessage] = useState('');
   const [confirm, setConfirm] = useState(false);
 
   const deletePlaceHandler = () => {
     setConfirm(true);
+    setMessage('ARE YOU SURE YOU WANT TO DELETE THIS PLACE?');
   };
   const handleModal = () => {
     deletePlace(place.id);
     setShow(true);
-    setMessage('ARE YOU SURE YOU WANT TO DELETE THIS PLACE?');
   };
   const handleModalExit = () => {
     setConfirm(false);

@@ -15,10 +15,18 @@ import { selectPlaceItem } from '../../redux/fetchPlace/fetchPlace-selector';
 
 import { selectCoordsFull } from '../../redux/coordsReducer/coords-selector';
 import { startPatch } from '../../redux/setPlace/setPlace-action';
+import { selectPlaceError } from '../../redux/placesReducer/places-selector';
 
 import './updDelPlace.scss';
 
-const UpdDelPlace = ({ place, placeData, startFetch, history, startPatch }) => {
+const UpdDelPlace = ({
+  place,
+  error,
+  placeData,
+  startFetch,
+  history,
+  startPatch
+}) => {
   const placeId = useParams().placeId;
 
   if (place._id !== placeId) {
@@ -78,7 +86,9 @@ const UpdDelPlace = ({ place, placeData, startFetch, history, startPatch }) => {
         footerClass="place-item__modal-actions"
         footer={<CustomButton handleClick={handleError}>CLOSE</CustomButton>}
       >
-        "The Place was updated!"
+        {error
+          ? 'The place coud not be updated. Please Try Again'
+          : 'The Place was updated!'}
       </Modal>
       <div style={{ height: '30vw' }}>
         <PlaceDataName place={place} name={place.na} desc={place.de} />
@@ -102,7 +112,8 @@ const UpdDelPlace = ({ place, placeData, startFetch, history, startPatch }) => {
 
 const mapStateToProps = createStructuredSelector({
   place: selectPlaceItem,
-  placeData: selectCoordsFull
+  placeData: selectCoordsFull,
+  error: selectPlaceError
 });
 
 const mapDispatchToProps = dispatch => ({
