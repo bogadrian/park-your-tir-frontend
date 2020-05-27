@@ -27,7 +27,6 @@ export function* signIn(userData) {
     const result = yield call(makeCallToServerLogin, userData);
 
     if (result.data.status === 'success') {
-      console.log(result.data);
       yield put(signInSuccess(result.data));
     }
   } catch (err) {

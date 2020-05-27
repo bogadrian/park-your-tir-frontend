@@ -63,10 +63,14 @@ $react-rater-active: orange !default;
   background-color: white;
   font-size: 20px;
   width: 300px;
-  height: 200px;
+  height: 100px;
   text-decoration: none;
 }
 
 .li-element {
   text-decoration: none;
+}
+.ul-class {
+  text-decoration: none;
+  list-style: none;
 }

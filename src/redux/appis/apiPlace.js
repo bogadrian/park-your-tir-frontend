@@ -5,8 +5,6 @@ const url = process.env.REACT_APP_URLC;
 const FormData = require('form-data');
 
 export const makeCallToServerWithPlace = async place => {
-  console.log(place);
-  //const env = runtimeEnv();
   const data = place.payload;
 
   const coords = data.coords.payload;

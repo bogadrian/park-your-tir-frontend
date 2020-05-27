@@ -67,7 +67,7 @@ const CommentsComp = ({
       </Modal>
       {com
         ? com.map(co => (
-            <ul key={co._id}>
+            <ul className="ul-class" key={co._id}>
               {co.place === props.placeId ? (
                 <li className="li-element">
                   <h3 className="li-element">
