@@ -5,7 +5,6 @@ const token = localStorage.getItem('jwt');
 const url = process.env.REACT_APP_URLC;
 
 export const makeCallToServerUpdate = async data => {
-  console.log('sss', data);
   //const env = runtimeEnv();
   const { name, desc, fileImg } = data;
 

@@ -1,4 +1,3 @@
-import truck from '../../images/truck.png';
 import axios from 'axios';
 const url = process.env.REACT_APP_URLC;
 //import runtimeEnv from '@mars/heroku-js-runtime-env';
@@ -12,32 +11,19 @@ export const makeCallToServerWithPlace = async place => {
   const name = data.name.payload;
   const desc = data.desc.payload;
   const rating = data.rating.payload;
+  const imag = photo[photo.length - 1].payload;
 
   const { lat, lng } = coords;
 
   const token = localStorage.getItem('jwt');
 
-  const imag = photo.map(img => {
-    return img.payload;
-  });
-
   try {
     let form = new FormData();
+
     if (imag) {
-      if (imag[0] && imag[1] === undefined) {
-        form.append('images', truck);
-      }
-
-      if (imag[1] && imag[2] === undefined) {
-        form.append('images', imag[1][0]);
-      }
-
-      if (imag[3]) {
-        form.append('images', imag[3][0]);
-        form.append('images', imag[3][1]);
-      }
-    } else {
-      form.append('images', truck);
+      imag.forEach(img => {
+        form.append('images', img);
+      });
     }
 
     if (name) {
@@ -71,7 +57,7 @@ export const makeCallToServerWithPlace = async place => {
       method: 'POST',
       data: form
     });
-
+    //console.log(placeUpdate.data.data);
     return placeUpdate.data.data;
   } catch (err) {
     console.log(err);
